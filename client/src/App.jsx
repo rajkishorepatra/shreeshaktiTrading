@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
 
+export default function ButtonAppBar() {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Box sx={{ flexGrow: 1, justifyContent: "space-between", display:"flex"}}>
+      <AppBar position="static" sx={{width: '100vw', }}>
+        <Toolbar>
+          <Button color="inherit" sx={{fontFamily: "Bruno Ace SC, cursive", fontSize: '1.5rem', fontWeight:"bolderx "}}>RUCHI</Button>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+    </Box>
+    <div className="about content" style={{background: 'red'}}></div>
+    <div className="leadership content" style={{background: 'green'}}></div>
+    <div className="key-services content" style={{background: 'black'}}></div>
+    <div className="presence content" style={{background: 'yellow'}}></div>
+    <div className="infra content" style={{background: 'orange'}}></div>
 
-export default App
+    </>
+    
+  );
+}
