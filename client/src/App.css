@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Dancing+Script:wght@700&family=Fjalla+One&display=swap');
 
-body {
-  flex-direction: column;
-  background-color: azure;
-  color: black;
-  font-size: 16px;
-}
-
 .MuiToolbar-root {
   background-color: azure;
   color: black;
