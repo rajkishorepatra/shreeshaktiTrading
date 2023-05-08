@@ -6,26 +6,31 @@ import Link from '@mui/material/Link';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="text.secondary">
+    <Typography variant="body2" color="text.secondary" align='center' sx={{textTransform: 'uppercase'}}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="#">
+        LeafLets.
       </Link>{' '}
       {new Date().getFullYear()}
-      {'.'}
+      {'.All Rights Reserved.'}
     </Typography>
   );
 }
 
 export default function PageFooter() {
+  const styles = {
+   copyright: {
+      position: "absolute",
+      bottom: "0",
+      width: "100%",
+      height: "60px",
+      lineHeight: "60px",
+      backgroundColor: "#f5f5f5",
+    },
+
+  }
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh',
-      }}
-    >
+    <Box>
       <CssBaseline />
       <Container component="main" sx={{ mt: 8, mb: 2 }} maxWidth="sm">
         <Typography variant="h2" component="h1" gutterBottom>
@@ -49,12 +54,7 @@ export default function PageFooter() {
               : theme.palette.grey[800],
         }}
       >
-        <Container maxWidth="sm">
-          <Typography variant="body1">
-            My sticky footer can be found here.
-          </Typography>
           <Copyright />
-        </Container>
       </Box>
     </Box>
   );
