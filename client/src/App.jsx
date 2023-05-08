@@ -28,11 +28,11 @@ export default function ButtonAppBar() {
         </Toolbar>
       </AppBar>
     </Box>
-    <div className="about content" style={{background: 'red'}}></div>
-    <div className="leadership content" style={{background: 'green'}}></div>
-    <div className="key-services content" style={{background: 'black'}}></div>
-    <div className="presence content" style={{background: 'yellow'}}></div>
-    <div className="infra content" style={{background: 'orange'}}></div>
+    <div className="about content" style={{background: 'white'}}></div>
+    <div className="leadership content" style={{background: 'black'}}></div>
+    <div className="key-services content" style={{background: 'yellow'}}></div>
+    <div className="presence content" style={{background: 'balck'}}></div>
+    <div className="infra content" style={{background: 'grey'}}></div>
 
     </>
     

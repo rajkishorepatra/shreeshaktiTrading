@@ -2,15 +2,14 @@
 
 body {
   flex-direction: column;
-  background-color: azure;
-  color: black;
   font-size: 16px;
   /* overflow-y: hidden; */
+  width: 100vw;
 }
 
 .MuiToolbar-root {
-  background-color: azure;
-  color: black;
+  background-color: black;
+  color: yellow;
   justify-content: space-between;
 }
 .MuiButton-root {
@@ -20,11 +19,9 @@ body {
 
 .MuiBox-root {
   align-items: center;
-  height: 10vh;
 }
 
 .MuiPaper-root {
-  height: 10vh;
   justify-items: center;
 }
 .content {
