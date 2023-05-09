@@ -1,8 +1,6 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -10,6 +8,10 @@ import "./App.css";
 
 // import components
 import PageFooter from "./components/footer";
+import Clients from "./components/clients";
+
+
+
 export default function App() {
   return (
     <>
@@ -49,6 +51,7 @@ export default function App() {
       <div className="presence content" style={{ background: "balck" }}></div>
       <div className="infra content" style={{ background: "grey" }}></div>
 
+      <Clients />
       <PageFooter />
     </>
   );
