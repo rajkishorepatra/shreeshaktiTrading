@@ -1,16 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Dancing+Script:wght@700&family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sassy+Frass&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&display=swap');
 
 body {
   flex-direction: column;
   font-size: 16px;
   /* overflow-y: hidden; */
   width: 100vw;
+  background: white;
+}
+
+.css-13ttcw9-MuiPaper-root-MuiAppBar-root {
+  background-color: #4d4dff;
+  box-shadow: 0;
 }
 
 .MuiToolbar-root {
-  background-color: black;
-  color: yellow;
+  color: black;
   justify-content: space-between;
+  position: relative;
+  isolation: isolate;
+  height: 12vh;
+}
+
+/* .MuiToolbar-root::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: black;
+  z-index: -1;
+  transform: skewY(5deg);
+  -webkit-transform: skewY(5deg);
+  -moz-transform: skewY(5deg);
+  -ms-transform: skewY(5deg);
+  -o-transform: skewY(5deg);
+} */
+
+.main {
+  position: relative;
+  isolation: isolate;
+  height: 80vh;
+}
+
+.main::after {
+  content: '';
+  inset: 0;
+  position: absolute;
+  background-image: url('./assets/1.jpg');
+  height: 80vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  transform: skewY(-2deg);
+  -webkit-transform: skewY(-2deg);
+  -moz-transform: skewY(-2deg);
+  -ms-transform: skewY(-2deg);
+  -o-transform: skewY(-2deg);
 }
 .MuiButton-root {
   font-family: 'Bruno Ace SC', cursive;
@@ -24,8 +70,19 @@ body {
 .MuiPaper-root {
   justify-items: center;
 }
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  width: 35vw;
+  padding-right: 7vw;
+}
 .content {
-  height: 90vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.details Button:hover {
+  color: cornflowerblue;
 }
