@@ -1,38 +1,21 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import "./App.css";
+import Navbar from './components/navbar';
 
 
 export default function ButtonAppBar() {
   return (
     <>
-    <Box sx={{ flexGrow: 1, justifyContent: "space-between", display:"flex"}}>
-      <AppBar position="static" sx={{width: '100vw', }}>
-        <Toolbar>
-          <Button color="inherit" sx={{fontFamily: "Bruno Ace SC, cursive", fontSize: '1.5rem', fontWeight:"bolderx "}}>RUCHI</Button>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    </Box>
-    <div className="about content" style={{background: 'white'}}></div>
-    <div className="leadership content" style={{background: 'black'}}></div>
-    <div className="key-services content" style={{background: 'yellow'}}></div>
-    <div className="presence content" style={{background: 'balck'}}></div>
-    <div className="infra content" style={{background: 'grey'}}></div>
+    <Navbar />
+    <div className="main content"></div>
+    <div className="brands content" style={{background: 'black'}}></div>
+    <div className="services content" style={{background: 'yellow'}}></div>
+    <div className="counter content" style={{background: 'balck'}}></div>
+    <div className="parallax content" style={{background: 'grey'}}></div>
+    <div className="why content" style={{background: 'white'}}></div>
+    <div className="services content" style={{background: 'grey'}}></div>
+    <div className="quote content" style={{background: 'white'}}></div>
+    <div className="footer content" style={{background: 'grey'}}></div>
 
     </>
     
