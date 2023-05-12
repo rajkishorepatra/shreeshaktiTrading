@@ -22,7 +22,7 @@ function Copyright() {
     >
       {"Copyright © "}
       <Link color="inherit" href="#">
-        LeafLets.
+        LeafLets
       </Link>{" "}
       {new Date().getFullYear()}
       {".All Rights Reserved."}

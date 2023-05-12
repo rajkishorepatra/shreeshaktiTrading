@@ -1,46 +1,191 @@
+// mui imports
+import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+
+import { css } from "@emotion/react";
 
 // swiper imports
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper";
+import { Autoplay, Navigation, EffectFade } from "swiper";
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/autoplay";
+import "swiper/css/effect-fade";
 
 // images
 import carouselImg1 from "../assets/headerCarousel1.jpg";
 import carouselImg2 from "../assets/headerCarousel2.jpg";
 import carouselImg3 from "../assets/headerCarousel3.jpg";
-let carouselImages = [carouselImg1, carouselImg2, carouselImg3, carouselImg2];
+
+import { useEffect, useRef } from "react";
+import { Stack } from "@mui/material";
 
 export default function PageHeader() {
+  let swiperRef = useRef(null);
+  useEffect(() => {
+    if (swiperRef.current) {
+      let swiper = swiperRef.current.swiper;
+      swiper.on("slideChange", () => {
+        console.log("slide changed");
+      });
+    }
+  }, []);
   return (
     <>
-      <Box sx={{
-        maxHeight: "90vh",
-        minHeight: "80vh",
-        overflow: "hidden",
-      }}>
+      <Box
+        sx={{
+          maxHeight: "90vh",
+          overflow: "hidden",
+        }}
+      >
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
           slidesPerGroup={1}
+          effect="fade"
           autoplay={{
-            delay: 4000,
+            delay: 5000,
             disableOnInteraction: false,
           }}
           loop={true}
-          navigation
-          modules={[Autoplay,Navigation]}
+          navigation={true}
+          modules={[Autoplay, Navigation, EffectFade]}
+          style={{ maxHeight: "90vh" }}
+          ref={swiperRef}
         >
-          {carouselImages.map((image, index) => (
-            <SwiperSlide key={index}>
-              <img src={image} alt={index} style={{
-                width: "100%",
-                objectFit: "cover",
-                objectPosition: "bottom",
-                
-              }}/>
-            </SwiperSlide>
-          ))}
+          <SwiperSlide>
+            <Box
+              sx={{
+                position: "relative",
+              }}
+            >
+              <img
+                src={carouselImg1}
+                alt={"image one"}
+                style={{
+                  width: "100%",
+                  objectFit: "cover",
+                }}
+              />
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "0",
+                  width: "100%",
+                  height: "100%",
+                  background: "rgba(0,0,0,0.6)",
+                }}
+              >
+                <Container maxWidth="lg" sx={css`transform: translateY(60%)`}>
+                  <Stack spacing={1}>
+                    <Typography
+                      variant="h4"
+                      sx={css`
+                        color: white;
+                        text-align: center;
+                        font-size: 2rem;
+                        @media (max-width: 768px) {
+                          font-size: 1.5rem;
+                        }
+                      `}
+                    >
+                      Hello World
+                    </Typography>
+                    <Typography
+                      variant="h3"
+                      sx={css`
+                        text-transform: uppercase;
+                        color: #f92d28;
+                        text-align: center;
+                      `}
+                    >
+                      {"To be always on demand"}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={css`
+                        color: white;
+                        text-align: center;
+                      `}
+                    >
+                      {
+                        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
+                      }
+                    </Typography>
+                    <Box sx={css`display: flex;justify-content: center;`}><Button variant="outlined">Contact Us</Button></Box>
+                  </Stack>
+                </Container>
+              </Box>
+            </Box>
+          </SwiperSlide>
+
+          {/* <SwiperSlide>
+            <Box
+              sx={{
+                position: "relative",
+              }}
+            >
+              <img
+                src={carouselImg2}
+                alt={"image two"}
+                style={{
+                  width: "100%",
+                  objectFit: "cover",
+                }}
+              />
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "0",
+                  width: "100%",
+                  height: "100%",
+                  background: "rgba(0,0,0,0.6)",
+                }}
+              >
+                <Typography
+                  variant="h3"
+                  sx={{ color: "white", textAlign: "center" }}
+                >
+                  Hello World
+                </Typography>
+              </Box>
+            </Box>
+          </SwiperSlide> */}
+
+          {/* <SwiperSlide>
+            <Box
+              sx={{
+                position: "relative",
+              }}
+            >
+              <img
+                src={carouselImg3}
+                alt={"image three"}
+                style={{
+                  width: "100%",
+                  objectFit: "cover",
+                }}
+              />
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "0",
+                  width: "100%",
+                  height: "100%",
+                  background: "rgba(0,0,0,0.6)",
+                }}
+              >
+                <Typography
+                  variant="h3"
+                  sx={{ color: "white", textAlign: "center" }}
+                >
+                  Hello World
+                </Typography>
+              </Box>
+            </Box>
+          </SwiperSlide> */}
         </Swiper>
       </Box>
     </>
