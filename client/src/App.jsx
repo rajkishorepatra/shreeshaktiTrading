@@ -9,7 +9,7 @@ import "./App.css";
 // import components
 import PageFooter from "./components/footer";
 import Clients from "./components/clients";
-
+import PageHeader from "./components/header";
 
 
 export default function App() {
@@ -51,6 +51,7 @@ export default function App() {
       <div className="presence content" style={{ background: "balck" }}></div>
       <div className="infra content" style={{ background: "grey" }}></div>
 
+      <PageHeader />
       <Clients />
       <PageFooter />
     </>
