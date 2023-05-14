@@ -1,34 +1,18 @@
-import * as React from "react";
 import "./App.css";
 import Navbar from "./components/navbar";
 import Quote from "./components/quote";
 import Why from "./components/why";
 import Services from "./components/services";
 import { Box } from "@mui/material";
-// import Paper from '@mui/material/Paper';
-// import { styled } from '@mui/material/styles';
 
-// const Item = styled(Paper)(({ theme }) => ({
-//   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-//   ...theme.typography.body2,
-//   padding: theme.spacing(1),
-//   textAlign: 'center',
-//   color: theme.palette.text.secondary,
-// }));
 
-// const boxStyle = {
-//   padding: "10vh 0 0 5vw",
-// };
+// import components
+import PageFooter from "./components/footer";
+import Clients from "./components/clients";
+import PageHeader from "./components/header";
+import NumbersSection from "./components/numbers";
 
-// const stackView = {
-//   display: 'flex',
-//   flexDirection: 'row',
-//   alignItems: 'center',
-//   justifyContent: 'space-evenly',
-//   width: '100vw',
-// };
-
-export default function ButtonAppBar() {
+export default function App() {
   return (
     <>
       <Navbar />
@@ -47,6 +31,10 @@ export default function ButtonAppBar() {
 
       <Why />
       <Quote />
+      <PageHeader />
+      <NumbersSection />
+      <Clients />
+      <PageFooter />
     </>
   );
 }
