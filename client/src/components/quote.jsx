@@ -1,8 +1,6 @@
 import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
-import image from "../assets/quote-parallax.jpg";
 
 
 const box1Style = {
@@ -22,12 +20,12 @@ backgroundImage: 'linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%)',
   flexDirection: 'row',
 };
 
-const imgBox = {
-  width: "50vw",
-  borderTop: 'solid 3px #1a2f43',
-  height: "100%"
+// const imgBox = {
+//   width: "50vw",
+//   borderTop: 'solid 3px #1a2f43',
+//   height: "100%"
 
-};
+// };
 
 const box2Style = {
   width: "50vw",
