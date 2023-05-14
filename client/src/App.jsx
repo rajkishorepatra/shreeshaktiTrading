@@ -10,7 +10,7 @@ import "./App.css";
 import PageFooter from "./components/footer";
 import Clients from "./components/clients";
 import PageHeader from "./components/header";
-
+import NumbersSection from "./components/numbers";
 
 export default function App() {
   return (
@@ -52,6 +52,7 @@ export default function App() {
       <div className="infra content" style={{ background: "grey" }}></div> */}
 
       <PageHeader />
+      <NumbersSection />
       <Clients />
       <PageFooter />
     </>
