@@ -78,7 +78,15 @@ export default function PageHeader() {
                   background: "rgba(0,0,0,0.6)",
                 }}
               >
-                <Container maxWidth="lg" sx={css`transform: translateY(60%)`}>
+                <Container
+                  maxWidth="lg"
+                  sx={css`
+                    transform: translateY(20%);
+                    @media (min-width: 576px) {
+                      transform: translateY(100%);
+                    }
+                  `}
+                >
                   <Stack spacing={1}>
                     <Typography
                       variant="h4"
@@ -87,7 +95,7 @@ export default function PageHeader() {
                         text-align: center;
                         font-size: 2rem;
                         @media (max-width: 768px) {
-                          font-size: 1.5rem;
+                          font-size: 1.2rem;
                         }
                       `}
                     >
@@ -99,6 +107,10 @@ export default function PageHeader() {
                         text-transform: uppercase;
                         color: #f92d28;
                         text-align: center;
+
+                        @media (max-width: 768px) {
+                          font-size: 1.5rem;
+                        }
                       `}
                     >
                       {"To be always on demand"}
@@ -108,20 +120,30 @@ export default function PageHeader() {
                       sx={css`
                         color: white;
                         text-align: center;
+                        @media (max-width: 768px) {
+                          font-size: 0.8rem;
+                        }
                       `}
                     >
                       {
                         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
                       }
                     </Typography>
-                    <Box sx={css`display: flex;justify-content: center;`}><Button variant="outlined">Contact Us</Button></Box>
+                    <Box
+                      sx={css`
+                        display: flex;
+                        justify-content: center;
+                      `}
+                    >
+                      <Button variant="contained">Contact Us</Button>
+                    </Box>
                   </Stack>
                 </Container>
               </Box>
             </Box>
           </SwiperSlide>
 
-          {/* <SwiperSlide>
+          <SwiperSlide>
             <Box
               sx={{
                 position: "relative",
@@ -135,6 +157,7 @@ export default function PageHeader() {
                   objectFit: "cover",
                 }}
               />
+
               <Box
                 sx={{
                   position: "absolute",
@@ -144,17 +167,72 @@ export default function PageHeader() {
                   background: "rgba(0,0,0,0.6)",
                 }}
               >
-                <Typography
-                  variant="h3"
-                  sx={{ color: "white", textAlign: "center" }}
+                <Container
+                  maxWidth="lg"
+                  sx={css`
+                    transform: translateY(20%);
+                    @media (min-width: 576px) {
+                      transform: translateY(100%);
+                    }
+                  `}
                 >
-                  Hello World
-                </Typography>
+                  <Stack spacing={1}>
+                    <Typography
+                      variant="h4"
+                      sx={css`
+                        color: white;
+                        text-align: center;
+                        font-size: 2rem;
+                        @media (max-width: 768px) {
+                          font-size: 1.2rem;
+                        }
+                      `}
+                    >
+                      Hello World
+                    </Typography>
+                    <Typography
+                      variant="h3"
+                      sx={css`
+                        text-transform: uppercase;
+                        color: #f92d28;
+                        text-align: center;
+
+                        @media (max-width: 768px) {
+                          font-size: 1.5rem;
+                        }
+                      `}
+                    >
+                      {"To be always on demand"}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={css`
+                        color: white;
+                        text-align: center;
+                        @media (max-width: 768px) {
+                          font-size: 0.8rem;
+                        }
+                      `}
+                    >
+                      {
+                        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
+                      }
+                    </Typography>
+                    <Box
+                      sx={css`
+                        display: flex;
+                        justify-content: center;
+                      `}
+                    >
+                      <Button variant="contained">Contact Us</Button>
+                    </Box>
+                  </Stack>
+                </Container>
               </Box>
             </Box>
-          </SwiperSlide> */}
+          </SwiperSlide>
 
-          {/* <SwiperSlide>
+          <SwiperSlide>
             <Box
               sx={{
                 position: "relative",
@@ -168,6 +246,7 @@ export default function PageHeader() {
                   objectFit: "cover",
                 }}
               />
+
               <Box
                 sx={{
                   position: "absolute",
@@ -177,15 +256,70 @@ export default function PageHeader() {
                   background: "rgba(0,0,0,0.6)",
                 }}
               >
-                <Typography
-                  variant="h3"
-                  sx={{ color: "white", textAlign: "center" }}
+                <Container
+                  maxWidth="lg"
+                  sx={css`
+                    transform: translateY(20%);
+                    @media (min-width: 576px) {
+                      transform: translateY(100%);
+                    }
+                  `}
                 >
-                  Hello World
-                </Typography>
+                  <Stack spacing={1}>
+                    <Typography
+                      variant="h4"
+                      sx={css`
+                        color: white;
+                        text-align: center;
+                        font-size: 2rem;
+                        @media (max-width: 768px) {
+                          font-size: 1.2rem;
+                        }
+                      `}
+                    >
+                      Hello World
+                    </Typography>
+                    <Typography
+                      variant="h3"
+                      sx={css`
+                        text-transform: uppercase;
+                        color: #f92d28;
+                        text-align: center;
+
+                        @media (max-width: 768px) {
+                          font-size: 1.5rem;
+                        }
+                      `}
+                    >
+                      {"To be always on demand"}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={css`
+                        color: white;
+                        text-align: center;
+                        @media (max-width: 768px) {
+                          font-size: 0.8rem;
+                        }
+                      `}
+                    >
+                      {
+                        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
+                      }
+                    </Typography>
+                    <Box
+                      sx={css`
+                        display: flex;
+                        justify-content: center;
+                      `}
+                    >
+                      <Button variant="contained">Contact Us</Button>
+                    </Box>
+                  </Stack>
+                </Container>
               </Box>
             </Box>
-          </SwiperSlide> */}
+          </SwiperSlide>
         </Swiper>
       </Box>
     </>
