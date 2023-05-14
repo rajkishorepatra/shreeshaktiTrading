@@ -46,7 +46,42 @@ export default function NumbersSection() {
                   padding: "1rem 0",
                 }}
               >
-                <PersonIcon
+                <FolderIcon
+                  sx={{
+                    color: "white",
+                    background: "red",
+                    width: "4rem",
+                    height: "4rem",
+                    aspectRatio: "1/1",
+                    borderRadius: ".25rem",
+                  }}
+                />
+              </Box>
+              <Stack spacing={2} direction={"row"}>
+                <Typography variant="h3" component="div">
+                  450
+                </Typography>
+                <Typography variant="h6" component="div">
+                  Clients
+                </Typography>
+              </Stack>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <Paper
+              sx={{
+                background: "white",
+                position: "relative",
+                padding: "1rem",
+              }}
+            >
+              <Box
+                sx={{
+                  transform: "translateY(-20%)",
+                  padding: "1rem 0",
+                }}
+              >
+                <PeopleIcon
                   sx={{
                     color: "white",
                     background: "red",
@@ -116,42 +151,7 @@ export default function NumbersSection() {
                   padding: "1rem 0",
                 }}
               >
-                <PersonIcon
-                  sx={{
-                    color: "white",
-                    background: "red",
-                    width: "4rem",
-                    height: "4rem",
-                    aspectRatio: "1/1",
-                    borderRadius: ".25rem",
-                  }}
-                />
-              </Box>
-              <Stack spacing={2} direction={"row"}>
-                <Typography variant="h3" component="div">
-                  450
-                </Typography>
-                <Typography variant="h6" component="div">
-                  Clients
-                </Typography>
-              </Stack>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <Paper
-              sx={{
-                background: "white",
-                position: "relative",
-                padding: "1rem",
-              }}
-            >
-              <Box
-                sx={{
-                  transform: "translateY(-20%)",
-                  padding: "1rem 0",
-                }}
-              >
-                <PersonIcon
+                <LocalShippingIcon
                   sx={{
                     color: "white",
                     background: "red",
