@@ -1,0 +1,14 @@
+.quote {
+    height: 100vh;
+}
+
+.quote {
+    width: 50vw;
+    max-height: 100vh;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
