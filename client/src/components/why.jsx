@@ -14,18 +14,33 @@ export default function WhySection() {
   const styles = {
     whySection: css`
       background-color: #f283f5;
+      min-height: 30vh;
     `,
     card: css`
       padding: 1rem;
       border: 1px solid #eaeaea;
       border-radius: 5px;
       margin-bottom: 1rem;
+      min-height: 15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      & h6 {
+        text-align: center;
+        margin-bottom: .25rem;
+        font-weight: 600;
+      }
+      & p {
+        text-align: center;
+      }
     `,
   };
   return (
     <Box sx={styles.whySection}>
       <Container maxWidth="lg" sx={{ padding: "3rem 1rem" }}>
-        <Typography variant="h4" noWrap gutterBottom sx={{ textAlign: "center" }}>
+        <Typography variant="h3" noWrap gutterBottom sx={{ textAlign: "center" }} color={'white'}>
           Why Choose Us?
         </Typography>
 
