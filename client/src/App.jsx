@@ -6,6 +6,7 @@ import NumbersSection from "./components/numbers";
 import Navbar from "./components/navbar";
 import Quote from "./components/quote";
 import WhySection from "./components/why";
+import ServiceSection from "./components/services-section";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Navbar />
       <PageHeader />
       <WhySection />
+      <ServiceSection />
       <Quote />
       <Clients />
       <NumbersSection />
