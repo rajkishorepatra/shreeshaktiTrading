@@ -45,7 +45,7 @@ export default function WhySection() {
         </Typography>
 
         <Grid container spacing={2} sx={styles.cardContainer}>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <Box sx={styles.card}>
               <Typography variant="h6" noWrap>
                 OUR VISION
@@ -57,7 +57,7 @@ export default function WhySection() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <Box sx={styles.card}>
               <Typography variant="h6" noWrap>
                 OUR VISION
@@ -69,7 +69,7 @@ export default function WhySection() {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <Box sx={styles.card}>
               <Typography variant="h6" noWrap>
                 OUR VISION

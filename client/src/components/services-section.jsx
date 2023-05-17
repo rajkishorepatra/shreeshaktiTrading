@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
 
 // images for cards
 import CardImg from "../assets/quote-parallax.jpg";
@@ -25,8 +26,7 @@ const styles = {
     flex-wrap: wrap;
   `,
   card: css`
-    margin: 0.5rem;
-    max-width: 20rem;
+    max-width: 24rem;
   `,
 };
 
@@ -43,11 +43,23 @@ export default function ServiceSection() {
           >
             Our Services
           </Typography>
-          <Box sx={styles.cardContainer}>
+          <Grid container spacing={2} sx={styles.cardContainer}>
             {services.map((service, index) => (
-              <ServiceCard key={index} service={service} />
+              <Grid
+                item
+                xs={12}
+                md={4}
+                key={index}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <ServiceCard service={service} />
+              </Grid>
             ))}
-          </Box>
+          </Grid>
         </Container>
       </Box>
     </>
