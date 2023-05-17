@@ -2,94 +2,102 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
+import { Typography } from "@mui/material";
+
+import { css } from "@emotion/react";
 
 export default function Quote() {
+  const styles = {
+    quoteContainer: css`
+      background: #24432f;
+      padding: 3rem 0;
+    `,
+  };
   return (
     <>
-      <Box>
+      <Box sx={styles.quoteContainer}>
         <Container maxWidth="lg">
-          <h1 style={{ paddingBottom: "2vh", fontSize: "3rem" }}>
-            Get a free quote
-          </h1>
-          <h4 style={{ paddingBottom: "2vh", fontSize: "1.5rem" }}>
+          <Box sx={{textAlign:'center'}}>
+          <Typography variant="h3" >Get a free quote</Typography>
+          <Typography variant="body1">
             We always use best and fastest fleets
-          </h4>
+          </Typography>
+          </Box>
 
-          <TextField
-            fullWidth
-            label="Full Name"
-            id="fullWidth"
-            size="small"
-            variant="standard"
-            style={{ paddingTop: "2vh" }}
-          />
           <Box>
+            <TextField
+              fullWidth
+              id="fullWidth"
+              margin="dense"
+              size="small"
+              variant="filled"
+              placeholder="Full Name"
+            />
             <Box>
               <TextField
+                margin="dense"
                 fullWidth
-                label="Email"
                 id="fullWidth"
                 size="small"
-                variant="standard"
-                sx={{ maxWidth: "47%" }}
+                variant="filled"
+                placeholder="Email"
               />
               <TextField
+                margin="dense"
                 fullWidth
-                label="Mobile"
                 id="fullWidth"
                 size="small"
-                variant="standard"
-                sx={{ maxWidth: "47%" }}
+                variant="filled"
+                placeholder="Mobile"
+              />
+            </Box>
+
+            <Box>
+              <TextField
+                margin="dense"
+                fullWidth
+                id="fullWidth"
+                size="small"
+                variant="filled"
+                placeholder="Destination To"
+              />
+              <TextField
+                margin="dense"
+                fullWidth
+                id="fullWidth"
+                size="small"
+                variant="filled"
+                placeholder="Destination From"
               />
             </Box>
 
             <Box>
               <TextField
                 fullWidth
-                label="Destination To"
+                margin="dense"
                 id="fullWidth"
                 size="small"
-                variant="standard"
-                sx={{ maxWidth: "47%" }}
+                variant="filled"
+                placeholder="Shipping Type"
               />
               <TextField
                 fullWidth
-                label="Destination From"
                 id="fullWidth"
+                margin="dense"
                 size="small"
-                variant="standard"
-                sx={{ maxWidth: "47%" }}
+                variant="filled"
+                placeholder="Date"
               />
             </Box>
 
-            <Box>
-              <TextField
-                fullWidth
-                label="Shipping Type"
-                id="fullWidth"
-                size="small"
-                variant="standard"
-                sx={{ maxWidth: "47%" }}
-              />
-              <TextField
-                fullWidth
-                label="Date"
-                id="fullWidth"
-                size="small"
-                variant="standard"
-                sx={{ maxWidth: "47%" }}
-              />
-            </Box>
-
-            <Box>
-              <TextField
-                id="standard-multiline-static"
-                label="Messege"
-                multiline
-                rows={6}
-                fullWidth
-              />
-            </Box>
+            <TextField
+              id="standard-multiline-static"
+              multiline
+              rows={4}
+              margin="dense"
+              fullWidth
+              placeholder="Messege"
+            />
 
             <Box>
               <Button variant="contained" size="large">
