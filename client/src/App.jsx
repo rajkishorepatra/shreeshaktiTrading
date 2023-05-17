@@ -5,17 +5,15 @@ import PageHeader from "./components/header";
 import NumbersSection from "./components/numbers";
 import Navbar from "./components/navbar";
 import Quote from "./components/quote";
-import Why from "./components/why";
+import WhySection from "./components/why";
 
 export default function App() {
   return (
     <>
       <Navbar />
       <PageHeader />
-      
-      <Why />
+      <WhySection />
       <Quote />
-
       <Clients />
       <NumbersSection />
       <PageFooter />
