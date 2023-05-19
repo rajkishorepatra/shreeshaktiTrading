@@ -28,7 +28,6 @@ export default function PageHeader() {
     if (swiperRef.current) {
       let swiper = swiperRef.current.swiper;
       swiper.on("slideChange", () => {
-        console.log("slide changed");
       });
     }
   }, []);
