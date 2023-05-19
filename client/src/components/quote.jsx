@@ -6,103 +6,150 @@ import { Typography } from "@mui/material";
 
 import { css } from "@emotion/react";
 
+// import background images
+import quoteBackground from "../assets/quote-parallax.jpg";
+
 export default function Quote() {
   const styles = {
+    heading: css`
+      @media (max-width: 768px) {
+        text-align: center;
+      }
+    `,
     quoteContainer: css`
-      background: #24432f;
-      padding: 3rem 0;
+      position: relative;
+      @media (min-width: 768px) {
+        background: url(${quoteBackground}) no-repeat center center;
+        background-size: cover;
+      }
+    `,
+    formContainer: css`
+      padding: 3rem 0.5rem;
+      @media (min-width: 768px) {
+        max-width: 50%;
+      }
+    `,
+    quoteBack: css`
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      max-width: 50%;
+      background: #43543f;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    `,
+    halfWidth: css`
+      @media (min-width: 576px) {
+        display: flex;
+        gap: 1rem;
+      }
     `,
   };
   return (
     <>
       <Box sx={styles.quoteContainer}>
+        <Box style={styles.quoteBack}></Box>
         <Container maxWidth="lg">
-          <Box sx={{textAlign:'center'}}>
-          <Typography variant="h3" >Get a free quote</Typography>
-          <Typography variant="body1">
-            We always use best and fastest fleets
-          </Typography>
-          </Box>
-
-          <Box>
-            <TextField
-              fullWidth
-              id="fullWidth"
-              margin="dense"
-              size="small"
-              variant="filled"
-              placeholder="Full Name"
-            />
-            <Box>
-              <TextField
-                margin="dense"
-                fullWidth
-                id="fullWidth"
-                size="small"
-                variant="filled"
-                placeholder="Email"
-              />
-              <TextField
-                margin="dense"
-                fullWidth
-                id="fullWidth"
-                size="small"
-                variant="filled"
-                placeholder="Mobile"
-              />
+          <Box sx={styles.formContainer}>
+            <Box sx={styles.heading}>
+              <Typography variant="h3">Get a free quote</Typography>
+              <Typography variant="body1">
+                We always use best and fastest fleets
+              </Typography>
             </Box>
-
             <Box>
-              <TextField
-                margin="dense"
-                fullWidth
-                id="fullWidth"
-                size="small"
-                variant="filled"
-                placeholder="Destination To"
-              />
-              <TextField
-                margin="dense"
-                fullWidth
-                id="fullWidth"
-                size="small"
-                variant="filled"
-                placeholder="Destination From"
-              />
-            </Box>
+              <form>
+                <TextField
+                  fullWidth
+                  hiddenLabel
+                  id="name"
+                  margin="dense"
+                  size="small"
+                  variant="filled"
+                  placeholder="Full Name"
+                />
+                <Box sx={styles.halfWidth}>
+                  <TextField
+                    hiddenLabel
+                    margin="dense"
+                    fullWidth
+                    id="email"
+                    size="small"
+                    variant="filled"
+                    placeholder="Email"
+                  />
+                  <TextField
+                    hiddenLabel
+                    margin="dense"
+                    fullWidth
+                    id="mobile"
+                    size="small"
+                    variant="filled"
+                    placeholder="Mobile"
+                  />
+                </Box>
 
-            <Box>
-              <TextField
-                fullWidth
-                margin="dense"
-                id="fullWidth"
-                size="small"
-                variant="filled"
-                placeholder="Shipping Type"
-              />
-              <TextField
-                fullWidth
-                id="fullWidth"
-                margin="dense"
-                size="small"
-                variant="filled"
-                placeholder="Date"
-              />
-            </Box>
+                <Box sx={styles.halfWidth}>
+                  <TextField
+                    hiddenLabel
+                    margin="dense"
+                    fullWidth
+                    id="destinationTo"
+                    size="small"
+                    variant="filled"
+                    placeholder="Destination To"
+                  />
+                  <TextField
+                    hiddenLabel
+                    margin="dense"
+                    fullWidth
+                    id="destinationFrom"
+                    size="small"
+                    variant="filled"
+                    placeholder="Destination From"
+                  />
+                </Box>
 
-            <TextField
-              id="standard-multiline-static"
-              multiline
-              rows={4}
-              margin="dense"
-              fullWidth
-              placeholder="Messege"
-            />
+                <Box sx={styles.halfWidth}>
+                  <TextField
+                    hiddenLabel
+                    fullWidth
+                    margin="dense"
+                    id="shipmentType"
+                    size="small"
+                    variant="filled"
+                    placeholder="Shipping Type"
+                  />
+                  <TextField
+                    hiddenLabel
+                    fullWidth
+                    id="date"
+                    margin="dense"
+                    size="small"
+                    variant="filled"
+                    placeholder="Date"
+                  />
+                </Box>
 
-            <Box>
-              <Button variant="contained" size="large">
-                Submit
-              </Button>
+                <TextField
+                  hiddenLabel
+                  id="Messege"
+                  multiline
+                  rows={4}
+                  margin="dense"
+                  fullWidth
+                  placeholder="Messege"
+                />
+
+                <Box>
+                  <Button variant="contained" size="large">
+                    Submit
+                  </Button>
+                </Box>
+              </form>
             </Box>
           </Box>
         </Container>
