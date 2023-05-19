@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import { Link } from "@mui/material";
+import Link from "@mui/material/Link"
 
 export default function Navbar() {
   const styles = {

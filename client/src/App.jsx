@@ -1,12 +1,9 @@
-// import components
-import PageFooter from "./components/footer";
-import Clients from "./components/clients";
-import PageHeader from "./components/header";
-import NumbersSection from "./components/numbers";
-import Navbar from "./components/navbar";
-import Quote from "./components/quote";
-import WhySection from "./components/why";
-import ServiceSection from "./components/services-section";
+// import pages
+import RootLayout from "./pages/root-layout";
+import HomePage from "./pages/home-page";
+
+// router dom
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
@@ -27,14 +24,24 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Navbar />
-        <PageHeader />
-        <WhySection />
-        <ServiceSection />
-        <Quote />
-        <Clients />
-        <NumbersSection />
-        <PageFooter />
+        <BrowserRouter>
+          <Routes>
+            <>
+              <Route path="/" element={<RootLayout />}>
+                <Route index element={<HomePage />} />
+              </Route>
+              <Route
+                path="*"
+                element={
+                  <div>
+                    <h2>Sorry</h2>
+                    <p>Page not found</p>
+                  </div>
+                }
+              />
+            </>
+          </Routes>
+        </BrowserRouter>
       </ThemeProvider>
     </>
   );
