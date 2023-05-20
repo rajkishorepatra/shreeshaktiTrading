@@ -27,10 +27,6 @@ export default function NumbersSection() {
           padding: 2rem 0.5rem;
         `}
       >
-        <Typography variant="h3" component="div" color={"white"}>
-          Our Numbers
-        </Typography>
-
         <Grid container spacing={2}>
           <Grid item xs={12} md={3}>
             <Paper

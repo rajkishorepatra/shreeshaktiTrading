@@ -17,7 +17,9 @@ export default function Quote() {
       }
     `,
     quoteContainer: css`
+      min-height: 90vh;
       position: relative;
+      isolation: isolate;
       @media (min-width: 768px) {
         background: url(${quoteBackground}) no-repeat center center;
         background-size: cover;
@@ -30,12 +32,15 @@ export default function Quote() {
       }
     `,
     quoteBack: css`
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: 55%;
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      max-width: 50%;
+      z-index: -1;
+      opacity: 0.9;
       background: #43543f;
       @media (max-width: 768px) {
         display: none;
@@ -51,7 +56,7 @@ export default function Quote() {
   return (
     <>
       <Box sx={styles.quoteContainer}>
-        <Box style={styles.quoteBack}></Box>
+        <Box sx={styles.quoteBack}></Box>
         <Container maxWidth="lg">
           <Box sx={styles.formContainer}>
             <Box sx={styles.heading}>
