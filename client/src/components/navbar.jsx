@@ -4,8 +4,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 // import {Routes, Route, useNavigate} from 'react-router-dom';
 import "../App.css";
+// import { Link } from 'react-router-dom';
 
 export default function Navbar() {
+
     return (
 
       <>
@@ -18,7 +20,11 @@ export default function Navbar() {
               Home
             </Button>
             <Button color="inherit">Tracking</Button>
-            <Button color="inherit">Services</Button>
+              {/* <Link to="/Services"> */}
+            <Button color="inherit">
+              Services
+              </Button>
+              {/* </Link> */}
             <Button color="inherit">Admin</Button>
             </div>
           </Toolbar>
