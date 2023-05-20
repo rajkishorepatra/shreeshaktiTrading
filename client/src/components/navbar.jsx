@@ -36,13 +36,17 @@ export default function Navbar() {
         text-decoration: underline;
       }
     `,
+
+    main: css`
+    background: #5c9bd6;
+    position: 'static';
+    min-height: 3rem;
+    `
   };
 
   return (
-    <Box sx={{ background: "#1a2f43" }}>
-      <AppBar>
-        <Toolbar>
-          <Container maxWidth="lg">
+    <Box sx={styles.main}>
+          <Container maxWidth="xl">
             <Box
               sx={css`
                 display: flex;
@@ -77,8 +81,6 @@ export default function Navbar() {
               </Box>
             </Box>
           </Container>
-        </Toolbar>
-      </AppBar>
     </Box>
   );
 }

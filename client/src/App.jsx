@@ -1,7 +1,7 @@
 // import pages
 import RootLayout from "./pages/root-layout";
 import HomePage from "./pages/home-page";
-
+import MediaCard from "./pages/servicePage";
 // router dom
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -29,6 +29,7 @@ export default function App() {
             <>
               <Route path="/" element={<RootLayout />}>
                 <Route index element={<HomePage />} />
+                <Route path="services" element={<MediaCard />} />
               </Route>
               <Route
                 path="*"
