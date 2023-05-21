@@ -6,20 +6,11 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container"
 import Grid from "@mui/material/Grid"
-import typography from "@mui/material/Typography";
 
 
 import S1 from "../assets/services-1.jpg";
 import S2 from "../assets/services-2.jpg";
-import S3 from "../assets/services-3.jpg";
 import Startimage from "../assets/quote-parallax.jpg";
-
-
-const cardStyle = {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-};
 
 const wordStyle = {
     // width: "100vw",
@@ -32,30 +23,9 @@ const wordStyle = {
 };
 
 const imageStyle = {
-    // width: "100vw",
     minHeight: "15rem",
     padding: "3rem 0",
-    // flexWrap: 'wrap',
-    // zIndex: -1,
-    // display: "flex",
-    // justifyContent: "space-between",
-    // alignItem: "center",
-    // padding: "5vh 5vw 5vh 5vw",
-    color: "yellow",
-    // fontSize: "1.3rem",
-    // alignContent: 'center'
 };
-
-const imageBox = {
-    // width: "100vw",
-    // display: "flex",
-    // flexDirection: "column",
-};
-
-const card = {
-    // margin: "3vh 2vw 5vh 5vw",
-    // maxWidth: 345,
-}
 
 export default function MediaCard() {
     return (
@@ -78,10 +48,10 @@ export default function MediaCard() {
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
                     </Box>
 
-                    <Grid container sx={imageBox} spacing={2}>
+                    <Grid container spacing={2}>
 
                         <Grid item xs={12} md={6} lg={4}>
-                            <Card sx={card}>
+                            <Card>
                                 <CardMedia sx={{ height: 200 }} image={S1} />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
@@ -96,7 +66,7 @@ export default function MediaCard() {
                         </Grid>
 
                         <Grid item xs={12} md={6} lg={4}>
-                            <Card sx={card}>
+                            <Card>
                                 <CardMedia sx={{ height: 200 }} image={S2} />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
@@ -111,7 +81,7 @@ export default function MediaCard() {
                         </Grid>
 
                         <Grid item xs={12} md={6} lg={4}>
-                            <Card sx={card}>
+                            <Card>
                                 <CardMedia sx={{ height: 200 }} image={S1} />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
@@ -126,7 +96,7 @@ export default function MediaCard() {
                         </Grid>
 
                         <Grid item xs={12} md={6} lg={4}>
-                            <Card sx={card}>
+                            <Card>
                                 <CardMedia sx={{ height: 200 }} image={S2} />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
@@ -141,7 +111,7 @@ export default function MediaCard() {
                         </Grid>
 
                         <Grid item xs={12} md={6} lg={4}>
-                            <Card sx={card}>
+                            <Card>
                                 <CardMedia sx={{ height: 200 }} image={S1} />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
@@ -156,7 +126,7 @@ export default function MediaCard() {
                         </Grid>
 
                         <Grid item xs={12} md={6} lg={4}>
-                            <Card sx={card}>
+                            <Card>
                                 <CardMedia sx={{ height: 200 }} image={S2} />
                                 <CardContent>
                                     <Typography gutterBottom variant="h5" component="div">
