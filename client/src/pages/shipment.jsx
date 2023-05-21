@@ -6,14 +6,12 @@ import Startimage from "../assets/quote-parallax.jpg";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
-
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
+import Stack from "@mui/material/Stack";
 
 const steps = [
   "Where from",
@@ -60,27 +58,31 @@ const wordStyle = {
 };
 
 const stepper = {
-  fontSize: "2rem",
   paddingBottom: "2rem",
+  width: "100%",
 };
 
 const boxHeading = {
-  paddingBottom: '2rem',
+  paddingBottom: "2rem",
 };
 
 const form = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  backgroundColor: "#dde0da",
-  padding: '1rem'
-}
+  boxShadow:
+    "rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset",
+  padding: "2rem 1rem",
+  width: "100%",
+};
 
 const formContent = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
-}
+  width: "100%",
+};
+
 export default function Shipment() {
   return (
     <>
@@ -97,7 +99,9 @@ export default function Shipment() {
           </CardMedia>
         </Box>
         <Container maxWidth="xl">
-          <Typography variant="h2" sx={wordStyle}>Create New Shipment</Typography>
+          <Typography variant="h2" sx={wordStyle}>
+            Create New Shipment
+          </Typography>
 
           <Grid xs={12} sx={stepper}>
             <Stepper activeStep={0} alternativeLabel>
@@ -117,8 +121,9 @@ export default function Shipment() {
               <Typography variant="p">*Indicates required field</Typography>
             </Box>
 
-            <Grid sx={formContent}>
+            <Grid container sx={formContent} spacing={1}>
               <Grid
+                item
                 component="form"
                 sx={{
                   "& .MuiTextField-root": { m: 1, width: "25ch" },
@@ -126,7 +131,7 @@ export default function Shipment() {
                 noValidate
                 autoComplete="off"
                 xs={12}
-                item
+                lg={12}
               >
                 <TextField
                   id="outlined-select-currency-native"
@@ -165,6 +170,9 @@ export default function Shipment() {
                 }}
                 noValidate
                 autoComplete="off"
+                item
+                xs={12}
+                lg={12}
               >
                 <TextField
                   id="outlined-basic"
@@ -182,6 +190,7 @@ export default function Shipment() {
                   id="outlined-basic"
                   placeholder="Department, c/o, etc."
                   variant="outlined"
+                  margin="dense"
                 />
               </Grid>
               <Grid
@@ -191,6 +200,9 @@ export default function Shipment() {
                 }}
                 noValidate
                 autoComplete="off"
+                item
+                xs={12}
+                lg={12}
               >
                 <TextField
                   id="outlined-basic"
@@ -211,7 +223,7 @@ export default function Shipment() {
                 />
               </Grid>
 
-              <Grid>
+              <Grid item xs={12} lg={12}>
                 <FormControlLabel
                   value="top"
                   control={<Checkbox />}
@@ -227,6 +239,9 @@ export default function Shipment() {
                 }}
                 noValidate
                 autoComplete="off"
+                item
+                xs={12}
+                lg={12}
               >
                 <TextField
                   id="outlined-basic"
@@ -246,7 +261,7 @@ export default function Shipment() {
                   variant="outlined"
                 />
               </Grid>
-              <Grid>
+              <Grid item xs={12} lg={12}>
                 <FormControlLabel
                   value="top"
                   control={<Checkbox />}
@@ -254,7 +269,7 @@ export default function Shipment() {
                   labelPlacement="start"
                 />
               </Grid>
-              <Grid>
+              <Grid item xs={12} lg={12}>
                 <FormControlLabel
                   value="top"
                   control={<Checkbox />}
@@ -275,13 +290,15 @@ export default function Shipment() {
                 />
               </Grid>
 
-              <Grid>
-                <Button variant="contained" size="medium" color="success">
-                  Continue
-                </Button>
-                <Button variant="contained" size="medium" color="error">
-                  Cancel Shipment
-                </Button>
+              <Grid item xs={12} lg={12} spacing={2}>
+                <Stack direction="row" spacing={2}>
+                  <Button variant="contained" size="medium" color="success">
+                    Continue
+                  </Button>
+                  <Button variant="contained" size="medium" color="error">
+                    Cancel Shipment
+                  </Button>
+                </Stack>
               </Grid>
             </Grid>
           </Box>
