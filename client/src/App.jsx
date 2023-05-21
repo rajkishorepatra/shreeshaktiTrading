@@ -38,6 +38,7 @@ export default function App() {
                   <Route index element={<HomePage />} />
                   <Route path="services" element={<MediaCard />} />
                   <Route path="tracking" element={<TrackingPage />} />
+                  <Route path="shipment" element={<Shipment />} />
                 </Route>
                 <Route
                   path="*"
