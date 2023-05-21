@@ -4,6 +4,12 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 import { css } from "@emotion/react";
 
@@ -39,6 +45,9 @@ export default function TrackingPage() {
         padding: 2rem 0;
       }
     `,
+    datepicker: css`
+      width: 100%;
+    `,
   };
   return (
     <Box sx={{ background: "#62f3f5", paddingBottom: "3rem" }}>
@@ -60,7 +69,7 @@ export default function TrackingPage() {
               </Typography>
               <Typography
                 variant="h5"
-                sx={{ typography: { xs: "body2", md: "body1" } }}
+                sx={{ typography: { xs: "body2", md: "body1" },textAlign:{xs:'left',md:"right"} }}
               >
                 We freight to all over the world <br />
                 The best logistic company, Fastly and Safely
@@ -82,78 +91,68 @@ export default function TrackingPage() {
           </Typography>
         </Box>
 
-        <Box sx={{ maxWidth: "60%", margin: "auto" }}>
+        <Container maxWidth="md">
           <form>
             <Grid container spacing={2}>
+              <Grid item xs={12} md={4}>
+                <TextField fullWidth label="Tracking Id" variant="outlined" />
+              </Grid>
+              <Grid item xs={12} md={4} sm={6}>
+                <DatePicker label="Start date" sx={styles.datepicker} />
+              </Grid>
+              <Grid item xs={12} md={4} sm={6}>
+                <DatePicker label="End date" sx={styles.datepicker} />
+              </Grid>
+
+              <Grid item xs={12} md={6}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">
+                    Origin Country
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    // value={age}
+                    label="Orign Country: "
+                    // onChange={handleChange}
+                  >
+                    <MenuItem value={10}>India</MenuItem>
+                    <MenuItem value={20}>Unitd States</MenuItem>
+                    <MenuItem value={30}>Canada</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
-                  hiddenLabel
-                  placeholder="Name"
-                  variant="filled"
-                  size="small"
-                  margin="dense"
-                />
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <TextField
-                  fullWidth
-                  hiddenLabel
-                  placeholder="Name"
-                  variant="filled"
-                  size="small"
-                  margin="dense"
-                />
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <TextField
-                  fullWidth
-                  hiddenLabel
-                  placeholder="Name"
-                  variant="filled"
-                  size="small"
-                  margin="dense"
+                  label="Origin Zip/Postal Zip"
+                  variant="outlined"
                 />
               </Grid>
 
               <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  hiddenLabel
-                  placeholder="Name"
-                  variant="filled"
-                  size="small"
-                  margin="dense"
-                />
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">
+                    Destination Country{" "}
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    // value={age}
+                    label="Destination Country: "
+                    // onChange={handleChange}
+                  >
+                    <MenuItem value={10}>India</MenuItem>
+                    <MenuItem value={20}>Unitd States</MenuItem>
+                    <MenuItem value={30}>Canada</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
-                  hiddenLabel
-                  placeholder="Name"
-                  variant="filled"
-                  size="small"
-                  margin="dense"
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  hiddenLabel
-                  placeholder="Name"
-                  variant="filled"
-                  size="small"
-                  margin="dense"
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <TextField
-                  fullWidth
-                  hiddenLabel
-                  placeholder="Name"
-                  variant="filled"
-                  size="small"
-                  margin="dense"
+                  label="Destination Zip/Postal Zip"
+                  variant="outlined"
                 />
               </Grid>
 
@@ -164,7 +163,7 @@ export default function TrackingPage() {
               </Grid>
             </Grid>
           </form>
-        </Box>
+        </Container>
       </Container>
     </Box>
   );
