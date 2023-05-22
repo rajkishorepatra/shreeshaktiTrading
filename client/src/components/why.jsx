@@ -6,11 +6,11 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
+// animation
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export default function WhySection() {
-
-
-
   const styles = {
     whySection: css`
       background-color: #f283f5;
@@ -29,7 +29,7 @@ export default function WhySection() {
 
       & h6 {
         text-align: center;
-        margin-bottom: .25rem;
+        margin-bottom: 0.25rem;
         font-weight: 600;
       }
       & p {
@@ -40,48 +40,69 @@ export default function WhySection() {
   return (
     <Box sx={styles.whySection}>
       <Container maxWidth="lg" sx={{ padding: "3rem 1rem" }}>
-        <Typography variant="h3" noWrap gutterBottom sx={{ textAlign: "center" }} color={'white'}>
+        <Typography
+          variant="h3"
+          noWrap
+          gutterBottom
+          sx={{ textAlign: "center" }}
+          color={"white"}
+        >
           Why Choose Us?
         </Typography>
 
-        <Grid container spacing={2} sx={styles.cardContainer}>
-          <Grid item xs={12} md={4}>
-            <Box sx={styles.card}>
-              <Typography variant="h6" noWrap>
-                OUR VISION
-              </Typography>
-              <Typography variant="body1">
-                With unwavering dedication and a relentless pursuit of
-                innovation, we aim to set new standards and achieve unparalleled
-                success in the global food and beverages trade industry.
-              </Typography>
-            </Box>
+        <motion.div
+          initial={{ x: "-100%" }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1, type: "spring", bounce: 0.5 }}
+        >
+          <Grid container spacing={2} sx={styles.cardContainer}>
+            <Grid item xs={12} md={4}>
+              <motion.div
+              //  initial={{ x: '-100vw', opacity: 0 }}
+              //  animate={{ x: 0, opacity: 1 }}
+              //  transition={{ duration: 1,type:"spring", bounce: 0.5 }}
+              >
+                <Box sx={styles.card}>
+                  <Typography variant="h6" noWrap>
+                    OUR VISION
+                  </Typography>
+                  <Typography variant="body1">
+                    With unwavering dedication and a relentless pursuit of
+                    innovation, we aim to set new standards and achieve
+                    unparalleled success in the global food and beverages trade
+                    industry.
+                  </Typography>
+                </Box>
+              </motion.div>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Box sx={styles.card}>
+                <Typography variant="h6" noWrap>
+                  OUR VISION
+                </Typography>
+                <Typography variant="body1">
+                  With unwavering dedication and a relentless pursuit of
+                  innovation, we aim to set new standards and achieve
+                  unparalleled success in the global food and beverages trade
+                  industry.
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Box sx={styles.card}>
+                <Typography variant="h6" noWrap>
+                  OUR VISION
+                </Typography>
+                <Typography variant="body1">
+                  With unwavering dedication and a relentless pursuit of
+                  innovation, we aim to set new standards and achieve
+                  unparalleled success in the global food and beverages trade
+                  industry.
+                </Typography>
+              </Box>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={4}>
-            <Box sx={styles.card}>
-              <Typography variant="h6" noWrap>
-                OUR VISION
-              </Typography>
-              <Typography variant="body1">
-                With unwavering dedication and a relentless pursuit of
-                innovation, we aim to set new standards and achieve unparalleled
-                success in the global food and beverages trade industry.
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box sx={styles.card}>
-              <Typography variant="h6" noWrap>
-                OUR VISION
-              </Typography>
-              <Typography variant="body1">
-                With unwavering dedication and a relentless pursuit of
-                innovation, we aim to set new standards and achieve unparalleled
-                success in the global food and beverages trade industry.
-              </Typography>
-            </Box>
-          </Grid>
-        </Grid>
+        </motion.div>
       </Container>
     </Box>
   );

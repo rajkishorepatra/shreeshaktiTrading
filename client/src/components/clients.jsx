@@ -17,7 +17,7 @@ export default function Clients() {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      background: "#aaa",
+      background: "transparent",
     },
     logoImg: {
       width: "100%",
@@ -81,7 +81,7 @@ export default function Clients() {
                   <Paper
                     sx={ClientStyles.logoImgContainer}
                     variant="elevation"
-                    elevation={3}
+                    elevation={0}
                   >
                     <img
                       src={image.logo}
