@@ -28,7 +28,7 @@ export default function Clients() {
       padding: "4rem 0",
       width: "100%",
       height: "100%",
-      background: "#f92d28",
+      background: "#f5f5f5",
     },
   };
 
@@ -39,7 +39,7 @@ export default function Clients() {
           <Typography
             variant="h3"
             gutterBottom
-            sx={{ textAlign: "center", color: "white" }}
+            sx={{ textAlign: "center" }}
           >
             Our Clients
           </Typography>

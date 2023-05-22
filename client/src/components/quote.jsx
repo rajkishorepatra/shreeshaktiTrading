@@ -15,6 +15,7 @@ import quoteBackground from "../assets/quote-parallax.jpg";
 export default function Quote() {
   const styles = {
     heading: css`
+      color: white;
       @media (max-width: 768px) {
         text-align: center;
       }
@@ -44,7 +45,7 @@ export default function Quote() {
       left: 0;
       z-index: -1;
       opacity: 0.9;
-      background: #7a8f76;
+      background: rgba(0, 0, 0, 0.7);
       @media (max-width: 768px) {
         max-width: 100%;
       }

@@ -8,12 +8,12 @@ import Grid from "@mui/material/Grid";
 
 // animation
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 
 export default function WhySection() {
   const styles = {
     whySection: css`
-      background-color: #f283f5;
+      background-color: #f5f5f5;
       min-height: 30vh;
     `,
     card: css`
@@ -45,7 +45,7 @@ export default function WhySection() {
           noWrap
           gutterBottom
           sx={{ textAlign: "center" }}
-          color={"white"}
+          color={""}
         >
           Why Choose Us?
         </Typography>
