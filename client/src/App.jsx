@@ -7,6 +7,7 @@ import HomePage from "./pages/home-page";
 import MediaCard from "./pages/servicePage";
 import TrackingPage from "./pages/tracking";
 
+import Shipment from "./pages/shipment";
 // router dom
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -37,6 +38,7 @@ export default function App() {
                   <Route index element={<HomePage />} />
                   <Route path="services" element={<MediaCard />} />
                   <Route path="tracking" element={<TrackingPage />} />
+                  <Route path="shipment" element={<Shipment />} />
                 </Route>
                 <Route
                   path="*"

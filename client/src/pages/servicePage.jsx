@@ -12,7 +12,6 @@ import { css } from "@emotion/react";
 
 import S1 from "../assets/services-1.jpg";
 import S2 from "../assets/services-2.jpg";
-import S3 from "../assets/services-3.jpg";
 import Startimage from "../assets/quote-parallax.jpg";
 
 export default function MediaCard() {

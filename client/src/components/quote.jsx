@@ -44,7 +44,7 @@ export default function Quote() {
       left: 0;
       z-index: -1;
       opacity: 0.9;
-      background: #43543f;
+      background: #7a8f76;
       @media (max-width: 768px) {
         max-width: 100%;
       }
