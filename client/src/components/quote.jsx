@@ -61,7 +61,11 @@ export default function Quote() {
       <Box sx={styles.quoteContainer}>
         <Box sx={styles.quoteBack}></Box>
         <Container maxWidth="lg">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{duration:2,type:'spring',bounce:0.5,}}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2, type: "spring", bounce: 0.5 }}
+          >
             <Box sx={styles.formContainer}>
               <Box sx={styles.heading}>
                 <Typography variant="h3">Get a free quote</Typography>
