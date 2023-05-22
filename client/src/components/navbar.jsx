@@ -5,12 +5,12 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import Link from "@mui/material/Link"
-
+import Link from "@mui/material/Link";
+import { Link as RLink } from "react-router-dom";
 export default function Navbar() {
   const styles = {
     logo: css`
-      width: 100px;
+      align-self: center;
     `,
     menuButton: css`
       margin-right: 1rem;
@@ -23,6 +23,7 @@ export default function Navbar() {
       display: none;
       @media (min-width: 768px) {
         display: flex;
+        align-items: center;
       }
     `,
 
@@ -36,49 +37,53 @@ export default function Navbar() {
     `,
 
     main: css`
-    background: #5c9bd6;
-    position: 'static';
-    min-height: 3rem;
-    `
+      background: #5c9bd6;
+      position: "static";
+      // min-height: 3rem;
+      padding: 0.5rem 0;
+    `,
   };
 
   return (
     <Box sx={styles.main}>
-          <Container maxWidth="xl">
-            <Box
-              sx={css`
-                display: flex;
-                justify-content: space-between;
-              `}
-            >
-              <Typography sx={styles.logo} variant="h6" noWrap>
-                Logo
-              </Typography>
-              <IconButton
-                sx={styles.menuButton}
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-              >
-                <MenuIcon />
-              </IconButton>
+      <Container maxWidth="xl">
+        <Box
+          sx={css`
+            display: flex;
+            justify-content: space-between;
+          `}
+        >
+          <Typography sx={styles.logo} variant="h6">
+            ShreeShakti
+          </Typography>
+          <IconButton
+            sx={styles.menuButton}
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+          >
+            <MenuIcon />
+          </IconButton>
 
-              <Box sx={styles.links}>
-                <Link sx={styles.link} href="#home">
-                  Home
-                </Link>
-                <Link sx={styles.link} href="#about">
-                  About
-                </Link>
-                <Link sx={styles.link} href="#services">
-                  Services
-                </Link>
-                <Link sx={styles.link} href="#contact">
-                  Contact
-                </Link>
-              </Box>
-            </Box>
-          </Container>
+          <Box sx={styles.links}>
+            <Link sx={styles.link} component={RLink} to="/">
+              Home
+            </Link>
+            <Link sx={styles.link} component={RLink} to="/">
+              About
+            </Link>
+            <Link sx={styles.link} component={RLink} to="/services">
+              Services
+            </Link>
+            <Link sx={styles.link} component={RLink} to="/tracking">
+              Tracking
+            </Link>
+            <Link sx={styles.link} component={RLink} to="/shipment">
+              Shipment
+            </Link>
+          </Box>
+        </Box>
+      </Container>
     </Box>
   );
 }
