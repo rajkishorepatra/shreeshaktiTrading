@@ -66,19 +66,19 @@ export default function Navbar() {
           </IconButton>
 
           <Box sx={styles.links}>
-            <Link sx={styles.link} component={RLink} to="/">
+            <Link sx={styles.link} component={RLink} to="/shreeshaktiTrading">
               Home
             </Link>
-            <Link sx={styles.link} component={RLink} to="/">
+            <Link sx={styles.link} component={RLink} to="/shreeshaktiTrading">
               About
             </Link>
-            <Link sx={styles.link} component={RLink} to="/services">
+            <Link sx={styles.link} component={RLink} to="/shreeshaktiTrading/services">
               Services
             </Link>
-            <Link sx={styles.link} component={RLink} to="/tracking">
+            <Link sx={styles.link} component={RLink} to="/shreeshaktiTrading/tracking">
               Tracking
             </Link>
-            <Link sx={styles.link} component={RLink} to="/shipment">
+            <Link sx={styles.link} component={RLink} to="/shreeshaktiTrading/shipment">
               Shipment
             </Link>
           </Box>

@@ -18,7 +18,7 @@ export default function NumbersSection() {
   return (
     <Box
       sx={css`
-        background-color: black;
+        // background-color: black;
       `}
     >
       <Container

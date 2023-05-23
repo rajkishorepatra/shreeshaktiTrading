@@ -10,11 +10,11 @@ export default function HomePage() {
   return (
     <>
       <PageHeader />
-      <WhySection />
+      <NumbersSection />
       <ServiceSection />
+      <WhySection />
       <Quote />
       <Clients />
-      <NumbersSection />
     </>
   );
 }

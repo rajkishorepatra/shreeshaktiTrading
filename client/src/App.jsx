@@ -34,11 +34,11 @@ export default function App() {
           <BrowserRouter>
             <Routes>
               <>
-                <Route path="/" element={<RootLayout />}>
+                <Route path="/shreeshaktiTrading" element={<RootLayout />}>
                   <Route index element={<HomePage />} />
-                  <Route path="services" element={<MediaCard />} />
-                  <Route path="tracking" element={<TrackingPage />} />
-                  <Route path="shipment" element={<Shipment />} />
+                  <Route path="/shreeshaktiTrading/services" element={<MediaCard />} />
+                  <Route path="/shreeshaktiTrading/tracking" element={<TrackingPage />} />
+                  <Route path="/shreeshaktiTrading/shipment" element={<Shipment />} />
                 </Route>
                 <Route
                   path="*"
