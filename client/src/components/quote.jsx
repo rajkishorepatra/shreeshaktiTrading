@@ -2,7 +2,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
 
 import { css } from "@emotion/react";
 
@@ -50,12 +51,11 @@ export default function Quote() {
         max-width: 100%;
       }
     `,
-    halfWidth: css`
-      @media (min-width: 576px) {
-        display: flex;
-        gap: 1rem;
-      }
+    formInputField: css`
+      background-color: white;
+      border-radius: .25rem .25rem 0 0 ;
     `,
+  
   };
   return (
     <>
@@ -76,87 +76,111 @@ export default function Quote() {
               </Box>
               <Box>
                 <form>
-                  <TextField
-                    fullWidth
-                    hiddenLabel
-                    id="name"
-                    margin="dense"
-                    size="small"
-                    variant="filled"
-                    placeholder="Full Name"
-                  />
-                  <Box sx={styles.halfWidth}>
-                    <TextField
-                      hiddenLabel
-                      margin="dense"
-                      fullWidth
-                      id="email"
-                      size="small"
-                      variant="filled"
-                      placeholder="Email"
-                    />
-                    <TextField
-                      hiddenLabel
-                      margin="dense"
-                      fullWidth
-                      id="mobile"
-                      size="small"
-                      variant="filled"
-                      placeholder="Mobile"
-                    />
-                  </Box>
+                  <Grid container spacing={1}>
+                    <Grid item xs={12}>
+                      <TextField
+                        fullWidth
+                        hiddenLabel
+                        id="name"
+                        margin="dense"
+                        size="small"
+                        variant="filled"
+                        placeholder="Full Name"
+                        sx={styles.formInputField}
+                      />
+                    </Grid>
 
-                  <Box sx={styles.halfWidth}>
-                    <TextField
-                      hiddenLabel
-                      margin="dense"
-                      fullWidth
-                      id="destinationTo"
-                      size="small"
-                      variant="filled"
-                      placeholder="Destination To"
-                    />
-                    <TextField
-                      hiddenLabel
-                      margin="dense"
-                      fullWidth
-                      id="destinationFrom"
-                      size="small"
-                      variant="filled"
-                      placeholder="Destination From"
-                    />
-                  </Box>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        hiddenLabel
+                        margin="dense"
+                        fullWidth
+                        id="email"
+                        size="small"
+                        variant="filled"
+                        placeholder="Email"
+                        sx={styles.formInputField}
+                      />
+                    </Grid>
 
-                  <Box sx={styles.halfWidth}>
-                    <TextField
-                      hiddenLabel
-                      fullWidth
-                      margin="dense"
-                      id="shipmentType"
-                      size="small"
-                      variant="filled"
-                      placeholder="Shipping Type"
-                    />
-                    <TextField
-                      hiddenLabel
-                      fullWidth
-                      id="date"
-                      margin="dense"
-                      size="small"
-                      variant="filled"
-                      placeholder="Date"
-                    />
-                  </Box>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        hiddenLabel
+                        margin="dense"
+                        fullWidth
+                        id="mobile"
+                        size="small"
+                        variant="filled"
+                        placeholder="Mobile"
+                        sx={styles.formInputField}
+                      />
+                    </Grid>
 
-                  <TextField
-                    hiddenLabel
-                    id="Messege"
-                    multiline
-                    rows={4}
-                    margin="dense"
-                    fullWidth
-                    placeholder="Messege"
-                  />
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        hiddenLabel
+                        margin="dense"
+                        fullWidth
+                        id="destinationTo"
+                        size="small"
+                        variant="filled"
+                        placeholder="Destination To"
+                        sx={styles.formInputField}
+                      />
+                    </Grid>
+
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        hiddenLabel
+                        margin="dense"
+                        fullWidth
+                        id="destinationFrom"
+                        size="small"
+                        variant="filled"
+                        placeholder="Destination From"
+                        sx={styles.formInputField}
+                      />
+                    </Grid>
+
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        hiddenLabel
+                        fullWidth
+                        margin="dense"
+                        id="shipmentType"
+                        size="small"
+                        variant="filled"
+                        placeholder="Shipping Type"
+                        sx={styles.formInputField}
+                      />
+                    </Grid>
+
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        hiddenLabel
+                        fullWidth
+                        id="date"
+                        margin="dense"
+                        size="small"
+                        variant="filled"
+                        placeholder="Date"
+                        sx={styles.formInputField}
+                      />
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <TextField
+                        hiddenLabel
+                        id="Messege"
+                        multiline
+                        rows={4}
+                        margin="dense"
+                        fullWidth
+                        placeholder="Messege"
+                        sx={styles.formInputField}
+                      />
+                    </Grid>
+                  </Grid>
 
                   <Box>
                     <Button variant="contained" size="large">

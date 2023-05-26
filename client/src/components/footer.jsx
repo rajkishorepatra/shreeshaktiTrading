@@ -7,11 +7,10 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
-import Paper from "@mui/material/Paper"
+import Paper from "@mui/material/Paper";
 import { Facebook, Twitter, LinkedIn, Instagram } from "@mui/icons-material";
-import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
-import PhoneOutlinedIcon from '@mui/icons-material/PhoneOutlined';
-
+import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
+import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 
 function Copyright() {
   return (
@@ -65,15 +64,27 @@ export default function PageFooter() {
   return (
     <Box>
       <footer style={footerStyles.root}>
-        <Container maxWidth='xl'>
+        <Container maxWidth="xl">
           <Grid container spacing={4}>
             <Grid item xs={12} md={6}>
               <Grid container spacing={2} style={footerStyles.section}>
                 <Grid item xs={12}>
-                  <Paper  variant="outlined" square sx={{background:'#344534',height:'5rem',aspectRatio:'1/1',borderRadius: '50%'}} />
+                  <Paper
+                    variant="outlined"
+                    square
+                    sx={{
+                      background: "#344534",
+                      height: "5rem",
+                      aspectRatio: "1/1",
+                      borderRadius: "50%",
+                    }}
+                  />
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography variant="body1" sx={{textTransform: 'uppercase'}}>
+                  <Typography
+                    variant="body1"
+                    sx={{ textTransform: "uppercase" }}
+                  >
                     ShreeShakti food and beverages trading l.l.c
                   </Typography>
                   <Typography variant="body2" style={footerStyles.subtitle}>
@@ -82,10 +93,16 @@ export default function PageFooter() {
                 </Grid>
                 <Grid item xs={12}>
                   <Typography variant="body1">
-                    <strong><AlternateEmailOutlinedIcon /></strong> info@shreeshakti.com
+                    <strong>
+                      <AlternateEmailOutlinedIcon />
+                    </strong>{" "}
+                    info@shreeshakti.com
                   </Typography>
-                  <Typography variant="body1" >
-                    <strong><PhoneOutlinedIcon /></strong> +971 123456789
+                  <Typography variant="body1">
+                    <strong>
+                      <PhoneOutlinedIcon />
+                    </strong>{" "}
+                    +971 123456789
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>

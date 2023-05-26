@@ -22,11 +22,11 @@ export default function TrackingPage() {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      padding: 4rem 0;
+      padding: 6rem 0;
 
       @media (max-width: 768px) {
         flex-direction: column;
-        padding: 3rem 0;
+        padding: 5rem 0;
       }
     `,
     imageStyle: css`
@@ -50,7 +50,7 @@ export default function TrackingPage() {
     `,
   };
   return (
-    <Box sx={{ background: "#62f3f5", paddingBottom: "3rem" }}>
+    <Box sx={{ background: "#f5f5f5", paddingBottom: "3rem" }}>
       <Box sx={styles.imageStyle}>
         <Box
           sx={{
