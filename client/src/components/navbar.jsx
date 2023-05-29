@@ -1,16 +1,22 @@
 import { css } from "@emotion/react";
+import { m } from "framer-motion";
 
 import { Menu as MenuIcon } from "@mui/icons-material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import Link from "@mui/material/Link"
+import Link from "@mui/material/Link";
+import { Link as RLink } from "react-router-dom";
+import Stack from "@mui/material/Stack";
 
+import { useState } from "react";
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   const styles = {
     logo: css`
-      width: 100px;
+      align-self: center;
     `,
     menuButton: css`
       margin-right: 1rem;
@@ -23,12 +29,14 @@ export default function Navbar() {
       display: none;
       @media (min-width: 768px) {
         display: flex;
+        align-items: center;
       }
     `,
 
     link: css`
       color: #000000;
       text-decoration: none;
+      // text-align: end;
       margin-right: 1rem;
       &:hover {
         text-decoration: underline;
@@ -36,49 +44,127 @@ export default function Navbar() {
     `,
 
     main: css`
-    background: #5c9bd6;
-    position: 'static';
-    min-height: 3rem;
-    `
+      background: #5c9bd6;
+      padding: 0.5rem 0;
+      position: fixed;
+      width: 100%;
+      min-height: 3.5rem;
+      top: 0;
+      z-index: 100;
+    `,
   };
 
   return (
-    <Box sx={styles.main}>
-          <Container maxWidth="xl">
-            <Box
-              sx={css`
-                display: flex;
-                justify-content: space-between;
-              `}
+    <Box sx={{ marginBottom: "3.5rem" }}>
+      <Box sx={styles.main}>
+        <Container maxWidth="xl">
+          <Box
+            sx={css`
+              display: flex;
+              justify-content: space-between;
+            `}
+          >
+            <Typography sx={styles.logo} variant="h6">
+              ShreeShakti
+            </Typography>
+            <IconButton
+              onClick={() => setOpen(!open)}
+              sx={styles.menuButton}
+              edge="start"
+              color="inherit"
+              aria-label="menu"
             >
-              <Typography sx={styles.logo} variant="h6" noWrap>
-                Logo
-              </Typography>
-              <IconButton
-                sx={styles.menuButton}
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-              >
-                <MenuIcon />
-              </IconButton>
+              <MenuIcon />
+            </IconButton>
 
-              <Box sx={styles.links}>
-                <Link sx={styles.link} href="#home">
-                  Home
-                </Link>
-                <Link sx={styles.link} href="#about">
-                  About
-                </Link>
-                <Link sx={styles.link} href="#services">
-                  Services
-                </Link>
-                <Link sx={styles.link} href="#contact">
-                  Contact
-                </Link>
-              </Box>
+            <Box sx={styles.links}>
+              <Link sx={styles.link} component={RLink} to="/shreeshaktiTrading">
+                Home
+              </Link>
+              <Link sx={styles.link} component={RLink} to="/shreeshaktiTrading">
+                About
+              </Link>
+              <Link
+                sx={styles.link}
+                component={RLink}
+                to="/shreeshaktiTrading/services"
+              >
+                Services
+              </Link>
+              <Link
+                sx={styles.link}
+                component={RLink}
+                to="/shreeshaktiTrading/tracking"
+              >
+                Tracking
+              </Link>
+              <Link
+                sx={styles.link}
+                component={RLink}
+                to="/shreeshaktiTrading/shipment"
+              >
+                Shipment
+              </Link>
             </Box>
-          </Container>
+          </Box>
+
+          {open && (
+            <m.div>
+              <Container
+                maxWidth="xl"
+                sx={css`
+                  @media (min-width: 768px) {
+                    display: none;
+                  }
+                `}
+              >
+                <Stack direction="column" spacing={1}>
+                  <Link
+                    sx={styles.link}
+                    component={RLink}
+                    to="/shreeshaktiTrading"
+                    onClick={() => setOpen(!open)}
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    sx={styles.link}
+                    component={RLink}
+                    to="/shreeshaktiTrading"
+                    onClick={() => setOpen(!open)}
+                  >
+                    About
+                  </Link>
+                  <Link
+                    sx={styles.link}
+                    component={RLink}
+                    to="/shreeshaktiTrading/services"
+                    onClick={() => setOpen(!open)}
+                  >
+                    Services
+                  </Link>
+                  <Link
+                    sx={styles.link}
+                    component={RLink}
+                    to="/shreeshaktiTrading/tracking"
+                    onClick={() => setOpen(!open)}
+                  >
+                    Tracking
+                  </Link>
+                  <Link
+                    sx={styles.link}
+                    component={RLink}
+                    to="/shreeshaktiTrading/shipment"
+                    onClick={() => setOpen(!open)}
+                  >
+                    Shipment
+                  </Link>
+                </Stack>
+              </Container>
+            </m.div>
+          )}
+        </Container>
+      </Box>
     </Box>
   );
 }
