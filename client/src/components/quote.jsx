@@ -17,6 +17,7 @@ export default function Quote() {
   const styles = {
     heading: css`
       color: white;
+      margin-bottom: 1rem;
       @media (max-width: 768px) {
         text-align: center;
       }
@@ -53,9 +54,8 @@ export default function Quote() {
     `,
     formInputField: css`
       background-color: white;
-      border-radius: .25rem .25rem 0 0 ;
+      border-radius: 0.25rem 0.25rem 0 0;
     `,
-  
   };
   return (
     <>
@@ -82,7 +82,6 @@ export default function Quote() {
                         fullWidth
                         hiddenLabel
                         id="name"
-                        margin="dense"
                         size="small"
                         variant="filled"
                         placeholder="Full Name"
@@ -93,7 +92,6 @@ export default function Quote() {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         hiddenLabel
-                        margin="dense"
                         fullWidth
                         id="email"
                         size="small"
@@ -106,7 +104,7 @@ export default function Quote() {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         hiddenLabel
-                        margin="dense"
+                        //
                         fullWidth
                         id="mobile"
                         size="small"
@@ -119,7 +117,7 @@ export default function Quote() {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         hiddenLabel
-                        margin="dense"
+                        //
                         fullWidth
                         id="destinationTo"
                         size="small"
@@ -132,7 +130,6 @@ export default function Quote() {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         hiddenLabel
-                        margin="dense"
                         fullWidth
                         id="destinationFrom"
                         size="small"
@@ -146,7 +143,6 @@ export default function Quote() {
                       <TextField
                         hiddenLabel
                         fullWidth
-                        margin="dense"
                         id="shipmentType"
                         size="small"
                         variant="filled"
@@ -160,7 +156,6 @@ export default function Quote() {
                         hiddenLabel
                         fullWidth
                         id="date"
-                        margin="dense"
                         size="small"
                         variant="filled"
                         placeholder="Date"
@@ -174,19 +169,17 @@ export default function Quote() {
                         id="Messege"
                         multiline
                         rows={4}
-                        margin="dense"
                         fullWidth
                         placeholder="Messege"
                         sx={styles.formInputField}
                       />
                     </Grid>
+                    <Grid item xs={12}>
+                      <Button variant="contained" size="large">
+                        Submit
+                      </Button>
+                    </Grid>
                   </Grid>
-
-                  <Box>
-                    <Button variant="contained" size="large">
-                      Submit
-                    </Button>
-                  </Box>
                 </form>
               </Box>
             </Box>
