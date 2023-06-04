@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 import { m } from "framer-motion";
 
 import { Menu as MenuIcon } from "@mui/icons-material";
+import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -11,12 +12,19 @@ import { Link as RLink } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 
 import { useState } from "react";
+import ShreeShaktiLogo from "../assets/shreeshakti-logo.png";
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const styles = {
     logo: css`
-      align-self: center;
+      height: 100%;
+      display: flex;
+      img {
+        max-width: 3rem;
+        object-fit: cover;
+      }
     `,
     menuButton: css`
       margin-right: 1rem;
@@ -35,8 +43,8 @@ export default function Navbar() {
 
     link: css`
       color: #000000;
+      font-size: 1.2rem;
       text-decoration: none;
-      // text-align: end;
       margin-right: 1rem;
       &:hover {
         text-decoration: underline;
@@ -44,6 +52,7 @@ export default function Navbar() {
     `,
 
     main: css`
+      font-family: "bebas neue", sans-serif;
       background: #5c9bd6;
       padding: 0.5rem 0;
       position: fixed;
@@ -64,9 +73,9 @@ export default function Navbar() {
               justify-content: space-between;
             `}
           >
-            <Typography sx={styles.logo} variant="h6">
-              ShreeShakti
-            </Typography>
+            <Link component={RLink} to="/shreeshaktiTrading" sx={styles.logo}>
+              <img src={ShreeShaktiLogo} alt="Shree Shakti Logo" />
+            </Link>
             <IconButton
               onClick={() => setOpen(!open)}
               sx={styles.menuButton}
@@ -74,7 +83,7 @@ export default function Navbar() {
               color="inherit"
               aria-label="menu"
             >
-              <MenuIcon />
+              {open ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
 
             <Box sx={styles.links}>
