@@ -13,7 +13,9 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 import { css } from "@emotion/react";
 
-// images
+import Heading from "../components/pageHeader";
+
+// // images
 import Startimage from "../assets/quote-parallax.jpg";
 
 export default function TrackingPage() {
@@ -51,33 +53,11 @@ export default function TrackingPage() {
   };
   return (
     <Box sx={{ background: "#f5f5f5", paddingBottom: "3rem" }}>
-      <Box sx={styles.imageStyle}>
-        <Box
-          sx={{
-            height: "100%",
-            width: "100%",
-            background: "rgba(0,0,0,0.7)",
-          }}
-        >
-          <Container maxWidth="xl">
-            <Box sx={styles.heading}>
-              <Typography
-                variant="h4"
-                sx={{ typography: { xs: "h5", md: "h4" } }}
-              >
-                Tracking
-              </Typography>
-              <Typography
-                variant="h5"
-                sx={{ typography: { xs: "body2", md: "body1" },textAlign:{xs:'left',md:"right"} }}
-              >
-                We freight to all over the world <br />
-                The best logistic company, Fastly and Safely
-              </Typography>
-            </Box>
-          </Container>
-        </Box>
-      </Box>
+      <Heading
+        img={Startimage}
+        title="Tracking"
+        description={"We are here to help you track your shipment easily."}
+      />
 
       <Container maxWidth="xl">
         <Box sx={styles.wordStyle}>

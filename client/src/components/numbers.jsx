@@ -94,7 +94,7 @@ function NumberCard({ icon, number, title }) {
 
       <Box sx={styles.detailsBox}>
         <Typography
-          // variant={{ xs: "h6", sm: "h5", md: "h4" }}
+          variant="h4"
           component="div"
           color={"red"}
           sx={{
@@ -105,11 +105,7 @@ function NumberCard({ icon, number, title }) {
         >
           {number}
         </Typography>
-        <Typography
-          // variant depending upon screen size
-          variant={{ xs: "h6", sm: "h5", md: "h4" }}
-          component="div"
-        >
+        <Typography component="div" fontWeight="semibold">
           {title}
         </Typography>
       </Box>
