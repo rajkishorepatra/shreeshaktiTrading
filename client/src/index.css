@@ -1,7 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Dancing+Script:wght@700&family=Fjalla+One&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Sassy+Frass&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Arizonia&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap");
 
 *,
 *::after,
@@ -11,9 +9,12 @@
   padding: 0;
 }
 
+body{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
 
 .details Button:hover {
   background-color: #48dbfb;
   background-image: linear-gradient(315deg, #48dbfb 0%, #d3d3d3 74%);
 }
-

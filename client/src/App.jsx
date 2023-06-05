@@ -25,6 +25,9 @@ export default function App() {
         xl: 1200,
       },
     },
+    typography: {
+      fontFamily: ["Poppins", "sans-serif"].join(","),
+    },
   });
 
   return (
@@ -36,9 +39,18 @@ export default function App() {
               <>
                 <Route path="/shreeshaktiTrading" element={<RootLayout />}>
                   <Route index element={<HomePage />} />
-                  <Route path="/shreeshaktiTrading/services" element={<MediaCard />} />
-                  <Route path="/shreeshaktiTrading/tracking" element={<TrackingPage />} />
-                  <Route path="/shreeshaktiTrading/shipment" element={<Shipment />} />
+                  <Route
+                    path="/shreeshaktiTrading/services"
+                    element={<MediaCard />}
+                  />
+                  <Route
+                    path="/shreeshaktiTrading/tracking"
+                    element={<TrackingPage />}
+                  />
+                  <Route
+                    path="/shreeshaktiTrading/shipment"
+                    element={<Shipment />}
+                  />
                 </Route>
                 <Route
                   path="*"

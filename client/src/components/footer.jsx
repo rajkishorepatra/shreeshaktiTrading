@@ -12,6 +12,8 @@ import { Facebook, Twitter, LinkedIn, Instagram } from "@mui/icons-material";
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 
+import { css } from "@emotion/react";
+
 function Copyright() {
   return (
     <Typography
@@ -31,13 +33,13 @@ function Copyright() {
 
 export default function PageFooter() {
   const footerStyles = {
-    root: {
-      matginTop: "2rem",
-      padding: "2rem 0",
-    },
+    root: css`
+      matgintop: 2rem;
+      padding: 2rem 0;
+    `,
     section: {
       marginBottom: "20px",
-      maxWidth: "480px",
+      // maxWidth: "480px",
       justifySelf: "center",
     },
     subtitle: {

@@ -27,17 +27,23 @@ export default function PageHeader() {
   useEffect(() => {
     if (swiperRef.current) {
       let swiper = swiperRef.current.swiper;
-      swiper.on("slideChange", () => {
-      });
+      swiper.on("slideChange", () => {});
     }
   }, []);
+
+  const styles = {
+    container: css`
+      position: relative;
+      max-height: 90vh;
+      overflow: hidden;
+    `,
+
+  };
+
   return (
     <>
       <Box
-        sx={{
-          maxHeight: "90vh",
-          overflow: "hidden",
-        }}
+        sx={styles.container}
       >
         <Swiper
           slidesPerView={1}
@@ -65,7 +71,7 @@ export default function PageHeader() {
                 alt={"image one"}
                 style={{
                   width: "100%",
-                  objectFit: "cover",
+                  objectFit: "cover",        
                 }}
               />
               <Box
@@ -74,11 +80,11 @@ export default function PageHeader() {
                   top: "0",
                   width: "100%",
                   height: "100%",
-                  background: "rgba(0,0,0,0.6)",
+                  background: "rgba(0,0,0,0.6)",              
                 }}
               >
                 <Container
-                  maxWidth="lg"
+                  maxWidth="md"
                   sx={css`
                     transform: translateY(20%);
                     @media (min-width: 576px) {

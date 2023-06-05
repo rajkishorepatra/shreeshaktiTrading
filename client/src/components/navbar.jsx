@@ -5,7 +5,6 @@ import { Menu as MenuIcon } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import { Link as RLink } from "react-router-dom";
@@ -38,6 +37,7 @@ export default function Navbar() {
       @media (min-width: 768px) {
         display: flex;
         align-items: center;
+        justify-content: center;
       }
     `,
 
@@ -45,7 +45,7 @@ export default function Navbar() {
       color: #000000;
       font-size: 1.2rem;
       text-decoration: none;
-      margin-right: 1rem;
+      margin: 0 .5rem;
       &:hover {
         text-decoration: underline;
       }
