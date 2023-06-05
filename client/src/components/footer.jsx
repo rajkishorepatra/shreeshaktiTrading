@@ -10,6 +10,7 @@ import Link from "@mui/material/Link";
 import { Facebook, Twitter, LinkedIn, Instagram } from "@mui/icons-material";
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
+import { useState } from 'react';
 
 import { css } from "@emotion/react";
 
@@ -62,6 +63,39 @@ export default function PageFooter() {
       backgroundColor: "#F5F5F5",
     },
   };
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+    console.log({name}, {email}, {message});
+    const response = await fetch ("http://localhost:3001/contactUs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({name, email, message}),
+    }).then((res) => res.json())
+    .then(async (res) => {
+      const resData = await res;
+       console.log(resData);
+       if (resData.status === "success") {
+         alert("Message Sent");
+       } else if (resData.status === "fail") {
+         alert("Message failed to send");
+       }
+    })
+    .then(() => {{name , email, message}});
+  };
+
+  // const submitForm = () => {
+  //   console.log('name ' + name)
+  //   console.log('email ' + email)
+  //   console.log('messege ' + message)
+  // }
+
   return (
     <Box>
       <Box sx={footerStyles.root}>
@@ -141,6 +175,8 @@ export default function PageFooter() {
                       variant="filled"
                       size="small"
                       margin="dense"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                     />
                     <TextField
                       fullWidth
@@ -149,6 +185,8 @@ export default function PageFooter() {
                       variant="filled"
                       size="small"
                       margin="dense"
+                      value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     />
                     <TextField
                       hiddenLabel
@@ -159,11 +197,14 @@ export default function PageFooter() {
                       variant="filled"
                       size="small"
                       margin="dense"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
                     />
                     <Button
                       variant="outlined"
                       color="secondary"
                       sx={footerStyles.formButton}
+                      onClick={submitForm}
                     >
                       Send
                     </Button>

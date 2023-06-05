@@ -9,6 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import { Link as RLink } from "react-router-dom";
 import Stack from "@mui/material/Stack";
+import navImage from "../assets/Catalogue-ShreeShakti-1.png";
 
 import { useState } from "react";
 import ShreeShaktiLogo from "../assets/shreeshakti-logo.png";

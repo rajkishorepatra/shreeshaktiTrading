@@ -4,6 +4,8 @@ import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import {useState} from 'react';
 
 import { css } from "@emotion/react";
 
@@ -14,6 +16,39 @@ import { motion } from "framer-motion";
 import quoteBackground from "../assets/quote-parallax.jpg";
 
 export default function Quote() {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [destinationTo, setDestinationTo] = useState('');
+  const [destinationFrom, setDestinationFrom] = useState('');
+  const [date, setDate] = useState('');
+  const [type, setType] = useState('');
+  const [message, setMessage] = useState('');
+
+  const quoteForm = async (e) => {
+    e.preventDefault();
+    console.log({name}, {email}, {mobile}, {destinationTo}, {destinationFrom}, {date}, {type}, {message});
+    const response = await fetch("http://localhost:3001/quote", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({name, email, mobile, destinationTo, destinationFrom, date, type, message}),
+    }).then((res) => res.json())
+    .then(async (res) => {
+      const resData = await res;
+      console.log(resData);
+      if(resData.status === "success") {
+        alert("Message sent");
+      } else if(resData.status === "fail") {
+        alert("Message failed to send");
+      }
+    })
+    .then(() => {{name, email, mobile, destinationTo, destinationFrom, date, type, message}});
+  };
+
+
   const styles = {
     heading: css`
       color: white;
@@ -86,6 +121,8 @@ export default function Quote() {
                         variant="filled"
                         placeholder="Full Name"
                         sx={styles.formInputField}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </Grid>
 
@@ -98,6 +135,8 @@ export default function Quote() {
                         variant="filled"
                         placeholder="Email"
                         sx={styles.formInputField}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </Grid>
 
@@ -111,6 +150,8 @@ export default function Quote() {
                         variant="filled"
                         placeholder="Mobile"
                         sx={styles.formInputField}
+                        value={mobile}
+                        onChange={(e) => setMobile(e.target.value)}
                       />
                     </Grid>
 
@@ -124,6 +165,8 @@ export default function Quote() {
                         variant="filled"
                         placeholder="Destination To"
                         sx={styles.formInputField}
+                        value={destinationTo}
+                        onChange={(e) => setDestinationTo(e.target.value)}
                       />
                     </Grid>
 
@@ -136,6 +179,8 @@ export default function Quote() {
                         variant="filled"
                         placeholder="Destination From"
                         sx={styles.formInputField}
+                        value={destinationFrom}
+                        onChange={(e) => setDestinationFrom(e.target.value)}
                       />
                     </Grid>
 
@@ -148,6 +193,8 @@ export default function Quote() {
                         variant="filled"
                         placeholder="Shipping Type"
                         sx={styles.formInputField}
+                        value={type}
+                        onChange={(e) => setType(e.target.value)}
                       />
                     </Grid>
 
@@ -172,6 +219,8 @@ export default function Quote() {
                         fullWidth
                         placeholder="Messege"
                         sx={styles.formInputField}
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
                       />
                     </Grid>
                     <Grid item xs={12}>
