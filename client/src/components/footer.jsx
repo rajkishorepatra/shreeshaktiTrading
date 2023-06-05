@@ -7,11 +7,14 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
-import Paper from "@mui/material/Paper";
 import { Facebook, Twitter, LinkedIn, Instagram } from "@mui/icons-material";
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import { useState } from 'react';
+
+import { css } from "@emotion/react";
+
+import ShreeShaktiLogo from "../assets/shreeshakti-logo.png";
 
 function Copyright() {
   return (
@@ -32,13 +35,11 @@ function Copyright() {
 
 export default function PageFooter() {
   const footerStyles = {
-    root: {
-      matginTop: "2rem",
-      padding: "2rem 0",
-    },
+    root: css`
+      padding: 2rem 0 0 0;
+    `,
     section: {
       marginBottom: "20px",
-      maxWidth: "480px",
       justifySelf: "center",
     },
     subtitle: {
@@ -97,13 +98,13 @@ export default function PageFooter() {
 
   return (
     <Box>
-      <footer style={footerStyles.root}>
+      <Box sx={footerStyles.root}>
         <Container maxWidth="xl">
           <Grid container spacing={4}>
             <Grid item xs={12} md={6}>
               <Grid container spacing={2} style={footerStyles.section}>
                 <Grid item xs={12}>
-                  <Paper
+                  {/* <Paper
                     variant="outlined"
                     square
                     sx={{
@@ -112,6 +113,11 @@ export default function PageFooter() {
                       aspectRatio: "1/1",
                       borderRadius: "50%",
                     }}
+                  /> */}
+                  <img
+                    src={ShreeShaktiLogo}
+                    alt="ShreeShakti Logo"
+                    style={{ height: "5rem", width: "5rem" }}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -208,7 +214,7 @@ export default function PageFooter() {
             </Grid>
           </Grid>
         </Container>
-      </footer>
+      </Box>
       <Box sx={footerStyles.copyright}>
         <Copyright />
       </Box>

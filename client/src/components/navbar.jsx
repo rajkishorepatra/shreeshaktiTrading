@@ -2,9 +2,9 @@ import { css } from "@emotion/react";
 import { m } from "framer-motion";
 
 import { Menu as MenuIcon } from "@mui/icons-material";
+import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import { Link as RLink } from "react-router-dom";
@@ -12,15 +12,19 @@ import Stack from "@mui/material/Stack";
 import navImage from "../assets/Catalogue-ShreeShakti-1.png";
 
 import { useState } from "react";
+import ShreeShaktiLogo from "../assets/shreeshakti-logo.png";
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const styles = {
     logo: css`
+      height: 100%;
       display: flex;
-      align-items: center;
-      align-self: center;
-      text-decoration: none;
+      img {
+        max-width: 3rem;
+        object-fit: cover;
+      }
     `,
     menuButton: css`
       margin-right: 1rem;
@@ -34,20 +38,22 @@ export default function Navbar() {
       @media (min-width: 768px) {
         display: flex;
         align-items: center;
+        justify-content: center;
       }
     `,
 
     link: css`
       color: #000000;
+      font-size: 1.2rem;
       text-decoration: none;
-      // text-align: end;
-      margin-right: 1rem;
+      margin: 0 .5rem;
       &:hover {
         text-decoration: underline;
       }
     `,
 
     main: css`
+      font-family: "bebas neue", sans-serif;
       background: #5c9bd6;
       padding: 0.5rem 0;
       position: fixed;
@@ -68,10 +74,9 @@ export default function Navbar() {
               justify-content: space-between;
             `}
           >
-            <Container sx={styles.logo}>
-              <img src={navImage} height={"40rem"} width={"40rem"} alt="home" />
-              <Typography sx={{fontSize:'1.5rem',}}>SHREESHAKTI</Typography>
-            </Container>
+            <Link component={RLink} to="/shreeshaktiTrading" sx={styles.logo}>
+              <img src={ShreeShaktiLogo} alt="Shree Shakti Logo" />
+            </Link>
             <IconButton
               onClick={() => setOpen(!open)}
               sx={styles.menuButton}
@@ -79,7 +84,7 @@ export default function Navbar() {
               color="inherit"
               aria-label="menu"
             >
-              <MenuIcon />
+              {open ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
 
             <Box sx={styles.links}>
