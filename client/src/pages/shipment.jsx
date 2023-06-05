@@ -12,6 +12,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import { useState } from "react";
 
 const steps = [
   "Where from",
@@ -25,20 +26,20 @@ const steps = [
 
 const currencies = [
   {
-    value: "USD",
-    label: "$",
+    value: "INDIA",
+    label: "INDIA",
   },
   {
-    value: "EUR",
-    label: "€",
+    value: "USA",
+    label: "USA",
   },
   {
-    value: "BTC",
-    label: "฿",
+    value: "CHINA",
+    label: "CHINA",
   },
   {
-    value: "JPY",
-    label: "¥",
+    value: "JAPAN",
+    label: "JAPAN",
   },
 ];
 
@@ -70,8 +71,6 @@ const form = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  boxShadow:
-    "rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset",
   padding: "2rem 1rem",
   width: "100%",
 };
@@ -84,6 +83,20 @@ const formContent = {
 };
 
 export default function Shipment() {
+
+  const [country, setCountry] = useState("");
+  const [company, setCompany] = useState("");
+  const [contact, setContact] = useState("");
+  const [address, setAddress] = useState("");
+  const [apartment, setApartment] = useState("");
+  const [department, setDepartment] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [city, setCity] = useState("");
+  const [otherAddress, setOtherAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [checkbox, setCheckbox] = useState(false);
+
   return (
     <>
       <Box>
@@ -113,7 +126,7 @@ export default function Shipment() {
             </Stepper>
           </Grid>
 
-          <Box sx={form}>
+          <Box sx={form} component="form">
             <Box sx={boxHeading}>
               <Typography variant="h4">
                 Hello. Where are you shipping?
@@ -124,7 +137,6 @@ export default function Shipment() {
             <Grid container sx={formContent} spacing={1}>
               <Grid
                 item
-                component="form"
                 sx={{
                   "& .MuiTextField-root": { m: 1, width: "25ch" },
                 }}
@@ -138,14 +150,13 @@ export default function Shipment() {
                   select
                   required
                   label="Country"
-                  defaultValue="INDIA"
                   SelectProps={{
                     native: true,
                   }}
-                  helperText="Please select your currency"
+                  helperText="Please select your country"
                 >
                   {currencies.map((option) => (
-                    <option key={option.value} value={option.value}>
+                    <option key={option.value} value={option.value} onChange={(e) => setCountry(e.target.value)}>
                       {option.label}
                     </option>
                   ))}
@@ -155,16 +166,19 @@ export default function Shipment() {
                   label="Company or Name"
                   variant="outlined"
                   required
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
                 />
                 <TextField
                   id="outlined-basic"
                   label="Contact"
                   variant="outlined"
                   required
+                  value={contact}
+                  onChange={(e) => setContact(e.target.value)}
                 />
               </Grid>
               <Grid
-                component="form"
                 sx={{
                   "& .MuiTextField-root": { m: 1, width: "25ch" },
                 }}
@@ -180,21 +194,26 @@ export default function Shipment() {
                   variant="outlined"
                   placeholder="Street Address"
                   required
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
                 />
                 <TextField
                   id="outlined-basic"
                   placeholder="Apartment, suite, unit, building,etc."
                   variant="outlined"
+                  value={apartment}
+                  onChange={(e) => setApartment(e.target.value)}
                 />
                 <TextField
                   id="outlined-basic"
                   placeholder="Department, c/o, etc."
                   variant="outlined"
                   margin="dense"
+                  value={department}
+                  onChange={(e) => setDepartment(e.target.value)}
                 />
               </Grid>
               <Grid
-                component="form"
                 sx={{
                   "& .MuiTextField-root": { m: 1, width: "25ch" },
                 }}
@@ -209,31 +228,36 @@ export default function Shipment() {
                   label="Postal Code"
                   variant="outlined"
                   required
+                  value={postalCode}
+                  onChange={(e) => setPostalCode(e.target.value)}
                 />
                 <TextField
                   id="outlined-basic"
                   label="City"
                   variant="outlined"
                   required
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
                 />
                 <TextField
                   id="outlined-basic"
                   label="Other Address Information"
                   variant="outlined"
+                  value={otherAddress}
+                  onChange={(e) => setOtherAddress(e.target.value)}
                 />
               </Grid>
 
               <Grid item xs={12} lg={12}>
                 <FormControlLabel
                   value="top"
-                  control={<Checkbox />}
+                  control={<Checkbox value={checkbox} onChange={(e) => setCheckbox(e.target.value)}/>}
                   label="Is this a residential address?"
                   labelPlacement="start"
                 />
               </Grid>
 
               <Grid
-                component="form"
                 sx={{
                   "& .MuiTextField-root": { m: 1, width: "25ch" },
                 }}
@@ -248,12 +272,16 @@ export default function Shipment() {
                   label="Email"
                   variant="outlined"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <TextField
                   id="outlined-basic"
                   label="Telephone"
                   variant="outlined"
                   required
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                 />
                 <TextField
                   id="outlined-basic"
@@ -264,27 +292,28 @@ export default function Shipment() {
               <Grid item xs={12} lg={12}>
                 <FormControlLabel
                   value="top"
-                  control={<Checkbox />}
+                  control={<Checkbox value={checkbox} onChange={(e) => setCheckbox(e.target.value)}/>}
                   label="Send updates on this shipment"
                   labelPlacement="start"
+                  checked={checkbox}
                 />
               </Grid>
               <Grid item xs={12} lg={12}>
                 <FormControlLabel
                   value="top"
-                  control={<Checkbox />}
+                  control={<Checkbox value={checkbox} onChange={(e) => setCheckbox(e.target.value)}/>}
                   label="Save as new entry"
                   labelPlacement="start"
                 />
                 <FormControlLabel
                   value="top"
-                  control={<Checkbox />}
+                  control={<Checkbox value={checkbox} onChange={(e) => setCheckbox(e.target.value)}/>}
                   label="Use this as my default address"
                   labelPlacement="start"
                 />
                 <FormControlLabel
                   value="top"
-                  control={<Checkbox />}
+                  control={<Checkbox value={checkbox} onChange={(e) => setCheckbox(e.target.value)}/>}
                   label="Add a different return address"
                   labelPlacement="start"
                 />

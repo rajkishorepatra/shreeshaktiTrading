@@ -9,6 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import { Link as RLink } from "react-router-dom";
 import Stack from "@mui/material/Stack";
+import navImage from "../assets/Catalogue-ShreeShakti-1.png";
 
 import { useState } from "react";
 export default function Navbar() {
@@ -16,7 +17,10 @@ export default function Navbar() {
 
   const styles = {
     logo: css`
+      display: flex;
+      align-items: center;
       align-self: center;
+      text-decoration: none;
     `,
     menuButton: css`
       margin-right: 1rem;
@@ -64,9 +68,10 @@ export default function Navbar() {
               justify-content: space-between;
             `}
           >
-            <Typography sx={styles.logo} variant="h6">
-              ShreeShakti
-            </Typography>
+            <Container sx={styles.logo}>
+              <img src={navImage} height={"40rem"} width={"40rem"} alt="home" />
+              <Typography sx={{fontSize:'1.5rem',}}>SHREESHAKTI</Typography>
+            </Container>
             <IconButton
               onClick={() => setOpen(!open)}
               sx={styles.menuButton}
