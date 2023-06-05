@@ -8,6 +8,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css";
 
+// local data
+import { clients } from "../local-data/clients";
+
+
 export default function Clients() {
   const ClientStyles = {
     logoImgContainer: {
@@ -36,11 +40,7 @@ export default function Clients() {
     <Box sx={ClientStyles.clientCarouselContainer}>
       <Container maxWidth="lg">
         <Stack spacing={2}>
-          <Typography
-            variant="h3"
-            gutterBottom
-            sx={{ textAlign: "center" }}
-          >
+          <Typography variant="h3" gutterBottom sx={{ textAlign: "center" }}>
             Our Clients
           </Typography>
 
@@ -76,7 +76,7 @@ export default function Clients() {
               }}
               modules={[Autoplay]}
             >
-              {clientLogo.map((image, index) => (
+              {clients.map((image, index) => (
                 <SwiperSlide key={index}>
                   <Paper
                     sx={ClientStyles.logoImgContainer}
@@ -98,51 +98,3 @@ export default function Clients() {
     </Box>
   );
 }
-
-const clientLogo = [
-  {
-    id: 1,
-    name: "ruchi foodline",
-    logo: "https://www.ruchifoodline.com/img/ruchi-new-logo-white.png",
-  },
-  {
-    id: 1,
-    name: "frozit",
-    logo: "https://www.frozit.in/images/logo-dark.png",
-  },
-  {
-    id: 1,
-    name: "ruchi foodline",
-    logo: "https://www.ruchifoodline.com/img/ruchi-new-logo-white.png",
-  },
-  {
-    id: 1,
-    name: "frozit",
-    logo: "https://www.frozit.in/images/logo-dark.png",
-  },
-  {
-    id: 1,
-    name: "ruchi foodline",
-    logo: "https://www.ruchifoodline.com/img/ruchi-new-logo-white.png",
-  },
-  {
-    id: 1,
-    name: "frozit",
-    logo: "https://www.frozit.in/images/logo-dark.png",
-  },
-  {
-    id: 1,
-    name: "ruchi foodline",
-    logo: "https://www.ruchifoodline.com/img/ruchi-new-logo-white.png",
-  },
-  {
-    id: 1,
-    name: "frozit",
-    logo: "https://www.frozit.in/images/logo-dark.png",
-  },
-  {
-    id: 1,
-    name: "ruchi foodline",
-    logo: "https://www.ruchifoodline.com/img/ruchi-new-logo-white.png",
-  },
-];
