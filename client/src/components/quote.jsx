@@ -207,6 +207,8 @@ export default function Quote() {
                         variant="filled"
                         placeholder="Date"
                         sx={styles.formInputField}
+                        value={date}
+                        onChange={(e) => setDate(e.target.value)}
                       />
                     </Grid>
 
@@ -224,7 +226,7 @@ export default function Quote() {
                       />
                     </Grid>
                     <Grid item xs={12}>
-                      <Button variant="contained" size="large">
+                      <Button variant="contained" size="large" onClick={quoteForm}>
                         Submit
                       </Button>
                     </Grid>
