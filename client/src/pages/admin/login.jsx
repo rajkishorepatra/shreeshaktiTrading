@@ -54,13 +54,8 @@ export default function AdminLogin() {
     <Box>
       <Heading title="Admin Login" />
       <Container maxWidth="xl" sx={styles.container}>
-        <Typography variant="h4" component="h1" align="center">
-          Admin Login
-        </Typography>
-        <Typography variant="body1" component="p" align="center">
-          <Link component={RLink} to="/admin/dashboard">
-            Go to Dashboard
-          </Link>
+        <Typography variant="h5" component="h1" align="center">
+          Login as Admin
         </Typography>
 
         <Box sx={styles.formBox}>
@@ -72,7 +67,7 @@ export default function AdminLogin() {
               onChange={(e) => setEmail(e.target.value)}
               fullWidth
               margin="normal"
-              required
+              // required
             />
             <TextField
               type="password"
@@ -81,7 +76,7 @@ export default function AdminLogin() {
               onChange={(e) => setPassword(e.target.value)}
               fullWidth
               margin="normal"
-              required
+              // required
             />
             <Button type="submit" variant="contained" color="primary">
               Login

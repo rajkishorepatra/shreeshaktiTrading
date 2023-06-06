@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import { css } from "@emotion/react";
+import Collapse from "@mui/material/Collapse";
 
 import { UserAuth } from "../../contexts/authContext";
 import { useState } from "react";
@@ -25,8 +26,8 @@ export default function AdminDashboard() {
   const styles = {
     OperationBtn: css`
       width: 100%;
-      max-width: 320px;
-      padding: 1.5rem;
+      max-width: 200px;
+      padding: 1rem;
     `,
     OperationBox: css`
       justify-content: center;
@@ -35,9 +36,9 @@ export default function AdminDashboard() {
   };
   return (
     <Box>
-      <Heading title="Admin Dashboard" />
-      <Container maxWidth="xl">
-        <Box sx={{ padding: "2rem 0" }}>
+      <Heading
+        title="Admin Dashboard"
+        description={
           <Button
             variant="contained"
             onClick={() => {
@@ -45,15 +46,19 @@ export default function AdminDashboard() {
               navigate("/shreeshaktiTrading/admin/login");
             }}
           >
-            Logout{" "}
+            Logout
           </Button>
-        </Box>
-
+        }
+      />
+      <Container maxWidth="xl" sx={{ padding: "1.5rem 0" }}>
         <Stack spacing={2} direction="row" sx={styles.OperationBox}>
           <Button
             sx={styles.OperationBtn}
             variant="contained"
-            onClick={() => setAddclient(!addclient)}
+            onClick={() => {
+              setAddclient(!addclient);
+              setViewclients(false);
+            }}
           >
             Add New Client
           </Button>
@@ -61,16 +66,20 @@ export default function AdminDashboard() {
             sx={styles.OperationBtn}
             variant="contained"
             onClick={() => {
-              console.log(viewclients);
               setViewclients(!viewclients);
+              setAddclient(false);
             }}
           >
             View All Clients
           </Button>
         </Stack>
 
-        {viewclients && <ClientsView />}
-        {addclient && <AddClient />}
+        <Collapse in={viewclients}>
+          <ClientsView />
+        </Collapse>
+        <Collapse in={addclient}>
+          <AddClient />
+        </Collapse>
       </Container>
     </Box>
   );
@@ -81,7 +90,8 @@ function ClientsView() {
     logoImgContainer: {
       aspectRatio: "1/1",
       padding: "1rem",
-      maxHeight: "12rem",
+      //   maxHeight: "10rem",
+      maxWidth: "8rem",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -92,24 +102,18 @@ function ClientsView() {
       objectFit: "contain",
       objectPosition: "center",
     },
-    clientCarouselContainer: {
-      padding: "4rem 0",
-      width: "100%",
-      height: "100%",
-      background: "#f5f5f5",
-    },
     clientsBox: css`
       padding: 2rem 0;
     `,
   };
   return (
     <Box sx={ClientStyles.clientsBox}>
-      <Typography variant="h4" component="h1" align="center">
+      <Typography variant="h5" component="h1" align="center">
         All Clients
       </Typography>
       <Grid container>
         {clients.map((client, index) => (
-          <Grid item key={index} xs="6" sm="4" md="3">
+          <Grid item key={index} xs="4" sm="3" md="2">
             <Paper
               sx={ClientStyles.logoImgContainer}
               variant="elevation"
@@ -149,7 +153,7 @@ function AddClient() {
         padding: "2rem 0",
       }}
     >
-      <Typography variant="h4" component="h1" align="center">
+      <Typography variant="h5" component="h1" align="center">
         Add Clients
       </Typography>
       <Box sx={{ maxWidth: "400px" }}>
@@ -160,7 +164,7 @@ function AddClient() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             fullWidth
-            margin="normal"
+            margin="dense"
             required
           />
           <TextField
@@ -169,10 +173,15 @@ function AddClient() {
             value={logoLink}
             onChange={(e) => setLogoLink(e.target.value)}
             fullWidth
-            margin="normal"
+            margin="dense"
             required
           />
-          <Button type="submit" variant="contained" color="primary">
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            sx={{ marginTop: ".25rem" }}
+          >
             Add
           </Button>
         </form>
