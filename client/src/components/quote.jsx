@@ -8,8 +8,8 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useState } from "react";
 
 import { css } from "@emotion/react";
-
-// frmaer motion
+import dayjs from "dayjs";
+// framer motion
 import { m } from "framer-motion";
 
 // import background images
@@ -21,7 +21,7 @@ export default function Quote() {
   const [mobile, setMobile] = useState("");
   const [destinationTo, setDestinationTo] = useState("");
   const [destinationFrom, setDestinationFrom] = useState("");
-  const [date, setDate] = useState(new Date().format("DD-MM-YYYY"));
+  const [date, setDate] = useState(dayjs());
   const [type, setType] = useState("");
   const [message, setMessage] = useState("");
 
@@ -187,8 +187,7 @@ export default function Quote() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(date);
-    console.log(name);
+    console.log(date.$d);
   };
 
   return (
@@ -196,14 +195,12 @@ export default function Quote() {
       <Box sx={styles.quoteContainer}>
         <Box sx={styles.quoteBack}></Box>
         <Container maxWidth="lg">
-          <m.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2, type: "spring", bounce: 0.5 }}
-          >
+          <m.div>
             <Box sx={styles.formContainer}>
               <Box sx={styles.heading}>
-                <Typography variant="h3">Get a free quote</Typography>
+                <Typography variant="h3" sx={{ color: "yellow" }}>
+                  Get a free quote
+                </Typography>
                 <Typography variant="body1">
                   We always use best and fastest fleets
                 </Typography>
@@ -285,8 +282,8 @@ export default function Quote() {
                         label="Date"
                         sx={styles.datePickerField}
                         value={date}
-                        onChange={(e) => setDate(e)}
-                        renderInput={(params) => <TextField {...params} />}
+                        onChange={(value) => setDate(value)}
+                        slotProps={{ textField: { variant: "outlined" } }}
                       />
                     </Grid>
 
