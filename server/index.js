@@ -48,6 +48,8 @@ app.post("/contactUs", function (req, res) {
  });
 
  app.post("/quote", function(req, res) {
+
+  console.log(req.body.date.$D);
   let mailOptions = {
     from: `${req.body.email}`,
     to: process.env.EMAIL,
@@ -108,6 +110,8 @@ app.post("/contactUs", function (req, res) {
       });
     }
   });
+
+
  });
 
  const port = 3001;

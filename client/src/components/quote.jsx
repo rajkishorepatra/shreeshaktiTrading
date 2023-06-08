@@ -4,15 +4,13 @@ import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-<<<<<<< HEAD
-import {useState} from 'react';
-=======
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useState } from "react";
->>>>>>> 2fd316f60d437a09bed42fb7411d1c4859e58d2a
 
 import { css } from "@emotion/react";
 import dayjs from "dayjs";
+
+const day = dayjs().format("DD-MM-YYYY");
 // framer motion
 import { m } from "framer-motion";
 
@@ -25,9 +23,10 @@ export default function Quote() {
   const [mobile, setMobile] = useState("");
   const [destinationTo, setDestinationTo] = useState("");
   const [destinationFrom, setDestinationFrom] = useState("");
-  const [date, setDate] = useState(dayjs());
+  const [date, setDate] = useState(day);
   const [type, setType] = useState("");
   const [message, setMessage] = useState("");
+  
 
   const quoteForm = async (e) => {
     e.preventDefault();
@@ -163,6 +162,7 @@ export default function Quote() {
       svg {
         color: #999;
       }
+
       svg: hover {
         color: white;
       }
@@ -210,7 +210,7 @@ export default function Quote() {
                 </Typography>
               </Box>
               <Box>
-                <form onSubmit={(e) => handleClick(e)}>
+                <form>
                   <Grid container spacing={1}>
                     <Grid item xs={12}>
                       <TextField
@@ -285,8 +285,9 @@ export default function Quote() {
                       <DatePicker
                         label="Date"
                         sx={styles.datePickerField}
+                        format="DD/MM/YYYY"
                         value={date}
-                        onChange={(value) => setDate(value)}
+                        onChange={(value) => setDate(value.$D)}
                         slotProps={{ textField: { variant: "outlined" } }}
                       />
                     </Grid>
@@ -307,8 +308,8 @@ export default function Quote() {
                       <Button
                         variant="contained"
                         size="large"
-                        // onClick={quoteForm}
-                        type="submit"
+                        onClick={quoteForm}
+                        // type="submit"
                       >
                         Submit
                       </Button>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 
 const WhatsAppWidget = () => {
-  const [Wdisplay, setDisplay] = useState(false);
 
   useEffect(() => {
     const url =
@@ -14,21 +13,13 @@ const WhatsAppWidget = () => {
     script.src = url;
 
     const widget = document.querySelectorAll("#whatsapp-chat-widget");
-    const sendButton = document.getElementsByClassName("wa-widget-send-button")[0];
-
-
-    // const handleClick = () => {
-    //   widget.style.display = "block";
-    // }
-
-    // sendButton.onClick = () => {
-    //   handleClick();
-    // }
+    // const sendButton = document.getElementsByClassName("wa-widget-send-button")[0];
+    // const whatsappIcon = document.querySelectorAll("wa-widget-icon");
 
     const options = {
       enabled: true,
       chatButtonSetting: {
-        backgroundColor: "#50f0ae",
+        backgroundColor: "#0fc076",
         ctaText: "",
         borderRadius: "50",
         marginLeft: "0",
@@ -50,9 +41,6 @@ const WhatsAppWidget = () => {
         phoneNumber: "9040308668",
         autoShow: false,
       },
-      displaySetting: {
-        display: false
-      },
     };
 
     script.onload = () => {
@@ -61,7 +49,6 @@ const WhatsAppWidget = () => {
         e.style.display = "none";
       })
     };
-
 
 
     document.getElementsByTagName("head")[0].appendChild(script);
