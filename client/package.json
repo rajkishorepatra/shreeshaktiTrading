@@ -13,17 +13,20 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "@material/top-app-bar": "^14.0.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.3",
     "@mui/styled-engine-sc": "^5.12.0",
     "@mui/x-date-pickers": "^6.6.0",
     "dayjs": "^1.11.8",
     "firebase": "^9.21.0",
+    "framer-motion": "^10.12.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.1",
+<<<<<<< HEAD
     "styled-components": "^5.3.10",
+=======
+>>>>>>> 2fd316f60d437a09bed42fb7411d1c4859e58d2a
     "swiper": "^9.3.2"
   },
   "devDependencies": {
