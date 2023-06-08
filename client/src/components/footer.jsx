@@ -37,6 +37,7 @@ export default function PageFooter() {
   const footerStyles = {
     root: css`
       padding: 2rem 0 0 0;
+      background: #EAEAEA;
     `,
     section: {
       marginBottom: "20px",
@@ -45,6 +46,7 @@ export default function PageFooter() {
     subtitle: {
       color: "#757575",
       marginBottom: "20px",
+      fontFamily: "poppins",
     },
     iconButton: {
       marginRight: "10px",
@@ -62,6 +64,9 @@ export default function PageFooter() {
       textAlign: "center",
       backgroundColor: "#F5F5F5",
     },
+    info : css `
+      font-family:'poppins';
+    `,
   };
 
   const [name, setName] = useState("");
@@ -123,7 +128,7 @@ export default function PageFooter() {
                 <Grid item xs={12}>
                   <Typography
                     variant="body1"
-                    sx={{ textTransform: "uppercase" }}
+                    sx={{ textTransform: "uppercase", fontFamily:'bebas beue'}}
                   >
                     ShreeShakti food and beverages trading l.l.c
                   </Typography>
@@ -131,7 +136,7 @@ export default function PageFooter() {
                     Delicious food and drinks for all occasions
                   </Typography>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={footerStyles.info}>
                   <Typography variant="body1">
                     <strong>
                       <AlternateEmailOutlinedIcon />
@@ -164,7 +169,7 @@ export default function PageFooter() {
             <Grid item xs={12} md={6}>
               <Grid container spacing={1} style={footerStyles.section}>
                 <Grid item xs={12}>
-                  <Typography variant="h5">Contact</Typography>
+                  <Typography variant="h5" sx={{fontFamily:"bebas beue"}}>Contact</Typography>
                 </Grid>
                 <Grid item xs={12}>
                   <form>

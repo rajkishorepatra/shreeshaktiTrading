@@ -49,7 +49,7 @@ app.post("/contactUs", function (req, res) {
 
  app.post("/quote", function(req, res) {
 
-  console.log(req.body.date.$D);
+  console.log(req.body.date);
   let mailOptions = {
     from: `${req.body.email}`,
     to: process.env.EMAIL,

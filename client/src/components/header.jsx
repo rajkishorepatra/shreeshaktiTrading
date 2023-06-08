@@ -104,7 +104,7 @@ export default function PageHeader() {
                         }
                       `}
                     >
-                      Hello World
+                      HELLO WORLD
                     </Typography>
                     <Typography
                       variant="h3"
@@ -134,14 +134,6 @@ export default function PageHeader() {
                         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
                       }
                     </Typography>
-                    <Box
-                      sx={css`
-                        display: flex;
-                        justify-content: center;
-                      `}
-                    >
-                      <Button variant="contained">Contact Us</Button>
-                    </Box>
                   </Stack>
                 </Container>
               </Box>
@@ -193,7 +185,7 @@ export default function PageHeader() {
                         }
                       `}
                     >
-                      Hello World
+                      HELLO WORLD
                     </Typography>
                     <Typography
                       variant="h3"
@@ -223,14 +215,6 @@ export default function PageHeader() {
                         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
                       }
                     </Typography>
-                    <Box
-                      sx={css`
-                        display: flex;
-                        justify-content: center;
-                      `}
-                    >
-                      <Button variant="contained">Contact Us</Button>
-                    </Box>
                   </Stack>
                 </Container>
               </Box>
@@ -282,7 +266,7 @@ export default function PageHeader() {
                         }
                       `}
                     >
-                      Hello World
+                      HELLO WORLD
                     </Typography>
                     <Typography
                       variant="h3"
@@ -312,14 +296,6 @@ export default function PageHeader() {
                         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
                       }
                     </Typography>
-                    <Box
-                      sx={css`
-                        display: flex;
-                        justify-content: center;
-                      `}
-                    >
-                      <Button variant="contained">Contact Us</Button>
-                    </Box>
                   </Stack>
                 </Container>
               </Box>

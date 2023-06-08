@@ -43,18 +43,19 @@ export default function Navbar() {
     `,
 
     link: css`
-      color: #000000;
+      color: #094559;
       font-size: 1.2rem;
       text-decoration: none;
       margin: 0 .5rem;
       &:hover {
         text-decoration: underline;
+        color: #9d8f33;
       }
     `,
 
     main: css`
       font-family: "bebas neue", sans-serif;
-      background: #5c9bd6;
+      background: #EAEAEA;
       padding: 0.5rem 0;
       position: fixed;
       width: 100%;
