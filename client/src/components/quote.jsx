@@ -187,7 +187,7 @@ export default function Quote() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(date.$d);
+    console.log(date);
   };
 
   return (
@@ -198,9 +198,7 @@ export default function Quote() {
           <m.div>
             <Box sx={styles.formContainer}>
               <Box sx={styles.heading}>
-                <Typography variant="h3" sx={{ color: "yellow" }}>
-                  Get a free quote
-                </Typography>
+                <Typography variant="h3">Get a free quote</Typography>
                 <Typography variant="body1">
                   We always use best and fastest fleets
                 </Typography>
@@ -224,6 +222,7 @@ export default function Quote() {
                         fullWidth
                         id="email"
                         label="Email"
+                        type="email"
                         sx={styles.formInputField}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}

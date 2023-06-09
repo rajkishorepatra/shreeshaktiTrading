@@ -4,7 +4,6 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyArxYnoN8pacN-aVzCeOrInkhmfyjG5NjQ",
   authDomain: "impact-influencers-demo.firebaseapp.com",

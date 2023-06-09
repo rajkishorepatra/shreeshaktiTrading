@@ -42,7 +42,7 @@ const WhatsAppWidget = () => {
         backgroundColor: '#50f0ae',
         ctaText: 'Contact Us',
         borderRadius: '25',
-        autoShow: true,
+        autoShow: false,
         phoneNumber: '9040308668',
         onclick: handleClick,
       },
