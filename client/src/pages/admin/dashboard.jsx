@@ -14,7 +14,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import { css } from "@emotion/react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { UserAuth } from "../../contexts/authContext";
 import { useState, useEffect } from "react";
@@ -101,10 +101,7 @@ export default function AdminDashboard() {
         </Stack>
 
         <Collapse in={viewclients}>
-          <ClientsView
-            setAddclient={setViewclients}
-            setFeedback={setFeedback}
-          />
+          <ClientsView setFeedback={setFeedback} />
         </Collapse>
         <Collapse in={addclient}>
           <AddClient setAddclient={setAddclient} setFeedback={setFeedback} />
@@ -145,7 +142,7 @@ export default function AdminDashboard() {
   );
 }
 
-function ClientsView({ setViewclients, setFeedback }) {
+function ClientsView({ setFeedback }) {
   const [clients, setClients] = useState([]);
 
   useEffect(() => {
@@ -244,7 +241,7 @@ function ClientsView({ setViewclients, setFeedback }) {
                     let confirmDelete = window.confirm(
                       "Are you sure you want to delete this client?"
                     );
-                    if (confirmDelete){
+                    if (confirmDelete) {
                       deleteClient(client.docId, client.fileName);
                     }
                   }}
