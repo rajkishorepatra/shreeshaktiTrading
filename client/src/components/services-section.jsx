@@ -16,7 +16,7 @@ import { css } from "@emotion/react";
 
 const styles = {
   serviceSection: css`
-    background-color: #f90345;
+    background-color: #094559;
     min-height: 30vh;
     padding: 3rem 0;
   `,
@@ -39,11 +39,11 @@ export default function ServiceSection() {
             gutterBottom
             variant="h3"
             component="div"
-            sx={{ textAlign: "center", color: "white" }}
+            sx={{ textAlign: "center", color: "white" , fontFamily: "bebas neue"}}
           >
             Our Services
           </Typography>
-          <Grid container spacing={2} sx={styles.cardContainer}>
+          <Grid container spacing={3} sx={styles.cardContainer}>
             {services.map((service, index) => (
               <Grid
                 item
@@ -56,7 +56,7 @@ export default function ServiceSection() {
                   justifyContent: "center",
                 }}
               >
-                <ServiceCard service={service} />
+                <ServiceCard service={service} sx={{fontFamily:"poppins"}} />
               </Grid>
             ))}
           </Grid>

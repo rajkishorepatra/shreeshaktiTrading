@@ -15,7 +15,7 @@ import FolderIcon from "@mui/icons-material/Folder";
 
 export default function NumbersSection() {
   return (
-    <Box sx={{ backgroundColor: "black", padding: "2rem 0" }}>
+    <Box sx={{ backgroundColor: "#EAEAEA", padding: "2rem 0" }}>
       <Container
         maxWidth="lg"
         sx={css`
@@ -98,14 +98,15 @@ function NumberCard({ icon, number, title }) {
           component="div"
           color={"red"}
           sx={{
-            fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
+            fontFamily: "bebas neue",
+            fontSize: { xs: "2rem", sm: "2.2rem", md: "2.8rem" },
             paddingRight: "1rem",
             fontWeight: "bold",
           }}
         >
           {number}
         </Typography>
-        <Typography component="div" fontWeight="semibold">
+        <Typography component="div" fontWeight="semibold" fontFamily="poppins">
           {title}
         </Typography>
       </Box>

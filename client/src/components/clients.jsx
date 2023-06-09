@@ -32,7 +32,7 @@ export default function Clients() {
       padding: "4rem 0",
       width: "100%",
       height: "100%",
-      background: "#f5f5f5",
+      background: "white",
     },
   };
 
@@ -40,7 +40,7 @@ export default function Clients() {
     <Box sx={ClientStyles.clientCarouselContainer}>
       <Container maxWidth="lg">
         <Stack spacing={2}>
-          <Typography variant="h3" gutterBottom sx={{ textAlign: "center" }}>
+          <Typography variant="h3" gutterBottom sx={{ textAlign: "center" , fontFamily: "bebas neue"}}>
             Our Clients
           </Typography>
 

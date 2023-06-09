@@ -41,7 +41,7 @@ export default function Heading({ img, title, description }) {
           <Box sx={styles.heading}>
             <Typography
               variant="h4"
-              sx={{ typography: { xs: "h5", md: "h4" } }}
+              sx={{ typography: { xs: "h5", md: "h4" }, fontFamily: "bebas neue" }}
             >
               {title}
             </Typography>
@@ -50,6 +50,7 @@ export default function Heading({ img, title, description }) {
               sx={{
                 typography: { xs: "body2", md: "body1" },
                 textAlign: { xs: "left", md: "right" },
+                fontFamily: "poppins"
               }}
             >
               {description}

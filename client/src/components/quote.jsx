@@ -4,8 +4,8 @@ import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import {useState} from 'react';
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { useState } from "react";
 
 import { css } from "@emotion/react";
 import dayjs from "dayjs";
@@ -183,6 +183,11 @@ export default function Quote() {
         }
       }
     `,
+
+    inputElement: css`
+      font-family: "poppins";
+    `
+    
   };
 
   const handleClick = (e) => {
@@ -198,14 +203,16 @@ export default function Quote() {
           <m.div>
             <Box sx={styles.formContainer}>
               <Box sx={styles.heading}>
-                <Typography variant="h3">Get a free quote</Typography>
-                <Typography variant="body1">
+                <Typography variant="h3" sx={{ color: "yellow" , fontFamily: 'bebas neue'}}>
+                  Get a free quote
+                </Typography>
+                <Typography variant="body1" sx={{fontFamily:"poppins"}}>
                   We always use best and fastest fleets
                 </Typography>
               </Box>
               <Box>
                 <form onSubmit={(e) => handleClick(e)}>
-                  <Grid container spacing={1}>
+                  <Grid container spacing={1} sx={styles.inputElement}>
                     <Grid item xs={12}>
                       <TextField
                         fullWidth
@@ -302,8 +309,8 @@ export default function Quote() {
                       <Button
                         variant="contained"
                         size="large"
-                        // onClick={quoteForm}
-                        type="submit"
+                        onClick={quoteForm}
+                        // type="submit"
                       >
                         Submit
                       </Button>

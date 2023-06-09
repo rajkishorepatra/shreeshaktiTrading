@@ -1,62 +1,61 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from "react";
+
 
 const WhatsAppWidget = () => {
-  useEffect(() => {
-    const url = 'https://dev2-wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?60100';
 
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
+  useEffect(() => {
+    const url =
+      "https://dev2-wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?60100";
+
+    const script = document.createElement("script");
+    script.type = "text/javascript";
     script.async = true;
     script.src = url;
 
-    const handleClick = () => {
-        // Close the WhatsApp widget
-        const widget = document.querySelector('.wa-chat-box');
-        if (widget) {
-          widget.style.display = 'none';
-        }
-  
-        // Add your custom logic here
-  
-        console.log('Brand Setting Clicked');
-      };
+    const widget = document.querySelectorAll("#whatsapp-chat-widget");
+    // const sendButton = document.getElementsByClassName("wa-widget-send-button")[0];
+    // const whatsappIcon = document.querySelectorAll("wa-widget-icon");
 
     const options = {
       enabled: true,
       chatButtonSetting: {
-        backgroundColor: '#50f0ae',
-        ctaText: 'Contact Us',
-        borderRadius: '25',
-        marginLeft: '0',
-        marginRight: '20',
-        marginBottom: '20',
+        backgroundColor: "#0fc076",
+        ctaText: "",
+        borderRadius: "50",
+        marginLeft: "0",
+        marginRight: "15",
+        marginBottom: "15",
         ctaIconWATI: false,
-        position: 'right',
+        position: "right",
       },
       brandSetting: {
-        brandName: 'ShreeShakti Tradings',
-        brandSubTitle: 'undefined',
-        brandImg: 'https://www.wati.io/wp-content/uploads/2023/04/Wati-logo.svg',
-        welcomeText: 'Hi there!\nHow can I help you?',
-        messageText: 'Hello, %0A I have some questions',
-        backgroundColor: '#50f0ae',
-        ctaText: 'Contact Us',
-        borderRadius: '25',
+        brandName: "ShreeShakti Tradings",
+        brandSubTitle: "undefined",
+        brandImg:
+          "https://www.wati.io/wp-content/uploads/2023/04/Wati-logo.svg",
+        welcomeText: "Hi there!\nHow can I help you?",
+        messageText: "Hello, %0A I have some questions",
+        backgroundColor: "#50f0ae",
+        ctaText: "Chat now",
+        borderRadius: "40",
+        phoneNumber: "9040308668",
         autoShow: false,
-        phoneNumber: '9040308668',
-        onclick: handleClick,
       },
     };
 
     script.onload = () => {
       window.CreateWhatsappChatWidget(options);
+      widget.forEach ((e) => {
+        e.style.display = "none";
+      })
     };
 
-    document.getElementsByTagName('head')[0].appendChild(script);
+
+    document.getElementsByTagName("head")[0].appendChild(script);
 
     return () => {
       // Clean up the script tag when the component unmounts
-      document.getElementsByTagName('head')[0].removeChild(script);
+      document.getElementsByTagName("head")[0].removeChild(script);
     };
   }, []);
 

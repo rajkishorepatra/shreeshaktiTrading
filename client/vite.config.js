@@ -5,4 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: "/shreeshaktiTrading",
   plugins: [react()],
+  vite: {
+    server: {
+        fs: {
+            allow: ["/Users/91784/node_modules/swiper/modules"]
+        }
+    }
+},
 })
