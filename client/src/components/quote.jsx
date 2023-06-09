@@ -202,7 +202,7 @@ export default function Quote() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(date.$d);
+    console.log(date);
   };
 
   return (
@@ -243,6 +243,7 @@ export default function Quote() {
                         fullWidth
                         id="email"
                         label="Email"
+                        type="email"
                         sx={styles.formInputField}
                         required
                         value={email}

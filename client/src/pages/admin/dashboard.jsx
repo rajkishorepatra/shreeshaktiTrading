@@ -1,20 +1,32 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
-import { useNavigate } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import { css } from "@emotion/react";
 import Collapse from "@mui/material/Collapse";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import Heading from "../../components/pageHeader";
+// import TextField from "@mui/material/TextField";
+import { css } from "@emotion/react";
+import { useNavigate } from "react-router-dom";
 
 import { UserAuth } from "../../contexts/authContext";
 import { useState } from "react";
 
-// components
-import Heading from "../../components/pageHeader";
-import { Grid, Stack, Typography } from "@mui/material";
-
 import { clients } from "../../local-data/clients";
+
+// create ref to client logos folder on firebase storage
+import { storage } from "../../firebase";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { db } from "../../firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function AdminDashboard() {
   const [viewclients, setViewclients] = useState(false);
@@ -90,7 +102,7 @@ function ClientsView() {
     logoImgContainer: {
       aspectRatio: "1/1",
       padding: "1rem",
-      //   maxHeight: "10rem",
+
       maxWidth: "8rem",
       display: "flex",
       justifyContent: "center",
@@ -106,6 +118,8 @@ function ClientsView() {
       padding: 2rem 0;
     `,
   };
+  // fetch clients from firebase document and also get the logo url from the firebase storage and display all the clients
+  
   return (
     <Box sx={ClientStyles.clientsBox}>
       <Typography variant="h5" component="h1" align="center">
@@ -113,7 +127,7 @@ function ClientsView() {
       </Typography>
       <Grid container>
         {clients.map((client, index) => (
-          <Grid item key={index} xs="4" sm="3" md="2">
+          <Grid item key={index} xs={4} sm={3} md={2}>
             <Paper
               sx={ClientStyles.logoImgContainer}
               variant="elevation"
@@ -135,13 +149,65 @@ function ClientsView() {
 function AddClient() {
   const [name, setName] = useState("");
   const [logoLink, setLogoLink] = useState("");
+  const [logoFile, setLogoFile] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [uploadError, setUploadError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleAddClient = (e) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log("added new logo");
-    clients.push({ name: name, logo: logoLink });
+    console.log(name, logoLink, logoFile);
+    if (logoFile && name.trim() !== "" && logoLink.trim() !== "") {
+      const storageRef = ref(storage, `client-logos/${name}-${logoFile.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, logoFile);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setUploadProgress(progress);
+        },
+        (error) => {
+          setUploadError(error.message);
+        },
+        async () => {
+          // File upload completed successfully
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          console.log("File available at: ", downloadURL);
+          // update database
+          let DocId = Date.now();
+          const clientData = {
+            docId: DocId,
+            fileName: `${name}-${logoFile.name}`.trim(),
+            clientName: name.trim(),
+            downloadURL: downloadURL,
+            Clientlink: logoLink.trim(),
+          };
+          try {
+            await setDoc(
+              doc(db, "ShreeshaktiTradingClients", DocId.toString()),
+              clientData
+            );
+            console.log("Database updated successfully!");
+            // Perform any further actions after updating the database
+          } catch (error) {
+            console.error("Error updating database:", error);
+          }
+        }
+      );
+    }
   };
+
+  const handleFileSelect = (e) => {
+    const file = e.target.files[0];
+    setLogoFile(file);
+  };
+
+  const styles = {
+    nameInput: css``,
+  };
+
 
   return (
     <Box
@@ -157,33 +223,61 @@ function AddClient() {
         Add Clients
       </Typography>
       <Box sx={{ maxWidth: "400px" }}>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          <TextField
-            type="text"
-            label="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            fullWidth
-            margin="dense"
-            required
-          />
-          <TextField
-            type="url"
-            label="Logo Link"
-            value={logoLink}
-            onChange={(e) => setLogoLink(e.target.value)}
-            fullWidth
-            margin="dense"
-            required
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            sx={{ marginTop: ".25rem" }}
-          >
-            Add
-          </Button>
+        <form onSubmit={(e) => handleAddClient(e)}>
+          <Grid container spacing={1}>
+            <Grid item xs={12}>
+              <TextField
+                type="text"
+                label="Client Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                fullWidth
+                margin="none"
+                required
+                sx={styles.nameInput}
+                size="small"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                type="url"
+                label="Client Url"
+                value={logoLink}
+                onChange={(e) => setLogoLink(e.target.value)}
+                fullWidth
+                margin="none"
+                required
+                size="small"
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <TextField
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleFileSelect(e)}
+                fullWidth
+                margin="none"
+                required
+                helperText="file format: jpg, png, jpeg"
+                size="small"
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                sx={{ marginTop: ".25rem" }}
+              >
+                Add
+              </Button>
+
+              {uploadProgress > 0 && <p>Upload Progress: {uploadProgress}%</p>}
+              {uploadError && <p>Error: {uploadError}</p>}
+            </Grid>
+          </Grid>
         </form>
       </Box>
     </Box>
