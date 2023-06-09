@@ -51,7 +51,7 @@ const numbersData = [
   },
   {
     icon: <PersonIcon />,
-    number: 67,
+    number: 270,
     title: "Employees",
   },
   {
@@ -81,6 +81,12 @@ function NumberCard({ icon, number, title }) {
       display: flex;
       align-items: center;
     `,
+
+    titles: css `
+      padding-left: 1rem;
+      font-weight: semibold;
+      font-family: poppins;
+    `
   };
   return (
     <Paper
@@ -106,7 +112,7 @@ function NumberCard({ icon, number, title }) {
         >
           {number}
         </Typography>
-        <Typography component="div" fontWeight="semibold" fontFamily="poppins">
+        <Typography component="div" sx={styles.titles}>
           {title}
         </Typography>
       </Box>

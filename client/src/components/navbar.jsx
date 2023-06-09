@@ -77,6 +77,7 @@ export default function Navbar() {
           >
             <Link component={RLink} to="/shreeshaktiTrading" sx={styles.logo}>
               <img src={ShreeShaktiLogo} alt="Shree Shakti Logo" />
+
             </Link>
             <IconButton
               onClick={() => setOpen(!open)}
@@ -91,9 +92,6 @@ export default function Navbar() {
             <Box sx={styles.links}>
               <Link sx={styles.link} component={RLink} to="/shreeshaktiTrading">
                 Home
-              </Link>
-              <Link sx={styles.link} component={RLink} to="/shreeshaktiTrading">
-                About
               </Link>
               <Link
                 sx={styles.link}

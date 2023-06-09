@@ -75,7 +75,7 @@ export default function PageFooter() {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    console.log({name}, {email}, {message});
+    // console.log({name}, {email}, {message});
     const response = await fetch ("http://localhost:3001/contactUs", {
       method: "POST",
       headers: {
@@ -85,21 +85,15 @@ export default function PageFooter() {
     }).then((res) => res.json())
     .then(async (res) => {
       const resData = await res;
-       console.log(resData);
+      //  console.log(resData);
        if (resData.status === "success") {
-         alert("Message Sent");
+        console.log("Message Sent");
        } else if (resData.status === "fail") {
-         alert("Message failed to send");
+        console.log("Message failed to send");
        }
     })
     .then(() => {{name , email, message}});
   };
-
-  // const submitForm = () => {
-  //   console.log('name ' + name)
-  //   console.log('email ' + email)
-  //   console.log('messege ' + message)
-  // }
 
   return (
     <Box>
@@ -172,7 +166,7 @@ export default function PageFooter() {
                   <Typography variant="h5" sx={{fontFamily:"bebas beue"}}>Contact</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <form>
+                  <form onSubmit={submitForm}>
                     <TextField
                       fullWidth
                       hiddenLabel
@@ -209,7 +203,8 @@ export default function PageFooter() {
                       variant="outlined"
                       color="secondary"
                       sx={footerStyles.formButton}
-                      onClick={submitForm}
+                      // onClick={submitForm}
+                      type="submit"
                     >
                       Send
                     </Button>
