@@ -25,6 +25,7 @@ export default function Heading({ img, title, description }) {
       background-position: center;
       background-repeat: no-repeat;
       color: yellow;
+      font-family: "bebas neue";
     `,
   };
 
