@@ -46,7 +46,7 @@ export default function Navbar() {
       color: #094559;
       font-size: 1.2rem;
       text-decoration: none;
-      margin: 0 .5rem;
+      margin: 0 1rem;
       &:hover {
         text-decoration: underline;
         color: #9d8f33;

@@ -10,7 +10,6 @@ import Shipment from "./pages/shipment";
 import AdminLogin from "./pages/admin/login";
 import AdminLayout from "./pages/admin/admin-layout";
 import AdminDashboard from "./pages/admin/dashboard";
-import WhatsAppChatWidget from "./components/whatsapp";
 
 // auth context provider
 import { AuthContextProvider } from "./contexts/authContext";
@@ -89,7 +88,6 @@ export default function App() {
           </ThemeProvider>
         </LocalizationProvider>
       </AuthContextProvider>
-      {/* <WhatsAppChatWidget /> */}
     </>
   );
 }

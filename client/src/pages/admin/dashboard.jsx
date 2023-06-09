@@ -211,7 +211,7 @@ function ClientsView({ setViewclients, setFeedback }) {
       <Typography variant="h5" component="h1" align="center">
         All Clients
       </Typography>
-      <Grid container>
+      <Grid container spacing={2}>
         {clients.map((client, index) => (
           <Grid item key={index} xs={4} sm={3} md={2}>
             <Paper

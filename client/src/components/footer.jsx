@@ -122,7 +122,7 @@ export default function PageFooter() {
                 <Grid item xs={12}>
                   <Typography
                     variant="body1"
-                    sx={{ textTransform: "uppercase", fontFamily:'bebas beue'}}
+                    sx={{ textTransform: "uppercase", fontFamily:'bebas neue',fontSize:"1.25rem"}}
                   >
                     ShreeShakti food and beverages trading l.l.c
                   </Typography>
@@ -163,7 +163,7 @@ export default function PageFooter() {
             <Grid item xs={12} md={6}>
               <Grid container spacing={1} style={footerStyles.section}>
                 <Grid item xs={12}>
-                  <Typography variant="h5" sx={{fontFamily:"bebas beue"}}>Contact</Typography>
+                  <Typography variant="h5" sx={{fontFamily:"bebas neue"}}>Contact Us</Typography>
                 </Grid>
                 <Grid item xs={12}>
                   <form onSubmit={submitForm}>
