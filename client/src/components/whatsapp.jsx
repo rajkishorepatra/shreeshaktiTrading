@@ -45,15 +45,15 @@ const WhatsAppWidget = () => {
 
     script.onload = () => {
       window.CreateWhatsappChatWidget(options);
-      widget.forEach ((e) => {
-        e.style.display = "none";
-      })
     };
 
 
     document.getElementsByTagName("head")[0].appendChild(script);
 
     return () => {
+      widget.forEach ((e) => {
+        e.style.display = "none";
+      })
       // Clean up the script tag when the component unmounts
       document.getElementsByTagName("head")[0].removeChild(script);
     };

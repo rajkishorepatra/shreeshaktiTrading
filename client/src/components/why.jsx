@@ -26,8 +26,9 @@ export default function WhySection() {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: white;
+      background: #094559;
       font-family: "poppins";
+      color: #eaeaea;
 
       & h6 {
         text-align: center;
@@ -46,7 +47,7 @@ export default function WhySection() {
           variant="h3"
           noWrap
           gutterBottom
-          sx={{ textAlign: "center", fontFamily: "bebas neue"}}
+          sx={{ textAlign: "center", fontFamily: "bebas neue", color: "#F07C00"}}
           color={""}
         >
           Why Choose Us?

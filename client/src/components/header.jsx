@@ -17,7 +17,7 @@ import "swiper/css/effect-fade";
 // images
 import carouselImg1 from "../assets/headerCarousel1.jpg";
 import carouselImg2 from "../assets/headerCarousel2.jpg";
-import carouselImg3 from "../assets/headerCarousel3.jpg";
+import carouselImg3 from "../assets/headerCarousel-3.jpg";
 
 import { useEffect, useRef } from "react";
 import { Stack } from "@mui/material";
@@ -84,7 +84,7 @@ export default function PageHeader() {
                 }}
               >
                 <Container
-                  maxWidth="md"
+                  maxWidth="lg"
                   sx={css`
                     transform: translateY(20%);
                     @media (min-width: 576px) {
@@ -110,7 +110,7 @@ export default function PageHeader() {
                       variant="h3"
                       sx={css`
                         text-transform: uppercase;
-                        color: #f92d28;
+                        color: yellow;
                         text-align: center;
 
                         @media (max-width: 768px) {
@@ -125,6 +125,7 @@ export default function PageHeader() {
                       sx={css`
                         color: white;
                         text-align: center;
+                        font-family: 'poppins';
                         @media (max-width: 768px) {
                           font-size: 0.8rem;
                         }
@@ -191,7 +192,7 @@ export default function PageHeader() {
                       variant="h3"
                       sx={css`
                         text-transform: uppercase;
-                        color: #f92d28;
+                        color: yellow;
                         text-align: center;
 
                         @media (max-width: 768px) {
@@ -206,6 +207,7 @@ export default function PageHeader() {
                       sx={css`
                         color: white;
                         text-align: center;
+                        font-family: 'poppins';
                         @media (max-width: 768px) {
                           font-size: 0.8rem;
                         }
@@ -272,7 +274,7 @@ export default function PageHeader() {
                       variant="h3"
                       sx={css`
                         text-transform: uppercase;
-                        color: #f92d28;
+                        color: yellow;
                         text-align: center;
 
                         @media (max-width: 768px) {
@@ -287,6 +289,7 @@ export default function PageHeader() {
                       sx={css`
                         color: white;
                         text-align: center;
+                        font-family: 'poppins';
                         @media (max-width: 768px) {
                           font-size: 0.8rem;
                         }

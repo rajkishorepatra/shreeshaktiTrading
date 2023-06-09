@@ -40,7 +40,7 @@ export default function Clients() {
     <Box sx={ClientStyles.clientCarouselContainer}>
       <Container maxWidth="lg">
         <Stack spacing={2}>
-          <Typography variant="h3" gutterBottom sx={{ textAlign: "center" , fontFamily: "bebas neue"}}>
+          <Typography variant="h3" gutterBottom sx={{ textAlign: "center" , fontFamily: "bebas neue", color:"#094559"}}>
             Our Clients
           </Typography>
 

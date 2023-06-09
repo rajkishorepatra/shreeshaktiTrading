@@ -27,16 +27,16 @@ export default function Quote() {
 
   const quoteForm = async (e) => {
     e.preventDefault();
-    console.log(
-      { name },
-      { email },
-      { mobile },
-      { destinationTo },
-      { destinationFrom },
-      { date },
-      { type },
-      { message }
-    );
+    // console.log(
+    //   { name },
+    //   { email },
+    //   { mobile },
+    //   { destinationTo },
+    //   { destinationFrom },
+    //   { date },
+    //   { type },
+    //   { message }
+    // );
     const response = await fetch("http://localhost:3001/quote", {
       method: "POST",
       headers: {
@@ -56,11 +56,11 @@ export default function Quote() {
       .then((res) => res.json())
       .then(async (res) => {
         const resData = await res;
-        console.log(resData);
+        // console.log(resData);
         if (resData.status === "success") {
-          alert("Message sent");
+          console.log("Message sent");
         } else if (resData.status === "fail") {
-          alert("Message failed to send");
+          console.log("Message failed to send");
         }
       })
       .then(() => {
@@ -186,6 +186,16 @@ export default function Quote() {
 
     inputElement: css`
       font-family: "poppins";
+    `,
+
+    submitButton: css`
+    background-color:#9a6125; 
+    color:#fff;
+    font-family:poppins;
+
+      &:hover {
+        background-color: #f07c00;
+      }
     `
     
   };
@@ -203,13 +213,16 @@ export default function Quote() {
           <m.div>
             <Box sx={styles.formContainer}>
               <Box sx={styles.heading}>
-                <Typography variant="h3" sx={{ color: "yellow" , fontFamily: 'bebas neue'}}>
+                <Typography variant="h3" sx={{ fontFamily: 'bebas neue', color:"#F07C00"}}>
                   Get a free quote
                 </Typography>
-                <Typography variant="body1" sx={{fontFamily:"poppins"}}>
+                <Typography variant="body1" sx={{fontFamily:"poppins", color:"#EAEAEA"}}>
                   We always use best and fastest fleets
                 </Typography>
-              </Box>
+                <Typography variant="body2" sx={{fontFamily:"poppins", color:"#E62E23", fontSize:'0.7rem'}}>
+                  * mark indicates required fields
+                </Typography>
+                </Box>
               <Box>
                 <form onSubmit={(e) => handleClick(e)}>
                   <Grid container spacing={1} sx={styles.inputElement}>
@@ -219,6 +232,7 @@ export default function Quote() {
                         id="name"
                         label="Full Name"
                         sx={styles.formInputField}
+                        required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                       />
@@ -230,6 +244,7 @@ export default function Quote() {
                         id="email"
                         label="Email"
                         sx={styles.formInputField}
+                        required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
@@ -242,6 +257,7 @@ export default function Quote() {
                         id="mobile"
                         label="Mobile"
                         sx={styles.formInputField}
+                        required
                         value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
                         type="number"
@@ -255,6 +271,7 @@ export default function Quote() {
                         id="destinationTo"
                         label="Destination To"
                         sx={styles.formInputField}
+                        required
                         value={destinationTo}
                         onChange={(e) => setDestinationTo(e.target.value)}
                       />
@@ -266,6 +283,7 @@ export default function Quote() {
                         id="destinationFrom"
                         label="Destination From"
                         sx={styles.formInputField}
+                        required
                         value={destinationFrom}
                         onChange={(e) => setDestinationFrom(e.target.value)}
                       />
@@ -277,6 +295,7 @@ export default function Quote() {
                         id="shipmentType"
                         label="Shipping Type"
                         sx={styles.formInputField}
+                        required
                         value={type}
                         onChange={(e) => setType(e.target.value)}
                       />
@@ -286,6 +305,7 @@ export default function Quote() {
                       <DatePicker
                         label="Date"
                         sx={styles.datePickerField}
+                        required
                         value={date}
                         onChange={(value) => setDate(value)}
                         slotProps={{ textField: { variant: "outlined" } }}
@@ -308,8 +328,8 @@ export default function Quote() {
                       <Button
                         variant="contained"
                         size="large"
-                        onClick={quoteForm}
-                        // type="submit"
+                        type="submit"
+                        sx={styles.submitButton}
                       >
                         Submit
                       </Button>
