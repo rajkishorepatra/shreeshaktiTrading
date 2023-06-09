@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import {useState} from 'react';
+import { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 import { css } from "@emotion/react";
@@ -21,22 +21,25 @@ export default function Quote() {
   const [mobile, setMobile] = useState("");
   const [destinationTo, setDestinationTo] = useState("");
   const [destinationFrom, setDestinationFrom] = useState("");
-  const [date, setDate] = useState(dayjs());
+  const [date, setDate] = useState(null);
   const [type, setType] = useState("");
   const [message, setMessage] = useState("");
 
-  const quoteForm = async (e) => {
+  const handleQuoteForm = async (e) => {
     e.preventDefault();
     console.log(
-      { name },
-      { email },
-      { mobile },
-      { destinationTo },
-      { destinationFrom },
-      { date },
-      { type },
-      { message }
-    );
+      name,
+      email,
+      mobile,
+      destinationTo,
+      destinationFrom,
+      date,
+      type,
+      message
+    ); 
+    let date_str = dayjs(date).format("DD/MM/YYYY");
+    console.log(date_str);
+
     const response = await fetch("http://localhost:3001/quote", {
       method: "POST",
       headers: {
@@ -48,7 +51,7 @@ export default function Quote() {
         mobile,
         destinationTo,
         destinationFrom,
-        date,
+        date_str,
         type,
         message,
       }),
@@ -63,18 +66,10 @@ export default function Quote() {
           alert("Message failed to send");
         }
       })
-      .then(() => {
-        {
-          name,
-            email,
-            mobile,
-            destinationTo,
-            destinationFrom,
-            date,
-            type,
-            message;
-        }
-      });
+      .catch((err) => {
+        console.log(err);
+      }
+    );
   };
 
   const styles = {
@@ -186,13 +181,7 @@ export default function Quote() {
 
     inputElement: css`
       font-family: "poppins";
-    `
-    
-  };
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    console.log(date);
+    `,
   };
 
   return (
@@ -203,15 +192,18 @@ export default function Quote() {
           <m.div>
             <Box sx={styles.formContainer}>
               <Box sx={styles.heading}>
-                <Typography variant="h3" sx={{ color: "yellow" , fontFamily: 'bebas neue'}}>
+                <Typography
+                  variant="h3"
+                  sx={{ color: "yellow", fontFamily: "bebas neue" }}
+                >
                   Get a free quote
                 </Typography>
-                <Typography variant="body1" sx={{fontFamily:"poppins"}}>
+                <Typography variant="body1" sx={{ fontFamily: "poppins" }}>
                   We always use best and fastest fleets
                 </Typography>
               </Box>
               <Box>
-                <form onSubmit={(e) => handleClick(e)}>
+                <form onSubmit={(e) => handleQuoteForm(e)}>
                   <Grid container spacing={1} sx={styles.inputElement}>
                     <Grid item xs={12}>
                       <TextField
@@ -306,12 +298,7 @@ export default function Quote() {
                       />
                     </Grid>
                     <Grid item xs={12}>
-                      <Button
-                        variant="contained"
-                        size="large"
-                        onClick={quoteForm}
-                        // type="submit"
-                      >
+                      <Button variant="contained" size="large" type="submit">
                         Submit
                       </Button>
                     </Grid>

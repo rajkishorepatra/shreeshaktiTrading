@@ -8,29 +8,43 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Heading from "../../components/pageHeader";
-// import TextField from "@mui/material/TextField";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 import { css } from "@emotion/react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { UserAuth } from "../../contexts/authContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-import { clients } from "../../local-data/clients";
+// import { clients } from "../../local-data/clients";
 
 // create ref to client logos folder on firebase storage
 import { storage } from "../../firebase";
 import {
   ref,
-  uploadBytes,
   getDownloadURL,
   uploadBytesResumable,
+  deleteObject,
 } from "firebase/storage";
 import { db } from "../../firebase";
-import { doc, setDoc } from "firebase/firestore";
+import {
+  doc,
+  deleteDoc,
+  setDoc,
+  collection,
+  onSnapshot,
+} from "firebase/firestore";
 
 export default function AdminDashboard() {
   const [viewclients, setViewclients] = useState(false);
   const [addclient, setAddclient] = useState(false);
+  const [feedback, setFeedback] = useState({
+    state: false,
+    message: "",
+  });
 
   const { logOut } = UserAuth();
   const navigate = useNavigate();
@@ -87,24 +101,97 @@ export default function AdminDashboard() {
         </Stack>
 
         <Collapse in={viewclients}>
-          <ClientsView />
+          <ClientsView
+            setAddclient={setViewclients}
+            setFeedback={setFeedback}
+          />
         </Collapse>
         <Collapse in={addclient}>
-          <AddClient />
+          <AddClient setAddclient={setAddclient} setFeedback={setFeedback} />
         </Collapse>
+
+        {/* feedback system */}
+        <Box
+          sx={{
+            maxWidth: { xs: "100%", sm: "320px" },
+            padding: "2rem 1rem",
+            position: "absolute",
+            bottom: "0",
+            left: "0",
+          }}
+        >
+          <Collapse in={feedback.state}>
+            <Alert
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => {
+                    setFeedback({ state: false, message: "" });
+                  }}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+              sx={{ mb: 2 }}
+            >
+              {feedback.message}
+            </Alert>
+          </Collapse>
+        </Box>
       </Container>
     </Box>
   );
 }
 
-function ClientsView() {
+function ClientsView({ setViewclients, setFeedback }) {
+  const [clients, setClients] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, "ShreeShaktiTradingClients"),
+      (snapshot) => {
+        const updatedList = snapshot.docs.map((doc) => doc.data());
+        setClients(updatedList);
+        console.log(updatedList);
+      }
+    );
+    return () => unsubscribe(); // Unsubscribe from the snapshot listener when the component unmounts
+  }, []);
+
+  const deleteClient = async (docId, fileName) => {
+    try {
+      // Delete the file from Firebase Storage
+      const fileRef = ref(storage, `client-logos/${fileName}`); // Replace 'path/to/files/' with the actual path to the file
+      await deleteObject(fileRef);
+
+      // Delete the Firestore document
+      await deleteDoc(doc(db, "ShreeShaktiTradingClients", docId.toString()));
+
+      console.log("Entry deleted successfully.");
+      setFeedback({
+        state: true,
+        message: "Entry deleted successfully.",
+      });
+    } catch (error) {
+      console.error("Error deleting entry:", error);
+      setFeedback({
+        state: true,
+        message: "Error deleting entry.",
+      });
+    }
+  };
+
   const ClientStyles = {
     logoImgContainer: {
       aspectRatio: "1/1",
-      padding: "1rem",
+      padding: ".25rem",
+      position: "relative",
 
-      maxWidth: "8rem",
+      // maxWidth: "8rem",
       display: "flex",
+      flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
       background: "transparent",
@@ -118,8 +205,7 @@ function ClientsView() {
       padding: 2rem 0;
     `,
   };
-  // fetch clients from firebase document and also get the logo url from the firebase storage and display all the clients
-  
+
   return (
     <Box sx={ClientStyles.clientsBox}>
       <Typography variant="h5" component="h1" align="center">
@@ -134,20 +220,61 @@ function ClientsView() {
               elevation={0}
             >
               <img
-                src={client.logo}
+                src={client.downloadURL}
                 style={ClientStyles.logoImg}
-                alt={client.name}
+                alt={client.clientName}
               />
+              <Typography variant="subtitle2" align="center">
+                {client.clientName}
+              </Typography>
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "0.25rem",
+                  right: "0.25rem",
+                  svg: {
+                    color: "red",
+                  },
+                }}
+              >
+                {/* mui delete icon */}
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => {
+                    let confirmDelete = window.confirm(
+                      "Are you sure you want to delete this client?"
+                    );
+                    if (confirmDelete){
+                      deleteClient(client.docId, client.fileName);
+                    }
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Box>
             </Paper>
           </Grid>
         ))}
+        <Grid item xs={12}>
+          {clients.length === 0 && (
+            <Box
+              sx={{
+                padding: "1rem",
+              }}
+            >
+              <Typography variant="subtitle2" align="center">
+                No Clients Added Yet
+              </Typography>
+            </Box>
+          )}
+        </Grid>
       </Grid>
     </Box>
   );
 }
 
-function AddClient() {
-  const [name, setName] = useState("");
+function AddClient({ setAddclient, setFeedback }) {
+  const [clientName, setClientName] = useState("");
   const [logoLink, setLogoLink] = useState("");
   const [logoFile, setLogoFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -155,9 +282,13 @@ function AddClient() {
 
   const handleAddClient = (e) => {
     e.preventDefault();
-    console.log(name, logoLink, logoFile);
-    if (logoFile && name.trim() !== "" && logoLink.trim() !== "") {
-      const storageRef = ref(storage, `client-logos/${name}-${logoFile.name}`);
+    const Uid = Date.now();
+    console.log(clientName, logoLink, logoFile);
+    if (logoFile && clientName.trim() !== "" && logoLink.trim() !== "") {
+      const storageRef = ref(
+        storage,
+        `client-logos/${clientName}-${Uid}-${logoFile.name}`
+      );
       const uploadTask = uploadBytesResumable(storageRef, logoFile);
 
       uploadTask.on(
@@ -176,23 +307,39 @@ function AddClient() {
           const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
           console.log("File available at: ", downloadURL);
           // update database
-          let DocId = Date.now();
+
           const clientData = {
-            docId: DocId,
-            fileName: `${name}-${logoFile.name}`.trim(),
-            clientName: name.trim(),
+            docId: Uid,
+            fileName: `${clientName}-${Uid}-${logoFile.name}`.trim(),
+            clientName: clientName.trim(),
             downloadURL: downloadURL,
-            Clientlink: logoLink.trim(),
+            clientLink: logoLink.trim(),
           };
           try {
             await setDoc(
-              doc(db, "ShreeshaktiTradingClients", DocId.toString()),
+              doc(db, "ShreeShaktiTradingClients", Uid.toString()),
               clientData
             );
             console.log("Database updated successfully!");
-            // Perform any further actions after updating the database
+            // reset the form
+            setClientName("");
+            setLogoLink("");
+            setLogoFile(null);
+            setUploadProgress(0);
+            setUploadError(null);
+            // close the form
+            setAddclient(false);
+            // show feedback
+            setFeedback({
+              state: true,
+              message: "Client added successfully!",
+            });
           } catch (error) {
             console.error("Error updating database:", error);
+            setFeedback({
+              state: true,
+              message: "Error updating database!",
+            });
           }
         }
       );
@@ -207,7 +354,6 @@ function AddClient() {
   const styles = {
     nameInput: css``,
   };
-
 
   return (
     <Box
@@ -229,8 +375,8 @@ function AddClient() {
               <TextField
                 type="text"
                 label="Client Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={clientName}
+                onChange={(e) => setClientName(e.target.value)}
                 fullWidth
                 margin="none"
                 required

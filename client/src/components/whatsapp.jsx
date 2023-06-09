@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-
+import { useEffect } from "react";
 
 const WhatsAppWidget = () => {
-
   useEffect(() => {
     const url =
       "https://dev2-wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?60100";
@@ -45,11 +43,10 @@ const WhatsAppWidget = () => {
 
     script.onload = () => {
       window.CreateWhatsappChatWidget(options);
-      widget.forEach ((e) => {
+      widget.forEach((e) => {
         e.style.display = "none";
-      })
+      });
     };
-
 
     document.getElementsByTagName("head")[0].appendChild(script);
 
