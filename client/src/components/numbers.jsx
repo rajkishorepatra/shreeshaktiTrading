@@ -7,6 +7,9 @@ import Paper from "@mui/material/Paper";
 // css from emotion
 import { css } from "@emotion/react";
 
+import { useInView } from "react-intersection-observer";
+import CountUp from "react-countup";
+
 // icons
 import PeopleIcon from "@mui/icons-material/People";
 import PersonIcon from "@mui/icons-material/Person";
@@ -14,6 +17,11 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import FolderIcon from "@mui/icons-material/Folder";
 
 export default function NumbersSection() {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    // rootMargin: '-100px 0px',
+  });
+
   return (
     <Box sx={{ backgroundColor: "#EAEAEA", padding: "2rem 0" }}>
       <Container
@@ -82,11 +90,11 @@ function NumberCard({ icon, number, title }) {
       align-items: center;
     `,
 
-    titles: css `
-      padding-left: 1rem;
+    titles: css`
+      padding-left: 0.25rem;
       font-weight: semibold;
       font-family: poppins;
-    `
+    `,
   };
   return (
     <Paper
@@ -106,11 +114,11 @@ function NumberCard({ icon, number, title }) {
           sx={{
             fontFamily: "bebas neue",
             fontSize: { xs: "2rem", sm: "2.2rem", md: "2.8rem" },
-            paddingRight: "1rem",
+            paddingRight: ".5rem",
             fontWeight: "bold",
           }}
         >
-          {number}
+          <CountUp start={0} end={number} enableScrollSpy={true} />
         </Typography>
         <Typography component="div" sx={styles.titles}>
           {title}

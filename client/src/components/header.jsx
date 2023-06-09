@@ -2,7 +2,9 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
+
+import { m, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 import { css } from "@emotion/react";
 
@@ -37,14 +39,23 @@ export default function PageHeader() {
       max-height: 90vh;
       overflow: hidden;
     `,
-
+    contentsContainer: css`
+      transform: translateY(120%);
+    `,
+    carouselText: css`
+      color: white;
+      text-align: center;
+      font-family: "poppins";
+      padding: 0 2rem;
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
+      }
+    `,
   };
 
   return (
     <>
-      <Box
-        sx={styles.container}
-      >
+      <Box sx={styles.container}>
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
@@ -71,7 +82,7 @@ export default function PageHeader() {
                 alt={"image one"}
                 style={{
                   width: "100%",
-                  objectFit: "cover",        
+                  objectFit: "cover",
                 }}
               />
               <Box
@@ -80,32 +91,30 @@ export default function PageHeader() {
                   top: "0",
                   width: "100%",
                   height: "100%",
-                  background: "rgba(0,0,0,0.6)",              
+                  background: "rgba(0,0,0,0.6)",
                 }}
               >
-                <Container
-                  maxWidth="lg"
-                  sx={css`
-                    transform: translateY(20%);
-                    @media (min-width: 576px) {
-                      transform: translateY(100%);
-                    }
-                  `}
-                >
+                <Container maxWidth="lg" sx={styles.contentsContainer}>
                   <Stack spacing={1}>
-                    <Typography
-                      variant="h4"
-                      sx={css`
-                        color: white;
-                        text-align: center;
-                        font-size: 2rem;
-                        @media (max-width: 768px) {
-                          font-size: 1.2rem;
-                        }
-                      `}
+                    <m.div
+                      initial="hidden"
+                      whileInView={"visible"}
+                      viewport={{ once: true }}
                     >
-                      HELLO WORLD
-                    </Typography>
+                      <Typography
+                        variant="h4"
+                        sx={css`
+                          color: white;
+                          text-align: center;
+                          font-size: 2rem;
+                          @media (max-width: 768px) {
+                            font-size: 1.2rem;
+                          }
+                        `}
+                      >
+                        WE ARE PROUD
+                      </Typography>
+                    </m.div>
                     <Typography
                       variant="h3"
                       sx={css`
@@ -120,17 +129,7 @@ export default function PageHeader() {
                     >
                       {"To be always on demand"}
                     </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={css`
-                        color: white;
-                        text-align: center;
-                        font-family: 'poppins';
-                        @media (max-width: 768px) {
-                          font-size: 0.8rem;
-                        }
-                      `}
-                    >
+                    <Typography variant="body1" sx={styles.carouselText}>
                       {
                         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
                       }
@@ -165,15 +164,7 @@ export default function PageHeader() {
                   background: "rgba(0,0,0,0.6)",
                 }}
               >
-                <Container
-                  maxWidth="lg"
-                  sx={css`
-                    transform: translateY(20%);
-                    @media (min-width: 576px) {
-                      transform: translateY(100%);
-                    }
-                  `}
-                >
+                <Container maxWidth="lg" sx={styles.contentsContainer}>
                   <Stack spacing={1}>
                     <Typography
                       variant="h4"
@@ -186,7 +177,7 @@ export default function PageHeader() {
                         }
                       `}
                     >
-                      HELLO WORLD
+                      WE ARE ACTIVE
                     </Typography>
                     <Typography
                       variant="h3"
@@ -200,19 +191,9 @@ export default function PageHeader() {
                         }
                       `}
                     >
-                      {"To be always on demand"}
+                      {"To Ship your product on time"}
                     </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={css`
-                        color: white;
-                        text-align: center;
-                        font-family: 'poppins';
-                        @media (max-width: 768px) {
-                          font-size: 0.8rem;
-                        }
-                      `}
-                    >
+                    <Typography variant="body1" sx={styles.carouselText}>
                       {
                         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
                       }
@@ -247,15 +228,7 @@ export default function PageHeader() {
                   background: "rgba(0,0,0,0.6)",
                 }}
               >
-                <Container
-                  maxWidth="lg"
-                  sx={css`
-                    transform: translateY(20%);
-                    @media (min-width: 576px) {
-                      transform: translateY(100%);
-                    }
-                  `}
-                >
+                <Container maxWidth="lg" sx={styles.contentsContainer}>
                   <Stack spacing={1}>
                     <Typography
                       variant="h4"
@@ -268,7 +241,7 @@ export default function PageHeader() {
                         }
                       `}
                     >
-                      HELLO WORLD
+                      WE ARE
                     </Typography>
                     <Typography
                       variant="h3"
@@ -282,19 +255,9 @@ export default function PageHeader() {
                         }
                       `}
                     >
-                      {"To be always on demand"}
+                      {"Always there for you"}
                     </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={css`
-                        color: white;
-                        text-align: center;
-                        font-family: 'poppins';
-                        @media (max-width: 768px) {
-                          font-size: 0.8rem;
-                        }
-                      `}
-                    >
+                    <Typography variant="body1" sx={styles.carouselText}>
                       {
                         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
                       }

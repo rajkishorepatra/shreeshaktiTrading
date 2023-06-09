@@ -139,14 +139,6 @@ export default function Navbar() {
                   <Link
                     sx={styles.link}
                     component={RLink}
-                    to="/shreeshaktiTrading"
-                    onClick={() => setOpen(!open)}
-                  >
-                    About
-                  </Link>
-                  <Link
-                    sx={styles.link}
-                    component={RLink}
                     to="/shreeshaktiTrading/services"
                     onClick={() => setOpen(!open)}
                   >

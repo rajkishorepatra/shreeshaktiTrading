@@ -76,66 +76,68 @@ export default function AdminDashboard() {
           </Button>
         }
       />
-      <Container maxWidth="xl" sx={{ padding: "1.5rem 0" }}>
-        <Stack spacing={2} direction="row" sx={styles.OperationBox}>
-          <Button
-            sx={styles.OperationBtn}
-            variant="contained"
-            onClick={() => {
-              setAddclient(!addclient);
-              setViewclients(false);
-            }}
-          >
-            Add New Client
-          </Button>
-          <Button
-            sx={styles.OperationBtn}
-            variant="contained"
-            onClick={() => {
-              setViewclients(!viewclients);
-              setAddclient(false);
-            }}
-          >
-            View All Clients
-          </Button>
-        </Stack>
-
-        <Collapse in={viewclients}>
-          <ClientsView setFeedback={setFeedback} />
-        </Collapse>
-        <Collapse in={addclient}>
-          <AddClient setAddclient={setAddclient} setFeedback={setFeedback} />
-        </Collapse>
-
-        {/* feedback system */}
-        <Box
-          sx={{
-            maxWidth: { xs: "100%", sm: "320px" },
-            padding: "2rem 1rem",
-            position: "absolute",
-            bottom: "0",
-            left: "0",
-          }}
-        >
-          <Collapse in={feedback.state}>
-            <Alert
-              action={
-                <IconButton
-                  aria-label="close"
-                  color="inherit"
-                  size="small"
-                  onClick={() => {
-                    setFeedback({ state: false, message: "" });
-                  }}
-                >
-                  <CloseIcon fontSize="inherit" />
-                </IconButton>
-              }
-              sx={{ mb: 2 }}
+      <Container maxWidth="xl">
+        <Box sx={{ padding: "2rem 0" }}>
+          <Stack spacing={2} direction="row" sx={styles.OperationBox}>
+            <Button
+              sx={styles.OperationBtn}
+              variant="contained"
+              onClick={() => {
+                setAddclient(!addclient);
+                setViewclients(false);
+              }}
             >
-              {feedback.message}
-            </Alert>
+              Add New Client
+            </Button>
+            <Button
+              sx={styles.OperationBtn}
+              variant="contained"
+              onClick={() => {
+                setViewclients(!viewclients);
+                setAddclient(false);
+              }}
+            >
+              View All Clients
+            </Button>
+          </Stack>
+
+          <Collapse in={viewclients}>
+            <ClientsView setFeedback={setFeedback} />
           </Collapse>
+          <Collapse in={addclient}>
+            <AddClient setAddclient={setAddclient} setFeedback={setFeedback} />
+          </Collapse>
+
+          {/* feedback system */}
+          <Box
+            sx={{
+              maxWidth: { xs: "100%", sm: "320px" },
+              padding: "2rem 1rem",
+              position: "absolute",
+              bottom: "0",
+              left: "0",
+            }}
+          >
+            <Collapse in={feedback.state}>
+              <Alert
+                action={
+                  <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setFeedback({ state: false, message: "" });
+                    }}
+                  >
+                    <CloseIcon fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+              >
+                {feedback.message}
+              </Alert>
+            </Collapse>
+          </Box>
         </Box>
       </Container>
     </Box>
