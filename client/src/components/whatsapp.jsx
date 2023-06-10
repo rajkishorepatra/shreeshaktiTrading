@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const WhatsAppWidget = () => {
   useEffect(() => {
     const url =
-      "https://dev2-wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?60100";
+      "../contexts/whatsappComponent";
 
     const script = document.createElement("script");
     script.type = "text/javascript";
@@ -28,7 +28,7 @@ const WhatsAppWidget = () => {
       },
       brandSetting: {
         brandName: "ShreeShakti Tradings",
-        brandSubTitle: "undefined",
+        brandSubTitle: "online",
         brandImg:
           "https://www.wati.io/wp-content/uploads/2023/04/Wati-logo.svg",
         welcomeText: "Hi there!\nHow can I help you?",
@@ -48,9 +48,9 @@ const WhatsAppWidget = () => {
     document.getElementsByTagName("head")[0].appendChild(script);
 
     return () => {
-      widget.forEach ((e) => {
-        e.style.display = "none";
-      })
+      // widget.forEach ((e) => {
+      //   e.style.display = "none";
+      // })
       // Clean up the script tag when the component unmounts
       document.getElementsByTagName("head")[0].removeChild(script);
     };
