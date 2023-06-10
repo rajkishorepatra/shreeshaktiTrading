@@ -21,6 +21,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
+import logo from "./assets/shreeshakti-logo.svg";
 
 export default function App() {
   const theme = createTheme({
@@ -90,7 +91,7 @@ export default function App() {
           </ThemeProvider>
         </LocalizationProvider>
       </AuthContextProvider>
-      <WhatsAppWidget phoneNumber="7846996759" companyName="Shreeshakti Tradings"/>
+      <WhatsAppWidget phoneNumber="7846996759" companyName="Shreeshakti Tradings" replyTimeText="online" message={"Hello!\nLeave a messege for us"}/>
     </>
   );
 }
