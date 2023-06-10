@@ -10,8 +10,7 @@ import Shipment from "./pages/shipment";
 import AdminLogin from "./pages/admin/login";
 import AdminLayout from "./pages/admin/admin-layout";
 import AdminDashboard from "./pages/admin/dashboard";
-import WhatsAppWidget from "react-whatsapp-widget";
-import "react-whatsapp-widget/dist/index.css";
+
 // auth context provider
 import { AuthContextProvider } from "./contexts/authContext";
 
@@ -89,7 +88,6 @@ export default function App() {
           </ThemeProvider>
         </LocalizationProvider>
       </AuthContextProvider>
-      <WhatsAppWidget phoneNumber="7846996759" companyName="ShreeShakti"  />
     </>
   );
 }
