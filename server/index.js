@@ -90,7 +90,7 @@ app.post("/contactUs", function (req, res) {
     </tr>
     <tr>
     <th>Start date</th>
-    <th>${req.body.date}</th>
+    <th>${req.body.date_str}</th>
     </tr>
     <tr>
     <th>Message</th>

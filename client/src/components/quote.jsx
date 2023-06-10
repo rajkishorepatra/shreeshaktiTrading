@@ -38,7 +38,6 @@ export default function Quote() {
       message
     ); 
     let date_str = dayjs(date).format("DD/MM/YYYY");
-    console.log(date_str);
 
     const response = await fetch("http://localhost:3001/quote", {
       method: "POST",
@@ -193,11 +192,6 @@ export default function Quote() {
       }
     `
     
-  };
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    console.log(date);
   };
 
   return (
