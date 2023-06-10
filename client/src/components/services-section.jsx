@@ -27,6 +27,12 @@ const styles = {
   `,
   card: css`
     max-width: 24rem;
+
+    &:hover {
+      height: 18rem;
+      box-shadow: rgba(241, 240, 240, 0.832) 0px 5px 5px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+      transition: transform 13s ease-in-out;
+    }
   `,
 };
 

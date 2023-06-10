@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 
 import { css } from "@emotion/react";
 import dayjs from "dayjs";
