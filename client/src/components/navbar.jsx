@@ -9,10 +9,11 @@ import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import { Link as RLink } from "react-router-dom";
 import Stack from "@mui/material/Stack";
-import navImage from "../assets/Catalogue-ShreeShakti-1.png";
+
 
 import { useState } from "react";
 import ShreeShaktiLogo from "../assets/shreeshakti-logo.png";
+import { Typography } from "@mui/material";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -55,7 +56,7 @@ export default function Navbar() {
 
     main: css`
       font-family: "bebas neue", sans-serif;
-      background: #EAEAEA;
+      background: #eaeaea;
       padding: 0.5rem 0;
       position: fixed;
       width: 100%;
@@ -76,8 +77,19 @@ export default function Navbar() {
             `}
           >
             <Link component={RLink} to="/shreeshaktiTrading" sx={styles.logo}>
-              <img src={ShreeShaktiLogo} alt="Shree Shakti Logo" />
-
+              <Box sx={css`display: flex; align-items: center; `}>
+                <img src={ShreeShaktiLogo} alt="Shree Shakti Logo" />
+                <Typography
+                  variant="h5"
+                  sx={{
+                    textDecoration:'none',
+                    fontFamily: 'bebas neue', 
+                    paddingLeft: '.5rem', 
+                  }}
+                >
+                  ShreeShaktiTrading
+                </Typography>
+              </Box>
             </Link>
             <IconButton
               onClick={() => setOpen(!open)}
