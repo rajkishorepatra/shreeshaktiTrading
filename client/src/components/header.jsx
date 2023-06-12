@@ -41,6 +41,12 @@ export default function PageHeader() {
     `,
     contentsContainer: css`
       transform: translateY(120%);
+      @media (max-width: 576px) {
+        transform: translateY(60%);
+      }
+      @media (max-width: 400px) {
+        transform: translateY(40%);
+      }
     `,
     carouselText: css`
       color: white;

@@ -9,12 +9,16 @@
   padding: 0;
 }
 
-body{
-  font-family: 'Poppins', sans-serif;
+body {
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
 }
 
 .details Button:hover {
   background-color: #48dbfb;
   background-image: linear-gradient(315deg, #48dbfb 0%, #d3d3d3 74%);
+}
+._1yCVn,
+._2qp0Z {
+  z-index: 99;
 }

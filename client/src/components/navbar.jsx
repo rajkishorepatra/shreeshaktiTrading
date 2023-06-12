@@ -22,6 +22,7 @@ export default function Navbar() {
     logo: css`
       height: 100%;
       display: flex;
+      text-decoration: none;
       img {
         max-width: 3rem;
         object-fit: cover;
@@ -140,7 +141,8 @@ export default function Navbar() {
                 `}
               >
                 <Stack direction="column" spacing={1}>
-                  <Link
+                  <Link></Link>
+                <Link
                     sx={styles.link}
                     component={RLink}
                     to="/shreeshaktiTrading"
