@@ -69,7 +69,7 @@ export default function AdminDashboard() {
             variant="contained"
             onClick={() => {
               logOut();
-              navigate("/shreeshaktiTrading/admin/login");
+              navigate("/admin/login");
             }}
           >
             Logout

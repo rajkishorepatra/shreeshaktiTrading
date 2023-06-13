@@ -52,23 +52,23 @@ export default function App() {
             <BrowserRouter>
               <Routes>
                 <>
-                  <Route path="/shreeshaktiTrading" element={<RootLayout />}>
+                  <Route path="/" element={<RootLayout />}>
                     <Route index element={<HomePage />} />
                     <Route
-                      path="/shreeshaktiTrading/services"
+                      path="/services"
                       element={<MediaCard />}
                     />
                     <Route
-                      path="/shreeshaktiTrading/tracking"
+                      path="/tracking"
                       element={<TrackingPage />}
                     />
                     <Route
-                      path="/shreeshaktiTrading/shipment"
+                      path="/shipment"
                       element={<Shipment />}
                     />
                   </Route>
                   <Route
-                    path="/shreeshaktiTrading/admin"
+                    path="/admin"
                     element={<AdminLayout />}
                   >
                     <Route path="login" element={<AdminLogin />} />
@@ -110,7 +110,7 @@ function RequireAuth({ children }) {
     children
   ) : (
     <Navigate
-      to={"/shreeshaktiTrading/admin/login"}
+      to={"/admin/login"}
       state={{ from: location }}
     />
   );

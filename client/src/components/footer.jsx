@@ -76,7 +76,7 @@ export default function PageFooter() {
   const submitForm = async (e) => {
     e.preventDefault();
     // console.log({name}, {email}, {message});
-    const response = await fetch ("http://localhost:3001/contactUs", {
+    const response = await fetch (`https://shreeshaktiserver.onrender.com/contactUs`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

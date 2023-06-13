@@ -17,23 +17,23 @@ let transporter = nodemailer.createTransport({
     clientSecret: process.env.OAUTH_CLIENT_SECRET,
     refreshToken: process.env.OAUTH_REFRESH_TOKEN,
   },
- });
+});
 
 transporter.verify((err, success) => {
   err
     ? console.log(err)
     : console.log(`=== Server is ready to take messages: ${success} ===`);
- });
+});
 
-app.post("/contactUs", function (req, res) {
+app.post("/contactUs", function(req, res) {
   let mailOptions = {
     from: `${req.body.email}`,
     to: process.env.EMAIL,
     subject: `Messege from ${req.body.name}`,
     text: `${req.body.message}`,
   };
- 
-  transporter.sendMail(mailOptions, function (err, data) {
+
+  transporter.sendMail(mailOptions, function(err, data) {
     if (err) {
       res.json({
         status: "fail",
@@ -45,10 +45,9 @@ app.post("/contactUs", function (req, res) {
       });
     }
   });
- });
+});
 
- app.post("/quote", function(req, res) {
-
+app.post("/quote", function(req, res) {
   console.log(req.body.date);
   let mailOptions = {
     from: `${req.body.email}`,
@@ -96,9 +95,9 @@ app.post("/contactUs", function (req, res) {
     <th>Message</th>
     <th>${req.body.message}</th>
     </tr>
-    </table>`
-  }
-  transporter.sendMail(mailOptions, function (err, data) {
+    </table>`,
+  };
+  transporter.sendMail(mailOptions, function(err, data) {
     if (err) {
       res.json({
         status: "fail",
@@ -110,11 +109,9 @@ app.post("/contactUs", function (req, res) {
       });
     }
   });
+});
 
-
- });
-
- const port = process.env.PORT || 3001;
- app.listen(port, () => {
-  console.log(`Server is running on port : $ {port}`);
- });
+const port = process.env.PORT || 3001;
+app.listen(port, () => {
+  console.log(`Server is running on port : ${port}`);
+});

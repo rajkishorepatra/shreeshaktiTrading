@@ -42,7 +42,7 @@ export default function Quote() {
     ); 
     let date_str = dayjs(date).format("DD/MM/YYYY");
 
-    const response = await fetch(`${BASE_URL}/quote`, {
+    const response = await fetch(`https://shreeshaktiserver.onrender.com/quote`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

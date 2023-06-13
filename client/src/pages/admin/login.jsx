@@ -30,7 +30,7 @@ export default function AdminLogin() {
     console.log("Password:", password);
     try {
       await logIn(email, password);
-      navigate("/shreeshaktiTrading/admin/dashboard");
+      navigate("/admin/dashboard");
     } catch (err) {
       let errmsg = err.code.replace("auth/", "").replaceAll("-", " ");
       console.log(errmsg);

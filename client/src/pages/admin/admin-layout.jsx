@@ -8,9 +8,9 @@ export default function AdminLayout() {
   const navigate = useNavigate();
   useEffect(() => {
     if (!currentUser) {
-      navigate("/shreeshaktiTrading/admin/login");
+      navigate("/admin/login");
     } else {
-      navigate("/shreeshaktiTrading/admin/dashboard");
+      navigate("/admin/dashboard");
     }
   }, []);
   return <Outlet />;
