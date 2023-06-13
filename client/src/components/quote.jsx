@@ -16,6 +16,8 @@ import { m } from "framer-motion";
 // import background images
 import quoteBackground from "../assets/quote-parallax.jpg";
 
+const BASE_URL = import.meta.env.BASE_URL;
+
 export default function Quote() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -40,7 +42,7 @@ export default function Quote() {
     ); 
     let date_str = dayjs(date).format("DD/MM/YYYY");
 
-    const response = await fetch("http://localhost:3001/quote", {
+    const response = await fetch(`${BASE_URL}/quote`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
