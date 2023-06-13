@@ -10,8 +10,6 @@ import Shipment from "./pages/shipment";
 import AdminLogin from "./pages/admin/login";
 import AdminLayout from "./pages/admin/admin-layout";
 import AdminDashboard from "./pages/admin/dashboard";
-import { WhatsAppWidget } from "react-whatsapp-widget";
-import "react-whatsapp-widget/dist/index.css";
 
 // auth context provider
 import { AuthContextProvider } from "./contexts/authContext";
@@ -43,12 +41,6 @@ export default function App() {
       <AuthContextProvider>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <ThemeProvider theme={theme}>
-            <WhatsAppWidget
-              phoneNumber="7846996759"
-              companyName="Shreeshakti Tradings"
-              replyTimeText="online"
-              message={"Hello!\nLeave a messege for us"}
-            />
             <BrowserRouter>
               <Routes>
                 <>
