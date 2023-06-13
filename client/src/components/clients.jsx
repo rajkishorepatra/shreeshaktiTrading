@@ -12,7 +12,6 @@ import { useEffect, useState } from "react";
 import { onSnapshot, collection } from "firebase/firestore";
 import { db } from "../firebase";
 
-
 export default function Clients() {
   const [clientList, setClientList] = useState([]); // <-- [1 - state]
   useEffect(() => {
@@ -72,6 +71,8 @@ export default function Clients() {
                 delay: 2500,
                 disableOnInteraction: false,
               }}
+              centeredSlides={true}
+              loop={true}
               rewind={true}
               breakpoints={{
                 0: {

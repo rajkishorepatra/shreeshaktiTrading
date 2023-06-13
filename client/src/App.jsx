@@ -43,12 +43,6 @@ export default function App() {
       <AuthContextProvider>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <ThemeProvider theme={theme}>
-            <WhatsAppWidget
-              phoneNumber="7846996759"
-              companyName="Shreeshakti Tradings"
-              replyTimeText="online"
-              message={"Hello!\nLeave a messege for us"}
-            />
             <BrowserRouter>
               <Routes>
                 <>

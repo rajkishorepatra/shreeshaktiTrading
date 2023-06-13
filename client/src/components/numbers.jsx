@@ -7,8 +7,7 @@ import Paper from "@mui/material/Paper";
 // css from emotion
 import { css } from "@emotion/react";
 
-import { useInView } from "react-intersection-observer";
-import CountUp from "react-countup";
+import CountUp  from "react-countup";
 
 // icons
 import PeopleIcon from "@mui/icons-material/People";
@@ -17,11 +16,6 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import FolderIcon from "@mui/icons-material/Folder";
 
 export default function NumbersSection() {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    // rootMargin: '-100px 0px',
-  });
-
   return (
     <Box sx={{ backgroundColor: "#EAEAEA", padding: "2rem 0" }}>
       <Container
@@ -107,19 +101,30 @@ function NumberCard({ icon, number, title }) {
       <Box sx={styles.iconBox}>{icon}</Box>
 
       <Box sx={styles.detailsBox}>
-        <Typography
-          variant="h4"
-          component="div"
-          color={"red"}
-          sx={{
-            fontFamily: "bebas neue",
-            fontSize: { xs: "2rem", sm: "2.2rem", md: "2.8rem" },
-            paddingRight: ".5rem",
-            fontWeight: "bold",
-          }}
+        <CountUp
+          start={0}
+          end={number}
+          enableScrollSpy={true}
+          scrollSpyOnce={true}
+          // scrollSpyDelay={2000}
         >
-          <CountUp start={0} end={number} enableScrollSpy={true} />
-        </Typography>
+          {({ countUpRef }) => (
+            <Typography
+              variant="h4"
+              component="div"
+              color={"red"}
+              sx={{
+                fontFamily: "bebas neue",
+                fontSize: { xs: "2rem", sm: "2.2rem", md: "2.8rem" },
+                paddingRight: ".5rem",
+                fontWeight: "bold",
+              }}
+            >
+              <span ref={countUpRef} />
+            </Typography>
+          )}
+        </CountUp>
+
         <Typography component="div" sx={styles.titles}>
           {title}
         </Typography>
