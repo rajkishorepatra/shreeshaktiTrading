@@ -16,7 +16,7 @@ import { css } from "@emotion/react";
 
 const styles = {
   serviceSection: css`
-    background-color: #f90345;
+    background-color: #094559;
     min-height: 30vh;
     padding: 3rem 0;
   `,
@@ -27,6 +27,12 @@ const styles = {
   `,
   card: css`
     max-width: 24rem;
+
+    &:hover {
+      height: 18rem;
+      box-shadow: rgba(241, 240, 240, 0.832) 0px 5px 5px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+      transition: transform 13s ease-in-out;
+    }
   `,
 };
 
@@ -39,11 +45,11 @@ export default function ServiceSection() {
             gutterBottom
             variant="h3"
             component="div"
-            sx={{ textAlign: "center", color: "white" }}
+            sx={{ textAlign: "center", color: "white" , fontFamily: "bebas neue"}}
           >
             Our Services
           </Typography>
-          <Grid container spacing={2} sx={styles.cardContainer}>
+          <Grid container spacing={3} sx={styles.cardContainer}>
             {services.map((service, index) => (
               <Grid
                 item
@@ -56,7 +62,7 @@ export default function ServiceSection() {
                   justifyContent: "center",
                 }}
               >
-                <ServiceCard service={service} />
+                <ServiceCard service={service} sx={{fontFamily:"poppins"}} />
               </Grid>
             ))}
           </Grid>

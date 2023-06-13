@@ -2,7 +2,9 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
+
+import { m, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 import { css } from "@emotion/react";
 
@@ -17,7 +19,7 @@ import "swiper/css/effect-fade";
 // images
 import carouselImg1 from "../assets/headerCarousel1.jpg";
 import carouselImg2 from "../assets/headerCarousel2.jpg";
-import carouselImg3 from "../assets/headerCarousel3.jpg";
+import carouselImg3 from "../assets/headerCarousel-3.jpg";
 
 import { useEffect, useRef } from "react";
 import { Stack } from "@mui/material";
@@ -37,14 +39,29 @@ export default function PageHeader() {
       max-height: 90vh;
       overflow: hidden;
     `,
-
+    contentsContainer: css`
+      transform: translateY(120%);
+      @media (max-width: 576px) {
+        transform: translateY(60%);
+      }
+      @media (max-width: 400px) {
+        transform: translateY(40%);
+      }
+    `,
+    carouselText: css`
+      color: white;
+      text-align: center;
+      font-family: "poppins";
+      padding: 0 2rem;
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
+      }
+    `,
   };
 
   return (
     <>
-      <Box
-        sx={styles.container}
-      >
+      <Box sx={styles.container}>
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
@@ -71,7 +88,7 @@ export default function PageHeader() {
                 alt={"image one"}
                 style={{
                   width: "100%",
-                  objectFit: "cover",        
+                  objectFit: "cover",
                 }}
               />
               <Box
@@ -80,37 +97,35 @@ export default function PageHeader() {
                   top: "0",
                   width: "100%",
                   height: "100%",
-                  background: "rgba(0,0,0,0.6)",              
+                  background: "rgba(0,0,0,0.6)",
                 }}
               >
-                <Container
-                  maxWidth="md"
-                  sx={css`
-                    transform: translateY(20%);
-                    @media (min-width: 576px) {
-                      transform: translateY(100%);
-                    }
-                  `}
-                >
+                <Container maxWidth="lg" sx={styles.contentsContainer}>
                   <Stack spacing={1}>
-                    <Typography
-                      variant="h4"
-                      sx={css`
-                        color: white;
-                        text-align: center;
-                        font-size: 2rem;
-                        @media (max-width: 768px) {
-                          font-size: 1.2rem;
-                        }
-                      `}
+                    <m.div
+                      initial="hidden"
+                      whileInView={"visible"}
+                      viewport={{ once: true }}
                     >
-                      Hello World
-                    </Typography>
+                      <Typography
+                        variant="h4"
+                        sx={css`
+                          color: white;
+                          text-align: center;
+                          font-size: 2rem;
+                          @media (max-width: 768px) {
+                            font-size: 1.2rem;
+                          }
+                        `}
+                      >
+                        WE ARE PROUD
+                      </Typography>
+                    </m.div>
                     <Typography
                       variant="h3"
                       sx={css`
                         text-transform: uppercase;
-                        color: #f92d28;
+                        color: yellow;
                         text-align: center;
 
                         @media (max-width: 768px) {
@@ -120,28 +135,11 @@ export default function PageHeader() {
                     >
                       {"To be always on demand"}
                     </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={css`
-                        color: white;
-                        text-align: center;
-                        @media (max-width: 768px) {
-                          font-size: 0.8rem;
-                        }
-                      `}
-                    >
+                    <Typography variant="body1" sx={styles.carouselText}>
                       {
                         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
                       }
                     </Typography>
-                    <Box
-                      sx={css`
-                        display: flex;
-                        justify-content: center;
-                      `}
-                    >
-                      <Button variant="contained">Contact Us</Button>
-                    </Box>
                   </Stack>
                 </Container>
               </Box>
@@ -172,15 +170,7 @@ export default function PageHeader() {
                   background: "rgba(0,0,0,0.6)",
                 }}
               >
-                <Container
-                  maxWidth="lg"
-                  sx={css`
-                    transform: translateY(20%);
-                    @media (min-width: 576px) {
-                      transform: translateY(100%);
-                    }
-                  `}
-                >
+                <Container maxWidth="lg" sx={styles.contentsContainer}>
                   <Stack spacing={1}>
                     <Typography
                       variant="h4"
@@ -193,13 +183,13 @@ export default function PageHeader() {
                         }
                       `}
                     >
-                      Hello World
+                      WE ARE ACTIVE
                     </Typography>
                     <Typography
                       variant="h3"
                       sx={css`
                         text-transform: uppercase;
-                        color: #f92d28;
+                        color: yellow;
                         text-align: center;
 
                         @media (max-width: 768px) {
@@ -207,30 +197,13 @@ export default function PageHeader() {
                         }
                       `}
                     >
-                      {"To be always on demand"}
+                      {"To Ship your product on time"}
                     </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={css`
-                        color: white;
-                        text-align: center;
-                        @media (max-width: 768px) {
-                          font-size: 0.8rem;
-                        }
-                      `}
-                    >
+                    <Typography variant="body1" sx={styles.carouselText}>
                       {
                         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
                       }
                     </Typography>
-                    <Box
-                      sx={css`
-                        display: flex;
-                        justify-content: center;
-                      `}
-                    >
-                      <Button variant="contained">Contact Us</Button>
-                    </Box>
                   </Stack>
                 </Container>
               </Box>
@@ -261,15 +234,7 @@ export default function PageHeader() {
                   background: "rgba(0,0,0,0.6)",
                 }}
               >
-                <Container
-                  maxWidth="lg"
-                  sx={css`
-                    transform: translateY(20%);
-                    @media (min-width: 576px) {
-                      transform: translateY(100%);
-                    }
-                  `}
-                >
+                <Container maxWidth="lg" sx={styles.contentsContainer}>
                   <Stack spacing={1}>
                     <Typography
                       variant="h4"
@@ -282,13 +247,13 @@ export default function PageHeader() {
                         }
                       `}
                     >
-                      Hello World
+                      WE ARE
                     </Typography>
                     <Typography
                       variant="h3"
                       sx={css`
                         text-transform: uppercase;
-                        color: #f92d28;
+                        color: yellow;
                         text-align: center;
 
                         @media (max-width: 768px) {
@@ -296,30 +261,13 @@ export default function PageHeader() {
                         }
                       `}
                     >
-                      {"To be always on demand"}
+                      {"Always there for you"}
                     </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={css`
-                        color: white;
-                        text-align: center;
-                        @media (max-width: 768px) {
-                          font-size: 0.8rem;
-                        }
-                      `}
-                    >
+                    <Typography variant="body1" sx={styles.carouselText}>
                       {
                         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur autem quia harum rem odio nostrum quisquam quod natus dignissimos? Consequuntur?"
                       }
                     </Typography>
-                    <Box
-                      sx={css`
-                        display: flex;
-                        justify-content: center;
-                      `}
-                    >
-                      <Button variant="contained">Contact Us</Button>
-                    </Box>
                   </Stack>
                 </Container>
               </Box>

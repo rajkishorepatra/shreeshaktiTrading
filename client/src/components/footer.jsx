@@ -37,6 +37,7 @@ export default function PageFooter() {
   const footerStyles = {
     root: css`
       padding: 2rem 0 0 0;
+      background: #EAEAEA;
     `,
     section: {
       marginBottom: "20px",
@@ -45,6 +46,7 @@ export default function PageFooter() {
     subtitle: {
       color: "#757575",
       marginBottom: "20px",
+      fontFamily: "poppins",
     },
     iconButton: {
       marginRight: "10px",
@@ -62,6 +64,9 @@ export default function PageFooter() {
       textAlign: "center",
       backgroundColor: "#F5F5F5",
     },
+    info : css `
+      font-family:'poppins';
+    `,
   };
 
   const [name, setName] = useState("");
@@ -70,7 +75,7 @@ export default function PageFooter() {
 
   const submitForm = async (e) => {
     e.preventDefault();
-    console.log({name}, {email}, {message});
+    // console.log({name}, {email}, {message});
     const response = await fetch ("http://localhost:3001/contactUs", {
       method: "POST",
       headers: {
@@ -80,21 +85,15 @@ export default function PageFooter() {
     }).then((res) => res.json())
     .then(async (res) => {
       const resData = await res;
-       console.log(resData);
+      //  console.log(resData);
        if (resData.status === "success") {
-         alert("Message Sent");
+        console.log("Message Sent");
        } else if (resData.status === "fail") {
-         alert("Message failed to send");
+        console.log("Message failed to send");
        }
     })
     .then(() => {{name , email, message}});
   };
-
-  // const submitForm = () => {
-  //   console.log('name ' + name)
-  //   console.log('email ' + email)
-  //   console.log('messege ' + message)
-  // }
 
   return (
     <Box>
@@ -123,7 +122,7 @@ export default function PageFooter() {
                 <Grid item xs={12}>
                   <Typography
                     variant="body1"
-                    sx={{ textTransform: "uppercase" }}
+                    sx={{ textTransform: "uppercase", fontFamily:'bebas neue',fontSize:"1.25rem"}}
                   >
                     ShreeShakti food and beverages trading l.l.c
                   </Typography>
@@ -131,7 +130,7 @@ export default function PageFooter() {
                     Delicious food and drinks for all occasions
                   </Typography>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={footerStyles.info}>
                   <Typography variant="body1">
                     <strong>
                       <AlternateEmailOutlinedIcon />
@@ -164,10 +163,10 @@ export default function PageFooter() {
             <Grid item xs={12} md={6}>
               <Grid container spacing={1} style={footerStyles.section}>
                 <Grid item xs={12}>
-                  <Typography variant="h5">Contact</Typography>
+                  <Typography variant="h5" sx={{fontFamily:"bebas neue"}}>Contact Us</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                  <form>
+                  <form onSubmit={submitForm}>
                     <TextField
                       fullWidth
                       hiddenLabel
@@ -204,7 +203,8 @@ export default function PageFooter() {
                       variant="outlined"
                       color="secondary"
                       sx={footerStyles.formButton}
-                      onClick={submitForm}
+                      // onClick={submitForm}
+                      type="submit"
                     >
                       Send
                     </Button>

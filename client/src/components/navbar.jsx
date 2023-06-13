@@ -9,10 +9,11 @@ import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import { Link as RLink } from "react-router-dom";
 import Stack from "@mui/material/Stack";
-import navImage from "../assets/Catalogue-ShreeShakti-1.png";
+
 
 import { useState } from "react";
 import ShreeShaktiLogo from "../assets/shreeshakti-logo.png";
+import { Typography } from "@mui/material";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -21,6 +22,7 @@ export default function Navbar() {
     logo: css`
       height: 100%;
       display: flex;
+      text-decoration: none;
       img {
         max-width: 3rem;
         object-fit: cover;
@@ -43,18 +45,19 @@ export default function Navbar() {
     `,
 
     link: css`
-      color: #000000;
+      color: #094559;
       font-size: 1.2rem;
       text-decoration: none;
-      margin: 0 .5rem;
+      margin: 0 1rem;
       &:hover {
         text-decoration: underline;
+        color: #9d8f33;
       }
     `,
 
     main: css`
       font-family: "bebas neue", sans-serif;
-      background: #5c9bd6;
+      background: #eaeaea;
       padding: 0.5rem 0;
       position: fixed;
       width: 100%;
@@ -75,7 +78,19 @@ export default function Navbar() {
             `}
           >
             <Link component={RLink} to="/shreeshaktiTrading" sx={styles.logo}>
-              <img src={ShreeShaktiLogo} alt="Shree Shakti Logo" />
+              <Box sx={css`display: flex; align-items: center; `}>
+                <img src={ShreeShaktiLogo} alt="Shree Shakti Logo" />
+                <Typography
+                  variant="h5"
+                  sx={{
+                    textDecoration:'none',
+                    fontFamily: 'bebas neue', 
+                    paddingLeft: '.5rem', 
+                  }}
+                >
+                  ShreeShaktiTrading
+                </Typography>
+              </Box>
             </Link>
             <IconButton
               onClick={() => setOpen(!open)}
@@ -90,9 +105,6 @@ export default function Navbar() {
             <Box sx={styles.links}>
               <Link sx={styles.link} component={RLink} to="/shreeshaktiTrading">
                 Home
-              </Link>
-              <Link sx={styles.link} component={RLink} to="/shreeshaktiTrading">
-                About
               </Link>
               <Link
                 sx={styles.link}
@@ -129,21 +141,14 @@ export default function Navbar() {
                 `}
               >
                 <Stack direction="column" spacing={1}>
-                  <Link
+                  <Link></Link>
+                <Link
                     sx={styles.link}
                     component={RLink}
                     to="/shreeshaktiTrading"
                     onClick={() => setOpen(!open)}
                   >
                     Home
-                  </Link>
-                  <Link
-                    sx={styles.link}
-                    component={RLink}
-                    to="/shreeshaktiTrading"
-                    onClick={() => setOpen(!open)}
-                  >
-                    About
                   </Link>
                   <Link
                     sx={styles.link}

@@ -8,11 +8,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import "swiper/css";
 
-// local data
-import { clients } from "../local-data/clients";
+import { useEffect, useState } from "react";
+import { onSnapshot, collection } from "firebase/firestore";
+import { db } from "../firebase";
 
 
 export default function Clients() {
+  const [clientList, setClientList] = useState([]); // <-- [1 - state]
+  useEffect(() => {
+    const unsubscribe = onSnapshot(
+      collection(db, "ShreeShaktiTradingClients"),
+      (snapshot) => {
+        const updatedList = snapshot.docs.map((doc) => doc.data());
+        setClientList(updatedList);
+      }
+    );
+    return () => unsubscribe(); // Unsubscribe from the snapshot listener when the component unmounts
+  }, []);
+
   const ClientStyles = {
     logoImgContainer: {
       aspectRatio: "1/1",
@@ -32,7 +45,7 @@ export default function Clients() {
       padding: "4rem 0",
       width: "100%",
       height: "100%",
-      background: "#f5f5f5",
+      background: "white",
     },
   };
 
@@ -40,7 +53,15 @@ export default function Clients() {
     <Box sx={ClientStyles.clientCarouselContainer}>
       <Container maxWidth="lg">
         <Stack spacing={2}>
-          <Typography variant="h3" gutterBottom sx={{ textAlign: "center" }}>
+          <Typography
+            variant="h3"
+            gutterBottom
+            sx={{
+              textAlign: "center",
+              fontFamily: "bebas neue",
+              color: "#094559",
+            }}
+          >
             Our Clients
           </Typography>
 
@@ -76,7 +97,7 @@ export default function Clients() {
               }}
               modules={[Autoplay]}
             >
-              {clients.map((image, index) => (
+              {clientList.map((client, index) => (
                 <SwiperSlide key={index}>
                   <Paper
                     sx={ClientStyles.logoImgContainer}
@@ -84,9 +105,9 @@ export default function Clients() {
                     elevation={0}
                   >
                     <img
-                      src={image.logo}
+                      src={client.downloadURL}
                       style={ClientStyles.logoImg}
-                      alt={image.name}
+                      alt={clientList.clientName}
                     />
                   </Paper>
                 </SwiperSlide>

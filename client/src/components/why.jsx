@@ -13,19 +13,22 @@ import { motion } from "framer-motion";
 export default function WhySection() {
   const styles = {
     whySection: css`
-      background-color: #f5f5f5;
+      background-color: #EAEAEA;
       min-height: 30vh;
     `,
     card: css`
       padding: 1rem;
       border: 1px solid #eaeaea;
-      border-radius: 5px;
+      border-radius: 10px;
       margin-bottom: 1rem;
       min-height: 15rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      background: #094559;
+      font-family: "poppins";
+      color: #eaeaea;
 
       & h6 {
         text-align: center;
@@ -44,7 +47,7 @@ export default function WhySection() {
           variant="h3"
           noWrap
           gutterBottom
-          sx={{ textAlign: "center" }}
+          sx={{ textAlign: "center", fontFamily: "bebas neue", color: "#F07C00"}}
           color={""}
         >
           Why Choose Us?

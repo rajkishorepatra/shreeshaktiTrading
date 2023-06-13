@@ -55,16 +55,20 @@ export default function TrackingPage() {
     <Box sx={{ background: "#f5f5f5", paddingBottom: "3rem" }}>
       <Heading
         img={Startimage}
-        title="Tracking"
+        title="TRACKING"
         description={"We are here to help you track your shipment easily."}
       />
 
       <Container maxWidth="xl">
         <Box sx={styles.wordStyle}>
-          <Typography variant="h4" color={"primary"}>
+          <Typography
+            variant="h4"
+            color={"primary"}
+            sx={{ fontFamily: "bebas neue" }}
+          >
             Track a Shipment
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="body1" sx={{ fontFamily: "poppins" }}>
             Track your LTL, truckload, or intermodal shipment by entering your{" "}
             <b>Track number</b> below to get instant freight tracking
             information.

@@ -2,8 +2,6 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 
-import Link from "@mui/material/Link";
-import { Link as RLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { UserAuth } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
