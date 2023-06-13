@@ -7,7 +7,7 @@ import Paper from "@mui/material/Paper";
 // css from emotion
 import { css } from "@emotion/react";
 
-import CountUp  from "react-countup";
+import CountUp from "react-countup";
 
 // icons
 import PeopleIcon from "@mui/icons-material/People";
@@ -15,28 +15,52 @@ import PersonIcon from "@mui/icons-material/Person";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import FolderIcon from "@mui/icons-material/Folder";
 
+import { useAnimation, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+
 export default function NumbersSection() {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const numbersVariants = {
+    visible: { opacity: 1, scale: 1, transition: { duration: 1 } },
+    hidden: { opacity: 0, scale: 0.5 },
+  };
   return (
-    <Box sx={{ backgroundColor: "#EAEAEA", padding: "2rem 0" }}>
-      <Container
-        maxWidth="lg"
-        sx={css`
-          padding: 2rem 0.5rem;
-        `}
+    <div style={{ backgroundColor: "#EAEAEA", padding: "2rem 0" }}>
+      <motion.div
+        ref={ref}
+        animate={controls}
+        initial="hidden"
+        variants={numbersVariants}
       >
-        <Grid container spacing={{ xs: 5, sm: 6, md: 2 }}>
-          {numbersData.map((item, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-              <NumberCard
-                icon={item.icon}
-                number={item.number}
-                title={item.title}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </Box>
+        <Container
+          maxWidth="lg"
+          sx={css`
+            padding: 2rem 0.5rem;
+          `}
+        >
+          <Grid container spacing={{ xs: 5, sm: 6, md: 2 }}>
+            {numbersData.map((item, index) => (
+              <Grid item xs={12} sm={6} md={3} key={index}>
+                <NumberCard
+                  icon={item.icon}
+                  number={item.number}
+                  title={item.title}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </motion.div>
+    </div>
   );
 }
 
