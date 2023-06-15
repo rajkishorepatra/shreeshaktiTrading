@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import { Link as RLink } from "react-router-dom";
 import Stack from "@mui/material/Stack";
-
+import Collapse from "@mui/material/Collapse";
 import { useState } from "react";
 import ShreeShaktiLogo from "../assets/shreeshakti-logo.png";
 import { Typography } from "@mui/material";
@@ -125,54 +125,52 @@ export default function Navbar() {
             </Box>
           </Box>
 
-          {open && (
-            <m.div>
-              <Container
-                maxWidth="xl"
-                sx={css`
-                  @media (min-width: 768px) {
-                    display: none;
-                  }
-                `}
-              >
-                <Stack direction="column" spacing={1}>
-                  <Link></Link>
-                  <Link
-                    sx={styles.link}
-                    component={RLink}
-                    to="/"
-                    onClick={() => setOpen(!open)}
-                  >
-                    Home
-                  </Link>
-                  <Link
-                    sx={styles.link}
-                    component={RLink}
-                    to="/services"
-                    onClick={() => setOpen(!open)}
-                  >
-                    Services
-                  </Link>
-                  <Link
-                    sx={styles.link}
-                    component={RLink}
-                    to="/tracking"
-                    onClick={() => setOpen(!open)}
-                  >
-                    Tracking
-                  </Link>
-                  <Link
-                    sx={styles.link}
-                    component={RLink}
-                    to="/shipment"
-                    onClick={() => setOpen(!open)}
-                  >
-                    Shipment
-                  </Link>
-                </Stack>
-              </Container>
-            </m.div>
-          )}
+          <Collapse in={open}>
+            <Container
+              maxWidth="xl"
+              sx={css`
+                @media (min-width: 768px) {
+                  display: none;
+                }
+              `}
+            >
+              <Stack direction="column" spacing={1}>
+                <Link></Link>
+                <Link
+                  sx={styles.link}
+                  component={RLink}
+                  to="/"
+                  onClick={() => setOpen(!open)}
+                >
+                  Home
+                </Link>
+                <Link
+                  sx={styles.link}
+                  component={RLink}
+                  to="/services"
+                  onClick={() => setOpen(!open)}
+                >
+                  Services
+                </Link>
+                <Link
+                  sx={styles.link}
+                  component={RLink}
+                  to="/tracking"
+                  onClick={() => setOpen(!open)}
+                >
+                  Tracking
+                </Link>
+                <Link
+                  sx={styles.link}
+                  component={RLink}
+                  to="/shipment"
+                  onClick={() => setOpen(!open)}
+                >
+                  Shipment
+                </Link>
+              </Stack>
+            </Container>
+          </Collapse>
         </Container>
       </Box>
     </Box>

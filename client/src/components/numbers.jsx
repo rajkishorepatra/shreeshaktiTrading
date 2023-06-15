@@ -45,7 +45,7 @@ export default function NumbersSection() {
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   animate={controls}
-                  initial="hidden"                
+                  initial="hidden"
                   variants={{
                     visible: {
                       opacity: 1,
