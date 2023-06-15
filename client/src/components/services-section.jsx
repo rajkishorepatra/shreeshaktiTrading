@@ -18,15 +18,16 @@ import CardImg from "../assets/quote-parallax.jpg";
 import { css } from "@emotion/react";
 
 export default function ServiceSection() {
-  const contentControl = useAnimation();
+  const controls = useAnimation();
+
   const ref = useRef();
   const isInView = useInView(ref, { margin: "0px 0px -300px 0px" });
 
   useEffect(() => {
     if (isInView) {
-      contentControl.start("visible");
+      controls.start("visible");
     }
-  }, [contentControl, isInView]);
+  }, [controls, isInView]);
 
   const styles = {
     heading: css`
@@ -56,7 +57,7 @@ export default function ServiceSection() {
       <Box sx={styles.serviceSection} ref={ref}>
         <Container>
           <motion.div
-            animate={contentControl}
+            animate={controls}
             initial={"hidden"}
             variants={{
               visible: {
@@ -84,7 +85,7 @@ export default function ServiceSection() {
               <Grid item xs={12} md={4} key={index} sx={styles.cardItem}>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  animate={contentControl}
+                  animate={controls}
                   initial="hidden"
                   variants={{
                     visible: {

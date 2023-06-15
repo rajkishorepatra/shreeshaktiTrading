@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import React from 'react';
 
 import { AnimatedOnScroll } from "react-animated-css-onscroll";
 import "animate.css/animate.min.css";
@@ -121,7 +122,7 @@ export default function WhySection() {
                     transition: { delay: 0.2 + index * 0.2 },
                     y: 0,
                   },
-                  hidden: { y: 50, opacity: 0.2 },
+                  hidden: { y: 50, opacity: 0.1 },
                 }}
               >
                 <Box sx={styles.card}>
