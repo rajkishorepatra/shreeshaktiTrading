@@ -7,9 +7,9 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Grow from "@mui/material/Grow";
-import { useState } from "react";
-import Scrollspy from "react-scrollspy";
+
+// animation
+import {motion, useInView,useAnimation} from "framer-motion";
 
 // images for cards
 import CardImg from "../assets/quote-parallax.jpg";
@@ -30,25 +30,12 @@ const styles = {
   `,
   card: css`
     max-width: 24rem;
-
-    &:hover {
-      height: 18rem;
-      box-shadow: rgba(241, 240, 240, 0.832) 0px 5px 5px,
-        rgba(0, 0, 0, 0.05) 0px 5px 10px;
-      transition: transform 13s ease-in-out;
-    }
   `,
 };
 
 export default function ServiceSection() {
-
   return (
     <>
-    <Scrollspy
-        currentClassName="active" // CSS class for the currently active section
-        componentTag="div" // The container element type to render
-        offset={-100} // Offset from the top to trigger the active state
-      >
       <Box sx={styles.serviceSection}>
         <Container>
           <Typography
@@ -82,7 +69,6 @@ export default function ServiceSection() {
           </Grid>
         </Container>
       </Box>
-      </Scrollspy>
     </>
   );
 }
@@ -109,34 +95,26 @@ const services = [
 ];
 
 function ServiceCard({ service }) {
-  const [checked, setChecked] = useState(true);
-
   return (
     <>
-      <Grow
-        in={checked}
-        style={{ transformOrigin: "0 0 0" }}
-        {...(checked ? { timeout: 5000 } : {})}
-      >
-        <Card sx={styles.card}>
-          <CardMedia
-            sx={{ height: 140 }}
-            image={service.image}
-            title="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {service.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {service.description}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </Card>
-      </Grow>
+      <Card sx={styles.card}>
+        <CardMedia
+          sx={{ height: 140 }}
+          image={service.image}
+          title="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {service.title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {service.description}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Learn More</Button>
+        </CardActions>
+      </Card>
     </>
   );
 }
