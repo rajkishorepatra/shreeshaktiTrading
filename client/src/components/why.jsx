@@ -115,10 +115,10 @@ export default function WhySection() {
                 }}
               >
                 <Box sx={styles.card}>
-                  <Typography variant="h6" noWrap>
+                  <Typography variant="h6" noWrap sx={{textTransform: 'uppercase'}}>
                     {data.heading}
                   </Typography>
-                  <Typography variant="body1">{data.desc}</Typography>
+                  <Typography variant="body1" sx={{fontWeight: 'light'}}>{data.desc}</Typography>
                 </Box>
               </motion.div>
             </Grid>
