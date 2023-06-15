@@ -9,66 +9,130 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
 // animation
-import {motion, useInView,useAnimation} from "framer-motion";
-
+import { motion, useInView, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
 // images for cards
 import CardImg from "../assets/quote-parallax.jpg";
 
 // css from emotion
 import { css } from "@emotion/react";
 
-const styles = {
-  serviceSection: css`
-    background-color: #094559;
-    min-height: 30vh;
-    padding: 3rem 0;
-  `,
-  cardContainer: css`
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  `,
-  card: css`
-    max-width: 24rem;
-  `,
-};
-
 export default function ServiceSection() {
+  const contentControl = useAnimation();
+  const ref = useRef();
+  const isInView = useInView(ref, { margin: "0px 0px -300px 0px" });
+
+  useEffect(() => {
+    if (isInView) {
+      contentControl.start("visible");
+    }
+  }, [contentControl, isInView]);
+
+  const styles = {
+    heading: css`
+      text-align: center;
+      color: white;
+      font-family: "bebas neue";
+    `,
+    serviceSection: css`
+      background-color: #094559;
+      min-height: 30vh;
+      padding: 3rem 0;
+    `,
+    cardContainer: css`
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    `,
+    cardItem: css`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    `,
+  };
+
   return (
     <>
-      <Box sx={styles.serviceSection}>
+      <Box sx={styles.serviceSection} ref={ref}>
         <Container>
-          <Typography
-            gutterBottom
-            variant="h3"
-            component="div"
-            sx={{
-              textAlign: "center",
-              color: "white",
-              fontFamily: "bebas neue",
+          <motion.div
+            animate={contentControl}
+            initial={"hidden"}
+            variants={{
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.2 },
+              },
+              hidden: {
+                opacity: 0,
+                y: 100,
+              },
             }}
           >
-            Our Services
-          </Typography>
+            <Typography
+              gutterBottom
+              variant="h3"
+              component="div"
+              sx={styles.heading}
+            >
+              Our Services
+            </Typography>
+          </motion.div>
           <Grid container spacing={3} sx={styles.cardContainer}>
             {services.map((service, index) => (
-              <Grid
-                item
-                xs={12}
-                md={4}
-                key={index}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <ServiceCard service={service} sx={{ fontFamily: "poppins" }} />
+              <Grid item xs={12} md={4} key={index} sx={styles.cardItem}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  animate={contentControl}
+                  initial="hidden"
+                  variants={{
+                    visible: {
+                      opacity: 1,
+                      scale: 1,
+                      transition: { delay: 0.2 + index * 0.2 },
+                      y: 0,
+                    },
+                    hidden: { y: 50, opacity: 0.1 },
+                  }}
+                >
+                  <ServiceCard service={service} />
+                </motion.div>
               </Grid>
             ))}
           </Grid>
         </Container>
       </Box>
+    </>
+  );
+}
+
+function ServiceCard({ service }) {
+  const styles = {
+    card: css`
+      max-width: 24rem;
+    `,
+  };
+  return (
+    <>
+      <Card sx={styles.card}>
+        <CardMedia
+          sx={{ height: 140 }}
+          image={service.image}
+          title="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {service.title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {service.description}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Learn More</Button>
+        </CardActions>
+      </Card>
     </>
   );
 }
@@ -93,28 +157,3 @@ const services = [
     description: "We provide the best air freight services in the world",
   },
 ];
-
-function ServiceCard({ service }) {
-  return (
-    <>
-      <Card sx={styles.card}>
-        <CardMedia
-          sx={{ height: 140 }}
-          image={service.image}
-          title="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {service.title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {service.description}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
-    </>
-  );
-}

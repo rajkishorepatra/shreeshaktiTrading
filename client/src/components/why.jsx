@@ -12,18 +12,13 @@ export default function WhySection() {
   const controls = useAnimation();
 
   const ref = useRef();
-  const isInView = useInView(ref, { once: false });
+  const isInView = useInView(ref, { margin: "0px 0px -300px 0px" });
 
   useEffect(() => {
     if (isInView) {
       controls.start("visible");
     }
   }, [controls, isInView]);
-
-  // const numbersVariants = {
-  //   visible: { opacity: 1, scale: 1, transition: { duration: 0.8 }, y: 0 },
-  //   hidden: { y: 50, opacity: 0.2 },
-  // };
 
   const whySectionData = [
     {
@@ -72,7 +67,21 @@ export default function WhySection() {
   return (
     <Box sx={styles.whySection} ref={ref}>
       <Container maxWidth="lg" sx={{ padding: "3rem 1rem" }}>
-        <motion.div>
+        <motion.div
+          animate={controls}
+          initial={"hidden"}
+          variants={{
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.2 },
+            },
+            hidden: {
+              opacity: 0,
+              y: 100,
+            },
+          }}
+        >
           <Typography
             variant="h3"
             noWrap
@@ -99,7 +108,7 @@ export default function WhySection() {
                   visible: {
                     opacity: 1,
                     scale: 1,
-                    transition: { delay: index * 0.2 },
+                    transition: { delay: 0.2 + index * 0.2 },
                     y: 0,
                   },
                   hidden: { y: 50, opacity: 0.2 },

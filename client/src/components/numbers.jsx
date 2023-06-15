@@ -52,9 +52,9 @@ export default function NumbersSection() {
                       opacity: 1,
                       scale: 1,
                       transition: { delay: index * 0.2 },
-                      x: 0,
+                      y: 0,
                     },
-                    hidden: { x: -800, opacity: 0 },
+                    hidden: { y: 100, opacity: 0 },
                   }}
                 >
                   <NumberCard
