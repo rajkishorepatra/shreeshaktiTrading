@@ -46,7 +46,7 @@ export default function ServiceSection() {
     <>
     <Scrollspy
         currentClassName="active" // CSS class for the currently active section
-        componentTag="div" // The container element type to render
+        componentTag="Box" // The container element type to render
         offset={-100} // Offset from the top to trigger the active state
       >
       <Box sx={styles.serviceSection}>

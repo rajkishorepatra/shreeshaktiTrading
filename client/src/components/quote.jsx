@@ -1,3 +1,4 @@
+import React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -7,6 +8,8 @@ import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 import { css } from "@emotion/react";
 import dayjs from "dayjs";
@@ -16,7 +19,9 @@ import { m } from "framer-motion";
 // import background images
 import quoteBackground from "../assets/quote-parallax.jpg";
 
-const BASE_URL = import.meta.env.BASE_URL;
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function Quote() {
   const [name, setName] = useState("");
@@ -28,50 +33,66 @@ export default function Quote() {
   const [type, setType] = useState("");
   const [message, setMessage] = useState("");
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   const handleQuoteForm = async (e) => {
     e.preventDefault();
-    console.log(
-      name,
-      email,
-      mobile,
-      destinationTo,
-      destinationFrom,
-      date,
-      type,
-      message
-    ); 
+    // console.log(
+    //   name,
+    //   email,
+    //   mobile,
+    //   destinationTo,
+    //   destinationFrom,
+    //   date,
+    //   type,
+    //   message
+    // );
     let date_str = dayjs(date).format("DD/MM/YYYY");
 
-    const response = await fetch(`https://shreeshaktiserver.onrender.com/quote`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        mobile,
-        destinationTo,
-        destinationFrom,
-        date_str,
-        type,
-        message,
-      }),
-    })
+    const response = await fetch(
+      `https://shreeshaktiserver.onrender.com/quote`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          mobile,
+          destinationTo,
+          destinationFrom,
+          date_str,
+          type,
+          message,
+        }),
+      }
+    )
       .then((res) => res.json())
       .then(async (res) => {
         const resData = await res;
         // console.log(resData);
         if (resData.status === "success") {
-          console.log("Message sent");
+          handleClick();
         } else if (resData.status === "fail") {
           console.log("Message failed to send");
         }
       })
       .catch((err) => {
         console.log(err);
-      }
-    );
+      });
   };
 
   const styles = {
@@ -186,15 +207,14 @@ export default function Quote() {
     `,
 
     submitButton: css`
-    background-color:#9a6125; 
-    color:#fff;
-    font-family:poppins;
+      background-color: #9a6125;
+      color: #fff;
+      font-family: poppins;
 
       &:hover {
         background-color: #f07c00;
       }
-    `
-    
+    `,
   };
 
   return (
@@ -205,16 +225,29 @@ export default function Quote() {
           <m.div>
             <Box sx={styles.formContainer}>
               <Box sx={styles.heading}>
-                <Typography variant="h3" sx={{ fontFamily: 'bebas neue', color:"#F07C00"}}>
+                <Typography
+                  variant="h3"
+                  sx={{ fontFamily: "bebas neue", color: "#F07C00" }}
+                >
                   Get a free quote
                 </Typography>
-                <Typography variant="body1" sx={{fontFamily:"poppins", color:"#EAEAEA"}}>
+                <Typography
+                  variant="body1"
+                  sx={{ fontFamily: "poppins", color: "#EAEAEA" }}
+                >
                   We always use best and fastest fleets
                 </Typography>
-                <Typography variant="body2" sx={{fontFamily:"poppins", color:"#E62E23", fontSize:'0.7rem'}}>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontFamily: "poppins",
+                    color: "#E62E23",
+                    fontSize: "0.7rem",
+                  }}
+                >
                   * mark indicates required fields
                 </Typography>
-                </Box>
+              </Box>
               <Box>
                 <form onSubmit={(e) => handleQuoteForm(e)}>
                   <Grid container spacing={1} sx={styles.inputElement}>
@@ -326,7 +359,20 @@ export default function Quote() {
                       >
                         Submit
                       </Button>
-                    </Grid>
+                      <Snackbar
+                        open={open}
+                        autoHideDuration={2000}
+                        onClose={handleClose}
+                      >
+                        <Alert
+                          onClose={handleClose}
+                          severity="success"
+                          sx={{ width: "100%" }}
+                        >
+                          Quote send!
+                        </Alert>
+                      </Snackbar>
+                      </Grid>
                   </Grid>
                 </form>
               </Box>
