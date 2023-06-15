@@ -7,82 +7,132 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Grow from "@mui/material/Grow";
-import { useState } from "react";
-import Scrollspy from "react-scrollspy";
 
+// animation
+import { motion, useInView, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
 // images for cards
 import CardImg from "../assets/quote-parallax.jpg";
 
 // css from emotion
 import { css } from "@emotion/react";
 
-const styles = {
-  serviceSection: css`
-    background-color: #094559;
-    min-height: 30vh;
-    padding: 3rem 0;
-  `,
-  cardContainer: css`
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  `,
-  card: css`
-    max-width: 24rem;
-
-    &:hover {
-      height: 18rem;
-      box-shadow: rgba(241, 240, 240, 0.832) 0px 5px 5px,
-        rgba(0, 0, 0, 0.05) 0px 5px 10px;
-      transition: transform 13s ease-in-out;
-    }
-  `,
-};
-
 export default function ServiceSection() {
+  const contentControl = useAnimation();
+  const ref = useRef();
+  const isInView = useInView(ref, { margin: "0px 0px -300px 0px" });
+
+  useEffect(() => {
+    if (isInView) {
+      contentControl.start("visible");
+    }
+  }, [contentControl, isInView]);
+
+  const styles = {
+    heading: css`
+      text-align: center;
+      color: white;
+      font-family: "bebas neue";
+    `,
+    serviceSection: css`
+      background-color: #094559;
+      min-height: 30vh;
+      padding: 3rem 0;
+    `,
+    cardContainer: css`
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    `,
+    cardItem: css`
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    `,
+  };
 
   return (
     <>
-    <Scrollspy
-        currentClassName="active" // CSS class for the currently active section
-        componentTag="Box" // The container element type to render
-        offset={-100} // Offset from the top to trigger the active state
-      >
-      <Box sx={styles.serviceSection}>
+      <Box sx={styles.serviceSection} ref={ref}>
         <Container>
-          <Typography
-            gutterBottom
-            variant="h3"
-            component="div"
-            sx={{
-              textAlign: "center",
-              color: "white",
-              fontFamily: "bebas neue",
+          <motion.div
+            animate={contentControl}
+            initial={"hidden"}
+            variants={{
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.2 },
+              },
+              hidden: {
+                opacity: 0,
+                y: 100,
+              },
             }}
           >
-            Our Services
-          </Typography>
+            <Typography
+              gutterBottom
+              variant="h3"
+              component="div"
+              sx={styles.heading}
+            >
+              Our Services
+            </Typography>
+          </motion.div>
           <Grid container spacing={3} sx={styles.cardContainer}>
             {services.map((service, index) => (
-              <Grid
-                item
-                xs={12}
-                md={4}
-                key={index}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <ServiceCard service={service} sx={{ fontFamily: "poppins" }} />
+              <Grid item xs={12} md={4} key={index} sx={styles.cardItem}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  animate={contentControl}
+                  initial="hidden"
+                  variants={{
+                    visible: {
+                      opacity: 1,
+                      scale: 1,
+                      transition: { delay: 0.2 + index * 0.2 },
+                      y: 0,
+                    },
+                    hidden: { y: 50, opacity: 0.1 },
+                  }}
+                >
+                  <ServiceCard service={service} />
+                </motion.div>
               </Grid>
             ))}
           </Grid>
         </Container>
       </Box>
-      </Scrollspy>
+    </>
+  );
+}
+
+function ServiceCard({ service }) {
+  const styles = {
+    card: css`
+      max-width: 24rem;
+    `,
+  };
+  return (
+    <>
+      <Card sx={styles.card}>
+        <CardMedia
+          sx={{ height: 140 }}
+          image={service.image}
+          title="green iguana"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {service.title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {service.description}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Learn More</Button>
+        </CardActions>
+      </Card>
     </>
   );
 }
@@ -107,36 +157,3 @@ const services = [
     description: "We provide the best air freight services in the world",
   },
 ];
-
-function ServiceCard({ service }) {
-  const [checked, setChecked] = useState(true);
-
-  return (
-    <>
-      <Grow
-        in={checked}
-        style={{ transformOrigin: "0 0 0" }}
-        {...(checked ? { timeout: 5000 } : {})}
-      >
-        <Card sx={styles.card}>
-          <CardMedia
-            sx={{ height: 140 }}
-            image={service.image}
-            title="green iguana"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {service.title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {service.description}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </Card>
-      </Grow>
-    </>
-  );
-}

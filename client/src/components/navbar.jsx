@@ -10,7 +10,6 @@ import Link from "@mui/material/Link";
 import { Link as RLink } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 
-
 import { useState } from "react";
 import ShreeShaktiLogo from "../assets/shreeshakti-logo.png";
 import { Typography } from "@mui/material";
@@ -78,14 +77,19 @@ export default function Navbar() {
             `}
           >
             <Link component={RLink} to="/" sx={styles.logo}>
-              <Box sx={css`display: flex; align-items: center; `}>
+              <Box
+                sx={css`
+                  display: flex;
+                  align-items: center;
+                `}
+              >
                 <img src={ShreeShaktiLogo} alt="Shree Shakti Logo" />
                 <Typography
                   variant="h5"
                   sx={{
-                    textDecoration:'none',
-                    fontFamily: 'bebas neue', 
-                    paddingLeft: '.5rem', 
+                    textDecoration: "none",
+                    fontFamily: "bebas neue",
+                    paddingLeft: ".5rem",
                   }}
                 >
                   ShreeShaktiTrading
@@ -106,35 +110,19 @@ export default function Navbar() {
               <Link sx={styles.link} component={RLink} to="/">
                 Home
               </Link>
-              <Link
-                sx={styles.link}
-                component={RLink}
-                to="/services"
-              >
+              <Link sx={styles.link} component={RLink} to="/services">
                 Services
               </Link>
-              <Link
-                sx={styles.link}
-                component={RLink}
-                to="/tracking"
-              >
+              <Link sx={styles.link} component={RLink} to="/tracking">
                 Tracking
               </Link>
-              <Link
-                sx={styles.link}
-                component={RLink}
-                to="/shipment"
-              >
+              <Link sx={styles.link} component={RLink} to="/shipment">
                 Shipment
               </Link>
-              <Link
-                sx={styles.link}
-                component={RLink}
-                to="/admin/login"
-              >
+              <Link sx={styles.link} component={RLink} to="/admin/login">
                 Admin
               </Link>
-              </Box>
+            </Box>
           </Box>
 
           {open && (
@@ -149,7 +137,7 @@ export default function Navbar() {
               >
                 <Stack direction="column" spacing={1}>
                   <Link></Link>
-                <Link
+                  <Link
                     sx={styles.link}
                     component={RLink}
                     to="/"

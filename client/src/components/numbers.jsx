@@ -15,32 +15,24 @@ import PersonIcon from "@mui/icons-material/Person";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import FolderIcon from "@mui/icons-material/Folder";
 
-import { useAnimation, motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { useAnimation, motion, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 export default function NumbersSection() {
   const controls = useAnimation();
-  const [ref, inView] = useInView();
+
+  const ref = useRef();
+  const isInView = useInView(ref, { margin: "100px 0px -300px  0px" });
 
   useEffect(() => {
-    if (inView) {
+    if (isInView) {
       controls.start("visible");
     }
-  }, [controls, inView]);
+  }, [controls, isInView]);
 
-  const numbersVariants = {
-    visible: { opacity: 1, scale: 1, transition: { duration: 1 } },
-    hidden: { opacity: 0, scale: 0.5 },
-  };
   return (
     <div style={{ backgroundColor: "#EAEAEA", padding: "2rem 0" }}>
-      <motion.div
-        ref={ref}
-        animate={controls}
-        initial="hidden"
-        variants={numbersVariants}
-      >
+      <motion.div ref={ref}>
         <Container
           maxWidth="lg"
           sx={css`
@@ -50,11 +42,26 @@ export default function NumbersSection() {
           <Grid container spacing={{ xs: 5, sm: 6, md: 2 }}>
             {numbersData.map((item, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
-                <NumberCard
-                  icon={item.icon}
-                  number={item.number}
-                  title={item.title}
-                />
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  animate={controls}
+                  initial="hidden"                
+                  variants={{
+                    visible: {
+                      opacity: 1,
+                      scale: 1,
+                      transition: { delay: index * 0.2 },
+                      y: 0,
+                    },
+                    hidden: { y: 100, opacity: 0 },
+                  }}
+                >
+                  <NumberCard
+                    icon={item.icon}
+                    number={item.number}
+                    title={item.title}
+                  />
+                </motion.div>
               </Grid>
             ))}
           </Grid>
