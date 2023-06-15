@@ -22,18 +22,13 @@ export default function NumbersSection() {
   const controls = useAnimation();
 
   const ref = useRef();
-  const isInView = useInView(ref, { once: false });
+  const isInView = useInView(ref, { margin: "100px 0px -300px  0px" });
 
   useEffect(() => {
     if (isInView) {
       controls.start("visible");
     }
   }, [controls, isInView]);
-
-  // const numbersVariants = {
-  //   visible: { opacity: 1, scale: 1, transition: { duration: 0.8, }, y: 0 },
-  //   hidden: { y: 50, opacity: 0.2, },
-  // };
 
   return (
     <div style={{ backgroundColor: "#EAEAEA", padding: "2rem 0" }}>
@@ -53,8 +48,13 @@ export default function NumbersSection() {
                   initial="hidden"
                   // variants={numbersVariants}
                   variants={{
-                    visible: { opacity: 1, scale: 1, transition: { delay: index*0.2 }, y: 0 },
-                    hidden: { y: 50, opacity: 0.2, },
+                    visible: {
+                      opacity: 1,
+                      scale: 1,
+                      transition: { delay: index * 0.2 },
+                      x: 0,
+                    },
+                    hidden: { x: -800, opacity: 0 },
                   }}
                 >
                   <NumberCard
