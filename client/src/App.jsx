@@ -10,6 +10,7 @@ import Shipment from "./pages/shipment";
 import AdminLogin from "./pages/admin/login";
 import AdminLayout from "./pages/admin/admin-layout";
 import AdminDashboard from "./pages/admin/dashboard";
+import ErrorPage from "./pages/error-page";
 
 // auth context provider
 import { AuthContextProvider } from "./contexts/authContext";
@@ -46,23 +47,11 @@ export default function App() {
                 <>
                   <Route path="/" element={<RootLayout />}>
                     <Route index element={<HomePage />} />
-                    <Route
-                      path="/services"
-                      element={<MediaCard />}
-                    />
-                    <Route
-                      path="/tracking"
-                      element={<TrackingPage />}
-                    />
-                    <Route
-                      path="/shipment"
-                      element={<Shipment />}
-                    />
+                    <Route path="/services" element={<MediaCard />} />
+                    <Route path="/tracking" element={<TrackingPage />} />
+                    <Route path="/shipment" element={<Shipment />} />
                   </Route>
-                  <Route
-                    path="/admin"
-                    element={<AdminLayout />}
-                  >
+                  <Route path="/admin" element={<AdminLayout />}>
                     <Route path="login" element={<AdminLogin />} />
                     <Route
                       path="dashboard"
@@ -73,15 +62,7 @@ export default function App() {
                       }
                     />
                   </Route>
-                  <Route
-                    path="*"
-                    element={
-                      <div>
-                        <h2>Sorry</h2>
-                        <p>Page not found</p>
-                      </div>
-                    }
-                  />
+                  <Route path="*" element={<ErrorPage />} />
                 </>
               </Routes>
             </BrowserRouter>
@@ -101,9 +82,6 @@ function RequireAuth({ children }) {
   return currentUser ? (
     children
   ) : (
-    <Navigate
-      to={"/admin/login"}
-      state={{ from: location }}
-    />
+    <Navigate to={"/admin/login"} state={{ from: location }} />
   );
 }

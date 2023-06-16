@@ -2,11 +2,10 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-
-import { m, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-
 import { css } from "@emotion/react";
+
+// animation
+import { m, useAnimation } from "framer-motion";
 
 // swiper imports
 import { Swiper, SwiperSlide } from "swiper/react";

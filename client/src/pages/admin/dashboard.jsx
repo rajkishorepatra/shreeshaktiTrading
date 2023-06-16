@@ -14,12 +14,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 import { css } from "@emotion/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { UserAuth } from "../../contexts/authContext";
 import { useState, useEffect } from "react";
-
-// import { clients } from "../../local-data/clients";
 
 // create ref to client logos folder on firebase storage
 import { storage } from "../../firebase";
@@ -39,15 +37,15 @@ import {
 } from "firebase/firestore";
 
 export default function AdminDashboard() {
+  const { logOut } = UserAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [viewclients, setViewclients] = useState(false);
   const [addclient, setAddclient] = useState(false);
   const [feedback, setFeedback] = useState({
     state: false,
     message: "",
   });
-
-  const { logOut } = UserAuth();
-  const navigate = useNavigate();
 
   const styles = {
     OperationBtn: css`
@@ -65,6 +63,7 @@ export default function AdminDashboard() {
       align-self: center;
     `,
   };
+
   return (
     <Box>
       <Heading
@@ -166,6 +165,14 @@ export default function AdminDashboard() {
               >
                 {feedback.message}
               </Alert>
+            </Collapse>
+            <Collapse
+              in={
+                location?.state?.isAdmin &&
+                location?.state?.from === "/admin/login"
+              }
+            >
+              <Alert severity="success">{"You are logged in as Admin"}</Alert>
             </Collapse>
           </Box>
         </Box>

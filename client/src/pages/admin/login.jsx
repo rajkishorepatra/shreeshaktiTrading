@@ -1,11 +1,12 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import React from "react";
+import Collapse from "@mui/material/Collapse";
+import Alert from "@mui/material/Alert";
 
 import { useEffect, useState } from "react";
 import { UserAuth } from "../../contexts/authContext";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -15,27 +16,34 @@ import { Link } from "@mui/material";
 
 export default function AdminLogin() {
   const { currentUser, logIn } = UserAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [formState, setFormState] = useState({ loading: false, error: null });
 
   useEffect(() => {
     if (currentUser) {
-      navigate("/admin/dashboard");
+      navigate("/admin/dashboard", {
+        state: { isAdmin: true, from: location.pathname },
+      });
     }
     document.title = "Admin Login | Shree Shakti Express";
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
+    setFormState({ loading: true, error: null });
     try {
       await logIn(email, password);
-      navigate("/admin/dashboard");
+      setFormState({ loading: false, error: null });
+      navigate("/admin/dashboard", {
+        state: { isAdmin: true, from: location.pathname },
+      });
     } catch (err) {
       let errmsg = err.code.replace("auth/", "").replaceAll("-", " ");
       console.log(errmsg);
+      setFormState({ loading: false, error: errmsg });
     }
   };
 
@@ -68,7 +76,8 @@ export default function AdminLogin() {
               onChange={(e) => setEmail(e.target.value)}
               fullWidth
               margin="normal"
-              // required
+              required
+              disabled={formState.loading}
             />
             <TextField
               type="password"
@@ -77,18 +86,39 @@ export default function AdminLogin() {
               onChange={(e) => setPassword(e.target.value)}
               fullWidth
               margin="normal"
-              // required
+              required
+              disabled={formState.loading}
             />
-            <Button type="submit" variant="contained" color="primary" sx={css`
-              background-color: #094559;
-
-              &:hover{
-                background-color: #E62E23;
-              }
-            `}>
-              Login
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              disabled={formState.loading}
+            >
+              {formState.loading ? "logging you in" : "Login"}
             </Button>
           </form>
+        </Box>
+        <Box
+          sx={{
+            maxWidth: { xs: "100%", sm: "320px" },
+            padding: "2rem 1rem",
+            position: "absolute",
+            bottom: "0",
+            left: "0",
+          }}
+        >
+          <Collapse in={!location?.state?.isAdmin ? true : false}>
+            <Alert severity="info">
+              {location?.state?.from === "/admin/dashboard"
+                ? "you were logged out, please login again"
+                : "you need to login to access dashboard page"}
+            </Alert>
+          </Collapse>
+
+          <Collapse in={formState.error ? true : false}>
+            <Alert severity="error">{formState.error}</Alert>
+          </Collapse>
         </Box>
       </Container>
     </Box>
