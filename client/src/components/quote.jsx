@@ -1,3 +1,4 @@
+import React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -6,6 +7,8 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 import { css } from "@emotion/react";
 import dayjs from "dayjs";
@@ -18,6 +21,10 @@ import quoteBackground from "../assets/quote-parallax.jpg";
 // animation
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function Quote() {
   // animation
@@ -39,6 +46,20 @@ export default function Quote() {
   const [type, setType] = useState("");
   const [message, setMessage] = useState("");
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   const handleQuoteForm = async (e) => {
     e.preventDefault();
     console.log(
@@ -51,6 +72,16 @@ export default function Quote() {
       type,
       message
     );
+    // console.log(
+    //   name,
+    //   email,
+    //   mobile,
+    //   destinationTo,
+    //   destinationFrom,
+    //   date,
+    //   type,
+    //   message
+    // );
     let date_str = dayjs(date).format("DD/MM/YYYY");
 
     const response = await fetch(
@@ -77,7 +108,7 @@ export default function Quote() {
         const resData = await res;
         // console.log(resData);
         if (resData.status === "success") {
-          console.log("Message sent");
+          handleClick();
         } else if (resData.status === "fail") {
           console.log("Message failed to send");
         }
@@ -368,6 +399,25 @@ export default function Quote() {
                           >
                             Submit
                           </Button>
+                          <Snackbar
+                            open={open}
+                            autoHideDuration={5000}
+                            onClose={handleClose}
+                          >
+                            <Alert
+                              onClose={handleClose}
+                              severity="success"
+                              sx={css`
+                                width: 100%;
+
+                                @media (max-width: 768px) {
+                                  width: 70%;
+                                }
+                              `}
+                            >
+                              Sent!
+                            </Alert>
+                          </Snackbar>
                         </Grid>
                       </Grid>
                     </form>
