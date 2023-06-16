@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import React from "react";
 
 import { useEffect, useState } from "react";
 import { UserAuth } from "../../contexts/authContext";
@@ -20,7 +21,7 @@ export default function AdminLogin() {
 
   useEffect(() => {
     if (currentUser) {
-      navigate("/shreeshaktiTrading/admin/dashboard");
+      navigate("/admin/dashboard");
     }
     document.title = "Admin Login | Shree Shakti Express";
   }, []);
@@ -47,18 +48,14 @@ export default function AdminLogin() {
     container: css`
       padding: 2rem 0;
     `,
-
-    body: css`
-    background-color: #EAEAEA;
-    `
   };
 
   return (
     <>
-    <Box sx={{background:"#EAEAEA"}}>
+    <Box>
       <Heading title="ADMIN LOGIN" back="<< BACK TO HOMEPAGE"/>
       <Container maxWidth="xl" sx={styles.container}>
-        <Typography variant="h5" component="h1" align="center">
+        <Typography variant="h5" component="h1" align="center" sx={{fontFamily:"bebas neue", fontSize:"2rem", color:"#094559"}}>
           Login as Admin
         </Typography>
 
@@ -82,7 +79,13 @@ export default function AdminLogin() {
               margin="normal"
               // required
             />
-            <Button type="submit" variant="contained" color="primary">
+            <Button type="submit" variant="contained" color="primary" sx={css`
+              background-color: #094559;
+
+              &:hover{
+                background-color: #E62E23;
+              }
+            `}>
               Login
             </Button>
           </form>

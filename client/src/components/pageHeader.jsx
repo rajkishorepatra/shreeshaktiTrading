@@ -28,7 +28,7 @@ export default function Heading({ img, title, description, back }) {
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      color: yellow;
+      color: rgba(71, 250, 0, 1);
       font-family: "bebas neue";
     `,
 
@@ -43,7 +43,7 @@ export default function Heading({ img, title, description, back }) {
       }
 
       @media (max-width: 768px) {
-        font-size: 0.9rem;
+        font-size: 1rem;
         padding: 1.5rem 0 0.4rem 0;
       }
     `,
@@ -79,7 +79,7 @@ export default function Heading({ img, title, description, back }) {
               sx={{
                 typography: { xs: "body2", md: "body1" },
                 textAlign: { xs: "left", md: "right" },
-                fontFamily: "poppins"
+                fontFamily: "poppins",
               }}
             >
             {description}

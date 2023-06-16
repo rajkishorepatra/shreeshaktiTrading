@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import Heading from "../components/pageHeader";
 
 // import { css } from "@emotion/react";
 import { css } from "@emotion/react";
@@ -48,41 +49,9 @@ export default function MediaCard() {
   };
   return (
     <>
+    <Heading title="OUR SERVICES" description="We freight to all over the world
+    The best logistic company, Fastly and Safely"/>
       <Box sx={styles.body}>
-        <Box sx={styles.imageStyle}>
-          <Box
-            sx={{
-              height: "100%",
-              width: "100%",
-              background: "rgba(0,0,0,0.7)",
-            }}
-          >
-            <Container maxWidth="xl">
-              <Box sx={styles.heading}>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    typography: { xs: "h5", md: "h4" },
-                    color: "#f39633",
-                    fontFamily: "bebas neue",
-                  }}
-                >
-                  OUR SERVICES
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    typography: { xs: "body2", md: "body1" },
-                    color: "#E62E23",
-                  }}
-                >
-                  We freight to all over the world <br />
-                  The best logistic company, Fastly and Safely
-                </Typography>
-              </Box>
-            </Container>
-          </Box>
-        </Box>
         <Container maxWidth="xl" sx={{ paddingBottom: "2rem" }}>
           <Box sx={styles.wordStyle}>
             <Typography
