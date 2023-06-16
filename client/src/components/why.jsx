@@ -5,8 +5,6 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import React from 'react';
 
-import { AnimatedOnScroll } from "react-animated-css-onscroll";
-import "animate.css/animate.min.css";
 
 // animation
 import { motion, useInView, useAnimation } from "framer-motion";
@@ -69,11 +67,6 @@ export default function WhySection() {
     `,
   };
 
-  const [checked, setChecked] = React.useState(false);
-
-  const handleChange = () => {
-    setChecked((prev) => !prev);
-  };
 
   return (
     <Box sx={styles.whySection} ref={ref}>

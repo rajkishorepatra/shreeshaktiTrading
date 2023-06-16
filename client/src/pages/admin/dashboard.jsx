@@ -8,10 +8,11 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Heading from "../../components/pageHeader";
-import Alert from "@mui/material/Alert";
+
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Snackbar from "@mui/material/Snackbar";
 
 import { css } from "@emotion/react";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -46,6 +47,11 @@ export default function AdminDashboard() {
     state: false,
     message: "",
   });
+  const [loginStatus, setLoginStatus] = useState(location?.state?.isAdmin);
+
+  useEffect(() => {
+    setLoginStatus(location?.state?.isAdmin);
+  }, [location]);
 
   const styles = {
     OperationBtn: css`
@@ -68,13 +74,12 @@ export default function AdminDashboard() {
             variant="contained"
             onClick={() => {
               logOut();
-              navigate('/admin/login');
+              navigate("/admin/login", { state: { isAdmin: false } });
             }}
           >
             LOGOUT
           </Button>
         }
-
         back="<< BACK TO HOMEPAGE"
       />
       <Container maxWidth="xl">
@@ -119,33 +124,40 @@ export default function AdminDashboard() {
               left: "0",
             }}
           >
-            <Collapse in={feedback.state}>
-              <Alert
-                action={
-                  <IconButton
-                    aria-label="close"
-                    color="inherit"
-                    size="small"
-                    onClick={() => {
-                      setFeedback({ state: false, message: "" });
-                    }}
-                  >
-                    <CloseIcon fontSize="inherit" />
-                  </IconButton>
-                }
-                sx={{ mb: 2 }}
-              >
-                {feedback.message}
-              </Alert>
-            </Collapse>
-            <Collapse
-              in={
-                location?.state?.isAdmin &&
-                location?.state?.from === "/admin/login"
+            <Snackbar
+              open={feedback.state}
+              autoHideDuration={6000}
+              onClose={() => setFeedback({ state: false, message: "" })}
+              message={feedback.message}
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => {
+                    setFeedback({ state: false, message: "" });
+                  }}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
               }
-            >
-              <Alert severity="success">{"You are logged in as Admin"}</Alert>
-            </Collapse>
+            />
+            <Snackbar
+              open={loginStatus}
+              autoHideDuration={8000}
+              onClose={() => setLoginStatus(false)}
+              message={"You are logged in as Admin."}
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => setLoginStatus(false)}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+            />
           </Box>
         </Box>
       </Container>
