@@ -10,6 +10,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { css } from "@emotion/react";
 import Heading from "../../components/pageHeader";
+import { Link } from "@mui/material";
 
 export default function AdminLogin() {
   const { currentUser, logIn } = UserAuth();
@@ -46,11 +47,16 @@ export default function AdminLogin() {
     container: css`
       padding: 2rem 0;
     `,
+
+    body: css`
+    background-color: #EAEAEA;
+    `
   };
 
   return (
-    <Box>
-      <Heading title="Admin Login" />
+    <>
+    <Box sx={{background:"#EAEAEA"}}>
+      <Heading title="ADMIN LOGIN" back="<< BACK TO HOMEPAGE"/>
       <Container maxWidth="xl" sx={styles.container}>
         <Typography variant="h5" component="h1" align="center">
           Login as Admin
@@ -83,5 +89,6 @@ export default function AdminLogin() {
         </Box>
       </Container>
     </Box>
+    </>
   );
 }

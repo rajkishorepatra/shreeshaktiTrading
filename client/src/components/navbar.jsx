@@ -168,6 +168,15 @@ export default function Navbar() {
                 >
                   Shipment
                 </Link>
+                <Link
+                  sx={styles.link}
+                  component={RLink}
+                  to="/admin/login"
+                  onClick={() => setOpen(!open)}
+                >
+                  Admin
+                </Link>
+                
               </Stack>
             </Container>
           </Collapse>

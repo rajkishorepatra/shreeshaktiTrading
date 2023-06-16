@@ -7,6 +7,8 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 import { css } from "@emotion/react";
 import dayjs from "dayjs";
@@ -19,6 +21,10 @@ import quoteBackground from "../assets/quote-parallax.jpg";
 // animation
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function Quote() {
   // animation
@@ -47,7 +53,7 @@ export default function Quote() {
   };
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
 
@@ -393,6 +399,25 @@ export default function Quote() {
                           >
                             Submit
                           </Button>
+                          <Snackbar
+                            open={open}
+                            autoHideDuration={5000}
+                            onClose={handleClose}
+                          >
+                            <Alert
+                              onClose={handleClose}
+                              severity="success"
+                              sx={css`
+                                width: 100%;
+
+                                @media (max-width: 768px) {
+                                  width: 70%;
+                                }
+                              `}
+                            >
+                              Sent!
+                            </Alert>
+                          </Snackbar>
                         </Grid>
                       </Grid>
                     </form>

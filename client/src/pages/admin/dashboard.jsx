@@ -63,18 +63,20 @@ export default function AdminDashboard() {
   return (
     <Box>
       <Heading
-        title="Admin Dashboard"
+        title="ADMIN DASHBOARD"
         description={
           <Button
             variant="contained"
             onClick={() => {
               logOut();
-              navigate("/admin/login");
+              navigate('/admin/login');
             }}
           >
-            Logout
+            LOGOUT
           </Button>
         }
+
+        back="<< BACK TO HOMEPAGE"
       />
       <Container maxWidth="xl">
         <Box sx={{ padding: "2rem 0" }}>
