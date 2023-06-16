@@ -56,8 +56,13 @@ export default function AdminDashboard() {
   const styles = {
     OperationBtn: css`
       width: 100%;
-      max-width: 200px;
+      max-width: 300px;
       padding: 1rem;
+      border: 0.12rem solid;
+
+      &:hover{
+        background-color: rgba(233, 230, 231, 0.8);
+      }
     `,
     OperationBox: css`
       justify-content: center;
@@ -71,11 +76,34 @@ export default function AdminDashboard() {
         title="ADMIN DASHBOARD"
         description={
           <Button
-            variant="contained"
+            variant="outlined"
             onClick={() => {
               logOut();
               navigate("/admin/login", { state: { isAdmin: false } });
             }}
+            sx={css`
+            color:#EAEAEA;
+            font-size: 1rem;
+            border-color: #EAEAEA;
+
+            &:hover {
+              color: #a43d2b;
+              background-color: #EAEAEA;  
+            }
+
+            @media (max-width: 768px) {
+              border: none;
+              font-size: 0.8rem;
+              padding: 0;
+              color: #ad72f9;
+
+              &:hover {
+                background: none;
+              }
+            }
+          `
+        }
+            size="small"
           >
             LOGOUT
           </Button>
@@ -83,11 +111,11 @@ export default function AdminDashboard() {
         back="<< BACK TO HOMEPAGE"
       />
       <Container maxWidth="xl">
-        <Box sx={{ padding: "2rem 0" }}>
+        <Box sx={{ padding: "2rem 0"}}>
           <Stack spacing={2} direction="row" sx={styles.OperationBox}>
             <Button
               sx={styles.OperationBtn}
-              variant="contained"
+              variant="outlined"
               onClick={() => {
                 setAddclient(!addclient);
                 setViewclients(false);
@@ -97,7 +125,7 @@ export default function AdminDashboard() {
             </Button>
             <Button
               sx={styles.OperationBtn}
-              variant="contained"
+              variant="outlined"
               onClick={() => {
                 setViewclients(!viewclients);
                 setAddclient(false);

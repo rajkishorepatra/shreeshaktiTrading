@@ -61,20 +61,16 @@ export default function AdminLogin() {
     container: css`
       padding: 2rem 0;
     `,
-
-    body: css`
-      background-color: #eaeaea;
-    `,
   };
 
   return (
     <>
-      <Box sx={{ background: "#EAEAEA" }}>
-        <Heading title="ADMIN LOGIN" back="<< BACK TO HOMEPAGE" />
-        <Container maxWidth="xl" sx={styles.container}>
-          <Typography variant="h5" component="h1" align="center">
-            Login as Admin
-          </Typography>
+    <Box>
+      <Heading title="ADMIN LOGIN" back="<< BACK TO HOMEPAGE"/>
+      <Container maxWidth="xl" sx={styles.container}>
+        <Typography variant="h5" component="h1" align="center" sx={{fontFamily:"bebas neue", fontSize:"2rem", color:"#094559"}}>
+          Login as Admin
+        </Typography>
 
           <Box sx={styles.formBox}>
             <form onSubmit={handleSubmit}>

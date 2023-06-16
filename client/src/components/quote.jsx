@@ -146,7 +146,7 @@ export default function Quote() {
       left: 0;
       z-index: -1;
       opacity: 0.9;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(36, 41, 55, 0.8);
       @media (max-width: 768px) {
         max-width: 100%;
       }
