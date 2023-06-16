@@ -22,10 +22,16 @@ body {
 ._2qp0Z {
   z-index: 99;
 }
+._3twZq{
+  margin: auto 0;
+}
 
 @media screen and (max-width: 576px) {
   .swiper-button-next,
   .swiper-button-prev {
     display: none;
+  }
+  ._1yCVn{
+   width: 86%;
   }
 }

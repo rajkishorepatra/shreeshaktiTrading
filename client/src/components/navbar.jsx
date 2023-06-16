@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { m } from "framer-motion";
+import { m, useScroll, useMotionValueEvent ,useAnimationControls} from "framer-motion";
 
 import { Menu as MenuIcon } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
@@ -10,12 +10,21 @@ import Link from "@mui/material/Link";
 import { Link as RLink } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import Collapse from "@mui/material/Collapse";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ShreeShaktiLogo from "../assets/shreeshakti-logo.png";
 import { Typography } from "@mui/material";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const logoControls = useAnimationControls();
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log("Page scroll: ", latest);
+    if(latest < 0.03){
+      logoControls.start('')
+    }
+  });
 
   const styles = {
     logo: css`
